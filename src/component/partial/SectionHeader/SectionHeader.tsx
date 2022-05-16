@@ -23,7 +23,7 @@ const SectionHeader: React.FC<SectionHeaderProps> = ({
         {heading}
       </Text>
 
-      <Text>{description}</Text>
+      <Text style={[styles.body1]}>{description}</Text>
     </View>
   );
 };
@@ -35,6 +35,12 @@ const styles = StyleSheet.create({
     fontWeight: '400',
     lineHeight: 29,
   },
+  body1: {
+    fontSize: 12,
+    lineHeight: 15,
+    fontWeight: '400',
+  },
+  // TODO: convert ^ styles into Text component variants
   bottomMargin: {
     marginBottom: 8,
   },
