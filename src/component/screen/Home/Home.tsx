@@ -1,10 +1,24 @@
 import React from 'react';
-import {SafeAreaView, TextInput, View} from 'react-native';
+import {ScrollView, TextInput, View} from 'react-native';
 
 import {PlaceCTA, SectionHeader} from 'component/partial';
+import * as faker from 'faker';
 
 import img from './asset/stock-photo.jpg';
 import styles from './Home.style';
+
+const getFakePlace = () => {
+  return {
+    id: faker.datatype.uuid(),
+    imageSource: img, // require(faker.image.abstract()),
+    label: `From $${faker.datatype.number(1100)}`,
+    address: `${faker.address.secondaryAddress()} - ${faker.address.streetAddress()}`,
+    location: `${faker.address.city()}, ${faker.address.state()}`,
+    placeName: faker.name.jobArea(),
+  };
+};
+
+const fakePlaces = new Array(5).fill(undefined).map(() => getFakePlace());
 
 /**
  * Home is the screen the user comes to first when they open the application
@@ -13,7 +27,7 @@ const Home: React.FC = () => {
   const [searchVal, setSearchVal] = React.useState('');
 
   return (
-    <SafeAreaView style={styles.wrapper}>
+    <ScrollView style={styles.wrapper}>
       <View style={styles.inputWrapper}>
         <TextInput
           style={styles.input}
@@ -28,22 +42,10 @@ const Home: React.FC = () => {
         description="Our spaces are designed for comfort - whether you are working, relaxing, or craving some spaces"
       />
 
-      <PlaceCTA
-        style={styles.cta}
-        imageSource={img}
-        label="From $126"
-        address="408 St. Jacques | 1 Br"
-        location="Old Montreal, Montreal"
-      />
-
-      <PlaceCTA
-        style={styles.cta}
-        imageSource={img}
-        label="From $126"
-        address="408 St. Jacques | 1 Br"
-        location="Old Montreal, Montreal"
-      />
-    </SafeAreaView>
+      {fakePlaces.map(place => (
+        <PlaceCTA key={place.id} style={styles.cta} {...place} />
+      ))}
+    </ScrollView>
   );
 };
 

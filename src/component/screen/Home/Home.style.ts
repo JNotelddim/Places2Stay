@@ -28,7 +28,7 @@ const styles = StyleSheet.create({
     textAlign: 'center',
   },
   cta: {
-    marginTop: 15,
+    marginTop: 25,
   },
 });
 
