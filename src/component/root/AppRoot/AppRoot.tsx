@@ -9,14 +9,14 @@
  */
 
 import React from 'react';
-import {SafeAreaView, StatusBar} from 'react-native';
-import {Text} from '../../base';
+import {SafeAreaView} from 'react-native';
+
+import {Home} from '/component/screen';
 
 const AppRoot = () => {
   return (
     <SafeAreaView>
-      <StatusBar />
-      <Text> Hello React Native! </Text>
+      <Home />
     </SafeAreaView>
   );
 };
