@@ -7,6 +7,7 @@ import SectionHeader from 'component/partial/SectionHeader';
  * Home is the screen the user comes to first when they open the application
  */
 const Home: React.FC = () => {
+  // console.log('loading Home; isHermesInUse?', !!global.HermesInternal);
   return (
     <SafeAreaView style={styles.wrapper}>
       <SectionHeader
