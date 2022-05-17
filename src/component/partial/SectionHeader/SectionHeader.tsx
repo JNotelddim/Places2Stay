@@ -1,15 +1,11 @@
 import React from 'react';
+import {View} from 'react-native';
 
 import {Text} from 'component/base';
-import {StyleSheet, View} from 'react-native';
 
-// SectionHeader.type.ts
-interface SectionHeaderProps {
-  heading: string;
-  description?: string;
-}
+import {SectionHeaderProps} from './SectionHeader.type';
+import styles from './SectionHeader.style';
 
-// SectionHeader.tsx
 const SectionHeader: React.FC<SectionHeaderProps> = ({
   heading,
   description,
@@ -26,15 +22,5 @@ const SectionHeader: React.FC<SectionHeaderProps> = ({
     </View>
   );
 };
-
-// SectionHeader.style.ts
-const styles = StyleSheet.create({
-  bottomMargin: {
-    marginBottom: 8,
-  },
-  noMargin: {
-    marginBottom: 0,
-  },
-});
 
 export default SectionHeader;

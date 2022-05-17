@@ -1,25 +1,26 @@
 import React from 'react';
-import {Dimensions, Image, ScrollView, StyleSheet, View} from 'react-native';
+import {Image, ScrollView, View} from 'react-native';
 
 import {SectionHeader, StayInfoSection} from 'component/partial';
 import {Text} from 'component/base';
 import img from 'asset/stock-photo.jpg';
+import styles from './Stay.style';
 
 /**
  * Stay is the screen that a user is taken to when they click on a place to stay at.
  * ( That functionality isn't yet set up and they're currently navigated there just by clicking
  * on the other tab. )
  */
+const place = {
+  imageSource: img,
+  heading: '408 St. Jacques | 1 Br',
+  placeName: 'Old Montreal, Montreal',
+  dates: {
+    startDate: 'Oct.29, 2022',
+    endDate: 'Oct.31, 2022',
+  },
+};
 const Stay: React.FC = () => {
-  const place = {
-    imageSource: img,
-    heading: '408 St. Jacques | 1 Br',
-    placeName: 'Old Montreal, Montreal',
-    dates: {
-      startDate: 'Oct.29, 2022',
-      endDate: 'Oct.31, 2022',
-    },
-  };
   const {imageSource, heading, placeName, dates} = place;
 
   return (
@@ -53,27 +54,5 @@ const Stay: React.FC = () => {
     </ScrollView>
   );
 };
-
-// Stay.style.ts
-const styles = StyleSheet.create({
-  wrapper: {
-    backgroundColor: '#FFF1D2',
-  },
-  headerImage: {
-    width: Dimensions.get('screen').width,
-    height: 300,
-  },
-  content: {
-    paddingVertical: 50,
-    paddingHorizontal: 40,
-  },
-  bodyText: {
-    marginBottom: 8,
-  },
-  marginedInfoSection: {
-    marginTop: 24,
-    marginBottom: 32,
-  },
-});
 
 export default Stay;

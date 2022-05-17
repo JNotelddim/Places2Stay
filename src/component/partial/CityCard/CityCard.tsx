@@ -1,34 +1,15 @@
 import React from 'react';
-import {Image, ImageSourcePropType, StyleSheet, View} from 'react-native';
+import {Image, View} from 'react-native';
 
 import {Text} from 'component/base';
+import {CityCardProps} from './CityCard.type';
+import styles from './CityCard.style';
 
-// CityCard.type.ts
-export interface CityCardProps {
-  cityName: string;
-  imageSource: ImageSourcePropType;
-}
-
-const CityCard: React.FC<CityCardProps> = ({cityName, imageSource}) => {
-  return (
-    <View style={styles.wrapper}>
-      <Image style={styles.image} source={imageSource} />
-      <Text variant="body1">{cityName}</Text>
-    </View>
-  );
-};
-
-// CityCard.style.ts
-const styles = StyleSheet.create({
-  wrapper: {
-    marginRight: 20,
-  },
-  image: {
-    height: 160,
-    width: 120,
-    borderRadius: 8,
-    marginBottom: 8,
-  },
-});
+const CityCard: React.FC<CityCardProps> = ({cityName, imageSource}) => (
+  <View style={styles.wrapper}>
+    <Image style={styles.image} source={imageSource} />
+    <Text variant="body1">{cityName}</Text>
+  </View>
+);
 
 export default CityCard;

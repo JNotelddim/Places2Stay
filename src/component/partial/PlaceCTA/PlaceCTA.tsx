@@ -1,27 +1,12 @@
-import {Text} from 'component/base';
 import React from 'react';
-import {
-  ImageSourcePropType,
-  ImageStyle,
-  StyleProp,
-  StyleSheet,
-  View,
-} from 'react-native';
-import ImageCard from '../ImageCard';
+import {View} from 'react-native';
 
-// PlaceCTA.type.ts
-export interface PlaceCTAProps {
-  imageSource: ImageSourcePropType;
-  label: string;
-  address?: string;
-  placename?: string;
-  location: string;
-  style?: StyleProp<ImageStyle>;
-}
+import {Text} from 'component/base';
+import {ImageCard} from 'component/partial';
 
-/**
- * PlaceCTA ...
- */
+import {PlaceCTAProps} from './PlaceCTA.type';
+import styles from './PlaceCTA.style';
+
 const PlaceCTA: React.FC<PlaceCTAProps> = ({
   imageSource,
   label,
@@ -44,13 +29,5 @@ const PlaceCTA: React.FC<PlaceCTAProps> = ({
     </View>
   );
 };
-
-// PlaceCTA.style.ts
-const styles = StyleSheet.create({
-  locationText: {
-    color: '#858585',
-    marginTop: 8,
-  },
-});
 
 export default PlaceCTA;

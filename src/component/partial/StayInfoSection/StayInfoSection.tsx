@@ -1,20 +1,12 @@
 import React from 'react';
-import {StyleProp, StyleSheet, View, ViewStyle} from 'react-native';
+import {View} from 'react-native';
 
 import {Icon, Text} from 'component/base';
-import {capitalizeText} from 'utils/text';
+import {capitalizeText} from 'utils';
 
-// StayInfoSection.type.ts
-export interface StayInfoSectionProps {
-  label: string;
-  onMenuPress: () => void;
-  infoRecord: Record<string, string | number>;
-  style?: StyleProp<ViewStyle>;
-}
+import {StayInfoSectionProps} from './StayInfoSection.type';
+import styles from './StayInfoSection.style';
 
-/**
- * StayInfoSection ...
- */
 const StayInfoSection: React.FC<StayInfoSectionProps> = ({
   label,
   //   onMenuPress,
@@ -51,43 +43,5 @@ const StayInfoSection: React.FC<StayInfoSectionProps> = ({
     </View>
   );
 };
-
-// StayInfoSection.style.ts
-const styles = StyleSheet.create({
-  container: {
-    backgroundColor: '#fff',
-    borderWidth: 1,
-    borderColor: '#E1Dfd8',
-    borderRadius: 8,
-    overflow: 'hidden',
-  },
-  topRow: {
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-  },
-  label: {
-    backgroundColor: '#4169E1',
-    borderTopLeftRadius: 8,
-    borderBottomRightRadius: 8,
-    paddingVertical: 8,
-    paddingHorizontal: 18,
-  },
-  kebabIcon: {
-    marginTop: 16,
-    marginRight: 16,
-  },
-  infoRow: {
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-  },
-  content: {
-    paddingTop: 18,
-    paddingBottom: 32,
-    paddingHorizontal: 32,
-  },
-  marginBottom: {
-    marginBottom: 12,
-  },
-});
 
 export default StayInfoSection;
