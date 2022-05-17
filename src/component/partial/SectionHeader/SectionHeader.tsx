@@ -16,7 +16,9 @@ const SectionHeader: React.FC<SectionHeaderProps> = ({
 }) => {
   return (
     <View>
-      <Text style={styles.bottomMargin} variant="heading1">
+      <Text
+        style={description ? styles.bottomMargin : styles.noMargin}
+        variant="heading1">
         {heading}
       </Text>
 
@@ -29,6 +31,9 @@ const SectionHeader: React.FC<SectionHeaderProps> = ({
 const styles = StyleSheet.create({
   bottomMargin: {
     marginBottom: 8,
+  },
+  noMargin: {
+    marginBottom: 0,
   },
 });
 

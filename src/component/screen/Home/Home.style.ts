@@ -28,7 +28,7 @@ const styles = StyleSheet.create({
     textAlign: 'center',
   },
   cta: {
-    marginTop: 24,
+    marginVertical: 24,
   },
   carousel: {
     marginTop: 16,
