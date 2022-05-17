@@ -2,6 +2,7 @@ import React from 'react';
 import {StyleProp, StyleSheet, View, ViewStyle} from 'react-native';
 
 import {Icon, Text} from 'component/base';
+import {capitalizeText} from 'utils/text';
 
 // StayInfoSection.type.ts
 export interface StayInfoSectionProps {
@@ -10,14 +11,6 @@ export interface StayInfoSectionProps {
   infoRecord: Record<string, string | number>;
   style?: StyleProp<ViewStyle>;
 }
-
-// text.util.ts
-const capitalizeText = (input: string) => {
-  if (!input.length) {
-    return input;
-  }
-  return input[0].toLocaleUpperCase() + input.slice(1);
-};
 
 /**
  * StayInfoSection ...

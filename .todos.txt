@@ -11,7 +11,7 @@
 
 - [ ] figure out using faker.image.city()
 
-- [ ] move any util fns to src/utils
+- [x] move any util fns to src/utils
 
 - [ ] move Navigator config into separate file
 - [x] complete navigator icon differences
