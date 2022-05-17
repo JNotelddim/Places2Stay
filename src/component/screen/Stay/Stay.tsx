@@ -1,7 +1,7 @@
 import React from 'react';
 import {Dimensions, Image, ScrollView, StyleSheet, View} from 'react-native';
 
-import {SectionHeader} from 'component/partial';
+import {SectionHeader, StayInfoSection} from 'component/partial';
 import {Text} from 'component/base';
 import img from 'asset/stock-photo.jpg';
 
@@ -21,7 +21,18 @@ const Stay: React.FC = () => {
           Oct.29, 2021 - Oct.31, 2021
         </Text>
 
-        {/* <StayInfoSection /> */}
+        <StayInfoSection
+          style={styles.marginedInfoSection}
+          label="Access Codes"
+          onMenuPress={() => {}}
+          infoRecord={{building: 1012, unit: 466}}
+        />
+
+        <StayInfoSection
+          label="Wifi"
+          onMenuPress={() => {}}
+          infoRecord={{name: 'HomeWifi', password: 'p@ssw0rd123'}}
+        />
       </View>
     </ScrollView>
   );
@@ -44,6 +55,10 @@ const styles = StyleSheet.create({
     lineHeight: 15,
     color: '#858585',
     marginBottom: 8,
+  },
+  marginedInfoSection: {
+    marginTop: 24,
+    marginBottom: 32,
   },
 });
 
