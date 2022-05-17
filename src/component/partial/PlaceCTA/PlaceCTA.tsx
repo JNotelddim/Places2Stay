@@ -35,20 +35,18 @@ const PlaceCTA: React.FC<PlaceCTAProps> = ({
       <ImageCard imageSource={imageSource} label={label} />
 
       {/** Address / PlaceName */}
-      <Text style={styles.smallText}> {address || placename} </Text>
+      <Text variant="body1"> {address || placename} </Text>
 
       {/** Location */}
-      <Text style={[styles.locationText, styles.smallText]}>{location}</Text>
+      <Text variant="body1" style={styles.locationText}>
+        {location}
+      </Text>
     </View>
   );
 };
 
 // PlaceCTA.style.ts
 const styles = StyleSheet.create({
-  smallText: {
-    fontSize: 12,
-    lineHeight: 15,
-  },
   locationText: {
     color: '#858585',
     marginTop: 8,

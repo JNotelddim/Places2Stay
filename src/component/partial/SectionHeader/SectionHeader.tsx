@@ -16,31 +16,17 @@ const SectionHeader: React.FC<SectionHeaderProps> = ({
 }) => {
   return (
     <View>
-      <Text
-        style={[styles.heading1, styles.bottomMargin]}
-        //TODO: variant="heading1"
-      >
+      <Text style={styles.bottomMargin} variant="heading1">
         {heading}
       </Text>
 
-      {description && <Text style={[styles.body1]}>{description}</Text>}
+      {description && <Text variant="body1">{description}</Text>}
     </View>
   );
 };
 
 // SectionHeader.style.ts
 const styles = StyleSheet.create({
-  heading1: {
-    fontSize: 24,
-    fontWeight: '400',
-    lineHeight: 29,
-  },
-  body1: {
-    fontSize: 12,
-    lineHeight: 15,
-    fontWeight: '400',
-  },
-  // TODO: convert ^ styles into Text component variants
   bottomMargin: {
     marginBottom: 8,
   },

@@ -13,7 +13,7 @@ const CityCard: React.FC<CityCardProps> = ({cityName, imageSource}) => {
   return (
     <View style={styles.wrapper}>
       <Image style={styles.image} source={imageSource} />
-      <Text>{cityName}</Text>
+      <Text variant="body1">{cityName}</Text>
     </View>
   );
 };

@@ -25,7 +25,7 @@ const ImageCard: React.FC<ImageCardProps> = ({imageSource, label, style}) => {
 
       {/** Label */}
       <View style={styles.imageLabel}>
-        <Text> {label} </Text>
+        <Text variant="body1"> {label} </Text>
       </View>
     </View>
   );

@@ -13,7 +13,9 @@ export interface StayInfoSectionProps {
 
 // text.util.ts
 const capitalizeText = (input: string) => {
-  if (!input.length) return input;
+  if (!input.length) {
+    return input;
+  }
   return input[0].toLocaleUpperCase() + input.slice(1);
 };
 
@@ -31,7 +33,7 @@ const StayInfoSection: React.FC<StayInfoSectionProps> = ({
     <View style={[styles.container, style]}>
       <View style={styles.topRow}>
         <View style={styles.label}>
-          <Text color="white" variant="smallText">
+          <Text color="white" variant="body1">
             {capitalizeText(label)}
           </Text>
         </View>
