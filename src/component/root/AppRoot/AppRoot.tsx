@@ -12,6 +12,7 @@ import React from 'react';
 // import {SafeAreaView} from 'react-native';
 import {NavigationContainer} from '@react-navigation/native';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
+import VectorImage from 'react-native-vector-image';
 
 import {Home, Stay} from '/component/screen';
 
@@ -21,10 +22,13 @@ const AppRoot = () => {
   return (
     <NavigationContainer>
       <Navigator
-        screenOptions={{
+        screenOptions={({route}) => ({
           tabBarStyle: {backgroundColor: '#FFF8E8'},
-          // tabBarIcon: ({ focused, color, size }) => {}),
-        }}>
+          tabBarIcon: ({focused}) => {
+            console.log({route, focused});
+            return <VectorImage source={require('asset/home.svg')} />;
+          },
+        })}>
         <Screen name="Home" component={Home} />
         <Screen name="Stay" component={Stay} />
       </Navigator>

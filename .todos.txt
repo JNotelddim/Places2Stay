@@ -1,6 +1,7 @@
 - [ ] handle text variants
 
-- [ ] handle icons
+- [x] handle icons
+- create 'Icon' component
 
 - [ ] create theme provider
     - want some basic spacing values

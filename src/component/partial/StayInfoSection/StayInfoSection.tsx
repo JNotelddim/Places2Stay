@@ -1,6 +1,7 @@
 import {Text} from 'component/base';
 import React from 'react';
 import {StyleProp, StyleSheet, View, ViewStyle} from 'react-native';
+import VectorImage from 'react-native-vector-image';
 
 export interface StayInfoSectionProps {
   label: string;
@@ -18,25 +19,30 @@ const StayInfoSection: React.FC<StayInfoSectionProps> = ({
   const keys = Object.keys(infoRecord);
   return (
     <View style={[styles.container, style]}>
-      <View style={styles.label}>
-        <Text>{label}</Text>
+      <View style={styles.topRow}>
+        <View style={styles.label}>
+          <Text>{label}</Text>
+        </View>
+
+        <VectorImage
+          style={styles.kebabIcon}
+          source={require('asset/kebab.svg')}
+        />
       </View>
 
-      {/**
-       * TODO: menu icon
-       */}
-
-      {keys.map((key, index) => (
-        <View
-          key={key}
-          style={[
-            styles.infoRow,
-            index !== keys.length - 1 && styles.marginBottom,
-          ]}>
-          <Text>{key}</Text>
-          <Text>{infoRecord[key]}</Text>
-        </View>
-      ))}
+      <View style={styles.content}>
+        {keys.map((key, index) => (
+          <View
+            key={key}
+            style={[
+              styles.infoRow,
+              index !== keys.length - 1 && styles.marginBottom,
+            ]}>
+            <Text>{key}</Text>
+            <Text>{infoRecord[key]}</Text>
+          </View>
+        ))}
+      </View>
     </View>
   );
 };
@@ -48,23 +54,29 @@ const styles = StyleSheet.create({
     borderColor: '#E1Dfd8',
     borderRadius: 8,
     overflow: 'hidden',
-    position: 'relative',
-    paddingTop: 48,
-    paddingBottom: 32,
-    paddingHorizontal: 32,
+  },
+  topRow: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
   },
   label: {
     backgroundColor: '#4169E1',
     borderTopLeftRadius: 8,
     borderBottomRightRadius: 8,
     padding: 8,
-    position: 'absolute',
-    top: 0,
-    left: 0,
+  },
+  kebabIcon: {
+    marginTop: 16,
+    marginRight: 16,
   },
   infoRow: {
     flexDirection: 'row',
     justifyContent: 'space-between',
+  },
+  content: {
+    paddingTop: 18,
+    paddingBottom: 32,
+    paddingHorizontal: 32,
   },
   marginBottom: {
     marginBottom: 12,
