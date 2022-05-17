@@ -6,7 +6,7 @@ import {StyleSheet, View} from 'react-native';
 // SectionHeader.type.ts
 interface SectionHeaderProps {
   heading: string;
-  description: string;
+  description?: string;
 }
 
 // SectionHeader.tsx
@@ -23,7 +23,7 @@ const SectionHeader: React.FC<SectionHeaderProps> = ({
         {heading}
       </Text>
 
-      <Text style={[styles.body1]}>{description}</Text>
+      {description && <Text style={[styles.body1]}>{description}</Text>}
     </View>
   );
 };
