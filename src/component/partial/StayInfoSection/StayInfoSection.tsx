@@ -11,6 +11,12 @@ export interface StayInfoSectionProps {
   style?: StyleProp<ViewStyle>;
 }
 
+// text.util.ts
+const capitalizeText = (input: string) => {
+  if (!input.length) return input;
+  return input[0].toLocaleUpperCase() + input.slice(1);
+};
+
 /**
  * StayInfoSection ...
  */
@@ -26,7 +32,7 @@ const StayInfoSection: React.FC<StayInfoSectionProps> = ({
       <View style={styles.topRow}>
         <View style={styles.label}>
           <Text color="white" variant="smallText">
-            {label}
+            {capitalizeText(label)}
           </Text>
         </View>
 
@@ -42,7 +48,7 @@ const StayInfoSection: React.FC<StayInfoSectionProps> = ({
               styles.infoRow,
               index !== keys.length - 1 && styles.marginBottom,
             ]}>
-            <Text>{key}</Text>
+            <Text>{capitalizeText(key)}</Text>
             <Text>{infoRecord[key]}</Text>
           </View>
         ))}
@@ -68,7 +74,8 @@ const styles = StyleSheet.create({
     backgroundColor: '#4169E1',
     borderTopLeftRadius: 8,
     borderBottomRightRadius: 8,
-    padding: 8,
+    paddingVertical: 8,
+    paddingHorizontal: 18,
   },
   kebabIcon: {
     marginTop: 16,
