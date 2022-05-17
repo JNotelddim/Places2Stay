@@ -17,6 +17,7 @@ import {
 
 import styles from './Home.style';
 
+// CONSTS
 // fakeData.ts
 const getFakePlace = () => {
   return {
@@ -28,11 +29,8 @@ const getFakePlace = () => {
     placeName: faker.name.jobArea(),
   };
 };
-
 // const fakePlaces = new Array(5).fill(undefined).map(() => getFakePlace());
-
 const cityImages = [miami, montreal, vancouver, toronto, newYork];
-
 const cities = new Array(25).fill(undefined).map((v, index) => ({
   cityName: faker.address.city(),
   imageSource: cityImages[index % 4],

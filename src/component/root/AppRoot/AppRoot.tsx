@@ -13,7 +13,7 @@ import React from 'react';
 import {NavigationContainer} from '@react-navigation/native';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 
-import {Home} from '/component/screen';
+import {Home, Stay} from '/component/screen';
 
 const {Navigator, Screen} = createBottomTabNavigator();
 
@@ -22,7 +22,7 @@ const AppRoot = () => {
     <NavigationContainer>
       <Navigator>
         <Screen name="Home" component={Home} />
-        {/* <Tab.Screen name="Settings" component={SettingsScreen} /> */}
+        <Screen name="Stay" component={Stay} />
       </Navigator>
     </NavigationContainer>
   );
