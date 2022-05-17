@@ -11,19 +11,30 @@ import img from 'asset/stock-photo.jpg';
  * on the other tab. )
  */
 const Stay: React.FC = () => {
+  const place = {
+    imageSource: img,
+    heading: '408 St. Jacques | 1 Br',
+    placeName: 'Old Montreal, Montreal',
+    dates: {
+      startDate: 'Oct.29, 2022',
+      endDate: 'Oct.31, 2022',
+    },
+  };
+  const {imageSource, heading, placeName, dates} = place;
+
   return (
     <ScrollView style={styles.wrapper}>
-      <Image style={styles.headerImage} source={img} />
+      <Image style={styles.headerImage} source={imageSource} />
 
       <View style={styles.content}>
-        <SectionHeader heading="408 St. Jacques | 1 Br" />
+        <SectionHeader heading={heading} />
 
-        <Text variant="smallText" style={styles.smallText}>
-          Old Montreal, Montreal
+        <Text variant="body1" style={styles.bodyText} color="#858585">
+          {placeName}
         </Text>
 
-        <Text variant="smallText" style={styles.smallText}>
-          Oct.29, 2021 - Oct.31, 2021
+        <Text variant="body1" style={styles.bodyText} color="#858585">
+          {`${dates.startDate} - ${dates.endDate}`}
         </Text>
 
         <StayInfoSection
@@ -56,10 +67,7 @@ const styles = StyleSheet.create({
     paddingVertical: 50,
     paddingHorizontal: 40,
   },
-  smallText: {
-    fontSize: 12,
-    lineHeight: 15,
-    color: '#858585',
+  bodyText: {
     marginBottom: 8,
   },
   marginedInfoSection: {
