@@ -12,3 +12,4 @@
 - [ ] move any util fns to src/utils
 
 - [ ] move Navigator config into separate file
+- [x] complete navigator icon differences

@@ -30,6 +30,7 @@ const StayInfoSection: React.FC<StayInfoSectionProps> = ({
           </Text>
         </View>
 
+        {/* TODO: IconButton / some form of being clickable */}
         <Icon name="kebab" color="blue" style={styles.kebabIcon} />
       </View>
 

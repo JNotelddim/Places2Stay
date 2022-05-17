@@ -23,8 +23,15 @@ const AppRoot = () => {
         screenOptions={({route}) => ({
           tabBarStyle: {backgroundColor: '#FFF8E8', paddingTop: 16},
           tabBarIcon: ({focused}) => {
-            // console.log({route, focused});
-            return <Icon name="calendar" color={focused ? 'black' : 'grey'} />;
+            switch (route.name) {
+              case 'Stay':
+                return (
+                  <Icon name="calendar" color={focused ? 'black' : 'grey'} />
+                );
+              case 'Home':
+              default:
+                return <Icon name="home" color={focused ? 'black' : 'grey'} />;
+            }
           },
           tabBarLabel: () => null,
         })}>
