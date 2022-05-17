@@ -7,11 +7,13 @@ const variantStyles = {
     fontSize: 24,
     fontWeight: '400',
     lineHeight: 29,
+    fontFamily: 'Bitter',
   },
   body1: {
     fontSize: 12,
     lineHeight: 15,
     fontWeight: '400',
+    fontFamily: 'Encode Sans',
   },
 };
 
