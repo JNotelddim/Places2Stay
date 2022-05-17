@@ -20,7 +20,11 @@ const {Navigator, Screen} = createBottomTabNavigator();
 const AppRoot = () => {
   return (
     <NavigationContainer>
-      <Navigator>
+      <Navigator
+        screenOptions={{
+          tabBarStyle: {backgroundColor: '#FFF8E8'},
+          // tabBarIcon: ({ focused, color, size }) => {}),
+        }}>
         <Screen name="Home" component={Home} />
         <Screen name="Stay" component={Stay} />
       </Navigator>
