@@ -47,6 +47,7 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     borderColor: '#E1Dfd8',
     borderRadius: 8,
+    overflow: 'hidden',
     position: 'relative',
     paddingTop: 48,
     paddingBottom: 32,
@@ -54,6 +55,7 @@ const styles = StyleSheet.create({
   },
   label: {
     backgroundColor: '#4169E1',
+    borderTopLeftRadius: 8,
     borderBottomRightRadius: 8,
     padding: 8,
     position: 'absolute',
