@@ -1,0 +1,9 @@
+- [ ] handle text variants
+
+- [ ] create theme provider
+    - want some basic spacing values
+    - color consts
+
+- [ ] figure out using faker.image.city()
+
+- [ ] move any util fns to src/utils
