@@ -1,5 +1,5 @@
 import React from 'react';
-import {ScrollView, TextInput, View} from 'react-native';
+import {SafeAreaView, ScrollView, TextInput, View} from 'react-native';
 import * as faker from 'faker';
 
 import img from 'asset/stock-photo.jpg';
@@ -45,30 +45,32 @@ const Home: React.FC = () => {
   const [searchVal, setSearchVal] = React.useState('');
 
   return (
-    <ScrollView style={styles.wrapper}>
-      <View style={styles.inputWrapper}>
-        <TextInput
-          style={styles.input}
-          placeholder="Try 'Boston'"
-          value={searchVal}
-          onChangeText={setSearchVal}
+    <SafeAreaView>
+      <ScrollView style={styles.wrapper}>
+        <View style={styles.inputWrapper}>
+          <TextInput
+            style={styles.input}
+            placeholder="Try 'Boston'"
+            value={searchVal}
+            onChangeText={setSearchVal}
+          />
+        </View>
+
+        <SectionHeader
+          heading="Find your getaway"
+          description="Our spaces are designed for comfort - whether you are working, relaxing, or craving some spaces"
         />
-      </View>
 
-      <SectionHeader
-        heading="Find your getaway"
-        description="Our spaces are designed for comfort - whether you are working, relaxing, or craving some spaces"
-      />
+        <ImageCard style={styles.cta} {...getFakePlace()} />
 
-      <ImageCard style={styles.cta} {...getFakePlace()} />
-
-      {/* {fakePlaces.map(place => (
+        {/* {fakePlaces.map(place => (
         <PlaceCTA key={place.id} style={styles.cta} {...place} />
       ))} */}
 
-      <SectionHeader heading="25+ Cities To Explore" />
-      <Carousel style={styles.carousel} items={cities} component={CityCard} />
-    </ScrollView>
+        <SectionHeader heading="25+ Cities To Explore" />
+        <Carousel style={styles.carousel} items={cities} component={CityCard} />
+      </ScrollView>
+    </SafeAreaView>
   );
 };
 

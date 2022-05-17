@@ -9,15 +9,22 @@
  */
 
 import React from 'react';
-import {SafeAreaView} from 'react-native';
+// import {SafeAreaView} from 'react-native';
+import {NavigationContainer} from '@react-navigation/native';
+import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 
 import {Home} from '/component/screen';
 
+const {Navigator, Screen} = createBottomTabNavigator();
+
 const AppRoot = () => {
   return (
-    <SafeAreaView>
-      <Home />
-    </SafeAreaView>
+    <NavigationContainer>
+      <Navigator>
+        <Screen name="Home" component={Home} />
+        {/* <Tab.Screen name="Settings" component={SettingsScreen} /> */}
+      </Navigator>
+    </NavigationContainer>
   );
 };
 
