@@ -1,7 +1,7 @@
 import React from 'react';
 import {ScrollView, TextInput, View} from 'react-native';
 
-import {PlaceCTA, SectionHeader} from 'component/partial';
+import {ImageCard, PlaceCTA, SectionHeader} from 'component/partial';
 import * as faker from 'faker';
 
 import img from './asset/stock-photo.jpg';
@@ -41,6 +41,8 @@ const Home: React.FC = () => {
         heading="Find your getaway"
         description="Our spaces are designed for comfort - whether you are working, relaxing, or craving some spaces"
       />
+
+      <ImageCard style={styles.cta} {...getFakePlace()} />
 
       {fakePlaces.map(place => (
         <PlaceCTA key={place.id} style={styles.cta} {...place} />
