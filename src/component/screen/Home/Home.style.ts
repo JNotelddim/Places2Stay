@@ -1,4 +1,4 @@
-import {StyleSheet} from 'react-native';
+import {Dimensions, StyleSheet} from 'react-native';
 
 const styles = StyleSheet.create({
   wrapper: {
@@ -28,7 +28,13 @@ const styles = StyleSheet.create({
     textAlign: 'center',
   },
   cta: {
-    marginTop: 25,
+    marginTop: 24,
+  },
+  carousel: {
+    marginTop: 16,
+    paddingLeft: 50,
+    marginLeft: -50,
+    width: Dimensions.get('screen').width,
   },
 });
 

@@ -3,6 +3,11 @@ import {ScrollView, TextInput, View} from 'react-native';
 import * as faker from 'faker';
 
 import img from 'asset/stock-photo.jpg';
+import miami from 'asset/miami.jpg';
+import montreal from 'asset/montreal.jpg';
+import vancouver from 'asset/vancouver.jpg';
+import toronto from 'asset/toronto.jpg';
+import newYork from 'asset/new-york.jpg';
 import {
   Carousel,
   CityCard,
@@ -16,7 +21,7 @@ import styles from './Home.style';
 const getFakePlace = () => {
   return {
     id: faker.datatype.uuid(),
-    imageSource: img, // require(faker.image.abstract()),
+    imageSource: img, // require(faker.image.city())
     label: `From $${faker.datatype.number(1100)}`,
     address: `${faker.address.secondaryAddress()} - ${faker.address.streetAddress()}`,
     location: `${faker.address.city()}, ${faker.address.state()}`,
@@ -26,9 +31,12 @@ const getFakePlace = () => {
 
 // const fakePlaces = new Array(5).fill(undefined).map(() => getFakePlace());
 
-const cities = new Array(25)
-  .fill(undefined)
-  .map(() => ({cityName: faker.address.city(), imageSource: img}));
+const cityImages = [miami, montreal, vancouver, toronto, newYork];
+
+const cities = new Array(25).fill(undefined).map((v, index) => ({
+  cityName: faker.address.city(),
+  imageSource: cityImages[index % 4],
+}));
 
 /**
  * Home is the screen the user comes to first when they open the application
@@ -59,7 +67,7 @@ const Home: React.FC = () => {
       ))} */}
 
       <SectionHeader heading="25+ Cities To Explore" />
-      <Carousel items={cities} component={CityCard} />
+      <Carousel style={styles.carousel} items={cities} component={CityCard} />
     </ScrollView>
   );
 };
