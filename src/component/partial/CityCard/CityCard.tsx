@@ -3,6 +3,7 @@ import {Image, ImageSourcePropType, StyleSheet, View} from 'react-native';
 
 import {Text} from 'component/base';
 
+// CityCard.type.ts
 export interface CityCardProps {
   cityName: string;
   imageSource: ImageSourcePropType;
@@ -17,6 +18,7 @@ const CityCard: React.FC<CityCardProps> = ({cityName, imageSource}) => {
   );
 };
 
+// CityCard.style.ts
 const styles = StyleSheet.create({
   wrapper: {
     marginRight: 20,

@@ -3,6 +3,7 @@ import {FlatList, StyleProp, ViewStyle} from 'react-native';
 
 import {CityCardProps} from '../CityCard/CityCard';
 
+// Carousel.type.ts
 export interface CarouselProps {
   items: Array<CityCardProps>;
   component: React.FC<CityCardProps>;

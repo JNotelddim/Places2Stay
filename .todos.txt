@@ -1,7 +1,7 @@
 - [ ] handle text variants
 
 - [x] handle icons
-- create 'Icon' component
+- [x] create 'Icon' component
 
 - [ ] create theme provider
     - want some basic spacing values
@@ -10,3 +10,5 @@
 - [ ] figure out using faker.image.city()
 
 - [ ] move any util fns to src/utils
+
+- [ ] move Navigator config into separate file

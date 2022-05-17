@@ -8,17 +8,11 @@ import montreal from 'asset/montreal.jpg';
 import vancouver from 'asset/vancouver.jpg';
 import toronto from 'asset/toronto.jpg';
 import newYork from 'asset/new-york.jpg';
-import {
-  Carousel,
-  CityCard,
-  ImageCard,
-  /* PlaceCTA, */ SectionHeader,
-} from 'component/partial';
+import {Carousel, CityCard, ImageCard, SectionHeader} from 'component/partial';
 
 import styles from './Home.style';
 
-// CONSTS
-// fakeData.ts
+// Utils + Consts
 const getFakePlace = () => {
   return {
     id: faker.datatype.uuid(),
@@ -29,7 +23,6 @@ const getFakePlace = () => {
     placeName: faker.name.jobArea(),
   };
 };
-// const fakePlaces = new Array(5).fill(undefined).map(() => getFakePlace());
 const cityImages = [miami, montreal, vancouver, toronto, newYork];
 const cities = new Array(25).fill(undefined).map((v, index) => ({
   cityName: faker.address.city(),

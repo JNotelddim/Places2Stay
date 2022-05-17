@@ -5,6 +5,11 @@ import {SectionHeader, StayInfoSection} from 'component/partial';
 import {Text} from 'component/base';
 import img from 'asset/stock-photo.jpg';
 
+/**
+ * Stay is the screen that a user is taken to when they click on a place to stay at.
+ * ( That functionality isn't yet set up and they're currently navigated there just by clicking
+ * on the other tab. )
+ */
 const Stay: React.FC = () => {
   return (
     <ScrollView style={styles.wrapper}>
@@ -38,6 +43,7 @@ const Stay: React.FC = () => {
   );
 };
 
+// Stay.style.ts
 const styles = StyleSheet.create({
   wrapper: {
     backgroundColor: '#FFF1D2',

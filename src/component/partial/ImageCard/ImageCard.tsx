@@ -10,6 +10,7 @@ import {
 
 import {Text} from 'component/base';
 
+// ImageCard.type.ts
 interface ImageCardProps {
   imageSource: ImageSourcePropType;
   label: string;
@@ -30,6 +31,7 @@ const ImageCard: React.FC<ImageCardProps> = ({imageSource, label, style}) => {
   );
 };
 
+// ImageCard.style.ts
 const styles = StyleSheet.create({
   imageWrapper: {
     position: 'relative',

@@ -1,8 +1,9 @@
-import {Text} from 'component/base';
 import React from 'react';
 import {StyleProp, StyleSheet, View, ViewStyle} from 'react-native';
-import VectorImage from 'react-native-vector-image';
 
+import {Icon, Text} from 'component/base';
+
+// StayInfoSection.type.ts
 export interface StayInfoSectionProps {
   label: string;
   onMenuPress: () => void;
@@ -10,6 +11,9 @@ export interface StayInfoSectionProps {
   style?: StyleProp<ViewStyle>;
 }
 
+/**
+ * StayInfoSection ...
+ */
 const StayInfoSection: React.FC<StayInfoSectionProps> = ({
   label,
   //   onMenuPress,
@@ -21,13 +25,12 @@ const StayInfoSection: React.FC<StayInfoSectionProps> = ({
     <View style={[styles.container, style]}>
       <View style={styles.topRow}>
         <View style={styles.label}>
-          <Text>{label}</Text>
+          <Text color="white" variant="smallText">
+            {label}
+          </Text>
         </View>
 
-        <VectorImage
-          style={styles.kebabIcon}
-          source={require('asset/kebab.svg')}
-        />
+        <Icon name="kebab" color="blue" style={styles.kebabIcon} />
       </View>
 
       <View style={styles.content}>
@@ -47,6 +50,7 @@ const StayInfoSection: React.FC<StayInfoSectionProps> = ({
   );
 };
 
+// StayInfoSection.style.ts
 const styles = StyleSheet.create({
   container: {
     backgroundColor: '#fff',

@@ -9,6 +9,7 @@ import {
 } from 'react-native';
 import ImageCard from '../ImageCard';
 
+// PlaceCTA.type.ts
 export interface PlaceCTAProps {
   imageSource: ImageSourcePropType;
   label: string;
@@ -18,6 +19,9 @@ export interface PlaceCTAProps {
   style?: StyleProp<ImageStyle>;
 }
 
+/**
+ * PlaceCTA ...
+ */
 const PlaceCTA: React.FC<PlaceCTAProps> = ({
   imageSource,
   label,
@@ -39,6 +43,7 @@ const PlaceCTA: React.FC<PlaceCTAProps> = ({
   );
 };
 
+// PlaceCTA.style.ts
 const styles = StyleSheet.create({
   smallText: {
     fontSize: 12,
