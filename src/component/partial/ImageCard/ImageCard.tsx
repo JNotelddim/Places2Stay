@@ -5,9 +5,17 @@ import {Text} from 'component/base';
 import {ImageCardProps} from './ImageCard.type';
 import styles from './ImageCard.style';
 
-const ImageCard: React.FC<ImageCardProps> = ({imageSource, label, style}) => {
+const ImageCard: React.FC<ImageCardProps> = ({
+  imageSource,
+  label,
+  accessibilityLabel,
+  style,
+}) => {
   return (
-    <View style={[styles.imageWrapper, style]}>
+    <View
+      style={[styles.imageWrapper, style]}
+      accessible
+      accessibilityLabel={`Image, ${accessibilityLabel}. Label: ${label}.`}>
       {/** Image */}
       <Image style={styles.image} source={imageSource} />
 

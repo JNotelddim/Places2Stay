@@ -2,9 +2,11 @@ import {colors} from 'const';
 import {StyleSheet} from 'react-native';
 
 const styles = StyleSheet.create({
-  locationText: {
-    color: colors.slateGrey,
-    marginTop: 8,
+  container: {},
+  cardStyles: {
+    backgroundColor: colors.paleYellow,
+    paddingBottom: 0,
   },
 });
+
 export default styles;

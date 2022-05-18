@@ -1,10 +1,11 @@
+import {colors} from 'const';
 import {StyleSheet} from 'react-native';
 
 const styles = StyleSheet.create({
   container: {
-    backgroundColor: '#fff',
+    backgroundColor: colors.white,
     borderWidth: 1,
-    borderColor: '#E1Dfd8',
+    borderColor: colors.paleGrey,
     borderRadius: 8,
     overflow: 'hidden',
   },
@@ -13,7 +14,7 @@ const styles = StyleSheet.create({
     justifyContent: 'space-between',
   },
   label: {
-    backgroundColor: '#4169E1',
+    backgroundColor: colors.blue,
     borderTopLeftRadius: 8,
     borderBottomRightRadius: 8,
     paddingVertical: 8,

@@ -20,6 +20,12 @@ const variantStyles = {
     fontWeight: '400',
     fontFamily: 'Encode Sans',
   },
+  body2: {
+    fontSize: 16,
+    lineHeight: 20,
+    fontWeight: '400',
+    fontFamily: 'Encode Sans',
+  },
 };
 
 const getStylesFromProps = (variant: TextVariant, color?: string) => {
@@ -52,7 +58,11 @@ const Text: React.FC<TextProps> = ({
 }) => {
   const stylesFromProps = getStylesFromProps(variant, color);
 
-  return <RNText style={[style, stylesFromProps]}>{children}</RNText>;
+  return (
+    <RNText accessible style={[style, stylesFromProps]}>
+      {children}
+    </RNText>
+  );
 };
 
 export default Text;

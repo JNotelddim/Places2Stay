@@ -3,13 +3,11 @@
 - [x] handle icons
 - [x] create 'Icon' component
 
-- [] make subdirs for assets
+- [x] iconButton component
 
-- [ ] create theme provider
-    - want some basic spacing values
-    - color consts
+- [ ] add `usePressable` hook for handling animating pressable components' opacity
 
-- [ ] figure out using faker.image.city()
+- [x] move colors to global const
 
 - [x] move any util fns to src/utils
 
