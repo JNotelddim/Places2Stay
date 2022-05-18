@@ -7,12 +7,14 @@ import {getFakePlace} from 'utils';
 import {CITIES} from 'const';
 
 import styles from './Home.style';
+import {useModal} from 'component/provider';
 
 /**
  * Home is the screen the user comes to first when they open the application
  */
 const Home: React.FC = () => {
   const [searchVal, setSearchVal] = React.useState('');
+  const {openModal, closeModal} = useModal();
 
   return (
     <SafeAreaView>
