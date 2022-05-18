@@ -32,6 +32,7 @@ const styles = StyleSheet.create({
   container: {
     height: Dimensions.get('screen').height,
     width: Dimensions.get('screen').width,
+    padding: 40,
   },
 });
 
