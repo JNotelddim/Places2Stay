@@ -25,7 +25,7 @@ const CitySearch: React.FC<CitySearchProps> = () => {
 
       <ScrollView showsVerticalScrollIndicator={false}>
         {filteredCites.map(({cityName}) => (
-          <CityLink>{cityName}</CityLink>
+          <CityLink key={cityName}>{cityName}</CityLink>
         ))}
       </ScrollView>
     </Modal>
