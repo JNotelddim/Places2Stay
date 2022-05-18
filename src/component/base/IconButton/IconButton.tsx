@@ -6,6 +6,9 @@ import {IconButtonProps} from './IconButton.type';
 import styles from './IconButton.style';
 
 const IconButton: React.FC<IconButtonProps> = ({onPress, name}) => {
+  // TODO: animate opacity on Pressable / Animated.View
+  // https://stackoverflow.com/questions/68413202/react-native-how-to-add-opacity-feedback-to-pressable-component
+
   return (
     <Pressable onPress={onPress}>
       <View style={styles.container}>

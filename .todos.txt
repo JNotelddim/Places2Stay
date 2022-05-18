@@ -3,16 +3,12 @@
 - [x] handle icons
 - [x] create 'Icon' component
 
-- [ ] iconButton component
-
-- [ ] make subdirs for assets
+- [x] iconButton component
 
 - [ ] create theme provider
     - want some basic spacing values
-    - color consts
+    - color consts + refactor all color instances
     - MUI?
-
-- [ ] figure out using faker.image.city()
 
 - [x] move any util fns to src/utils
 

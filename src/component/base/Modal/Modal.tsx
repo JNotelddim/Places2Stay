@@ -1,12 +1,13 @@
 import {useModal} from 'component/provider';
 import React from 'react';
 import {Modal as RNModal, View} from 'react-native';
-import {Text, IconButton} from 'component/base';
+import {IconButton, SearchInput} from 'component/base';
 import styles from './Modal.style';
 
 export interface ModalProps {}
 
 const Modal: React.FC<ModalProps> = () => {
+  const [searchVal, setSearchVal] = React.useState('');
   const {isModalOpen, closeModal} = useModal();
 
   return (
@@ -19,7 +20,11 @@ const Modal: React.FC<ModalProps> = () => {
         <View style={styles.modalCard}>
           <IconButton name="close" onPress={closeModal} />
 
-          <Text>Modal</Text>
+          <SearchInput
+            placeholder="Try 'Boston'"
+            value={searchVal}
+            onChangeText={setSearchVal}
+          />
         </View>
       </View>
     </RNModal>
