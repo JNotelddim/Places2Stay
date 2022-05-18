@@ -7,7 +7,7 @@ import {
   StyleSheet,
   View,
 } from 'react-native';
-import Text from '../Text';
+import {Icon, Text} from 'component/base';
 
 export interface ModalProps {}
 
@@ -22,8 +22,9 @@ const Modal: React.FC<ModalProps> = () => {
       onRequestClose={closeModal}>
       <View style={styles.overlay}>
         <View style={styles.modalCard}>
-          {/* TODO: iconbutton */}
           <Button title="close" onPress={closeModal} />
+          {/** TODO: IconButton */}
+          <Icon name="close" size={24} />
 
           <Text>Modal</Text>
         </View>
