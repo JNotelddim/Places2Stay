@@ -1,5 +1,5 @@
 import React from 'react';
-import {SafeAreaView, ScrollView, TextInput, View} from 'react-native';
+import {Button, SafeAreaView, ScrollView, TextInput, View} from 'react-native';
 
 import {Carousel, CityCard, ImageCard, SectionHeader} from 'component/partial';
 
@@ -14,7 +14,7 @@ import {useModal} from 'component/provider';
  */
 const Home: React.FC = () => {
   const [searchVal, setSearchVal] = React.useState('');
-  const {openModal, closeModal} = useModal();
+  const {openModal} = useModal();
 
   return (
     <SafeAreaView>
@@ -37,6 +37,8 @@ const Home: React.FC = () => {
 
         <SectionHeader heading="25+ Cities To Explore" />
         <Carousel style={styles.carousel} items={CITIES} component={CityCard} />
+
+        <Button title="open modal" onPress={openModal} />
       </ScrollView>
     </SafeAreaView>
   );

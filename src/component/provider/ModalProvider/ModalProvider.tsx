@@ -1,39 +1,44 @@
 import React, {useContext} from 'react';
 
+import Modal from 'component/base/Modal';
+
+// ModalProvider.type.ts
 export interface ModalProviderProps {}
 
+// ModalProvider consts
+const initNoOpFn = () => {
+  console.error(
+    "If you're seeing this, there was an error initializing the ModalContext.",
+  );
+};
+
 const ModalContext = React.createContext({
-  isOpen: false,
-  openModal: () => {
-    console.error(
-      'If youre seeing this, there was an error initializing the ModalContext.',
-    );
-  },
-  closeModal: () => {
-    console.error(
-      'If youre seeing this, there was an error initializing the ModalContext.',
-    );
-  },
+  isModalOpen: false,
+  openModal: initNoOpFn,
+  closeModal: initNoOpFn,
 });
 
+// Component
 const ModalProvider: React.FC<ModalProviderProps> = ({children}) => {
-  const [isOpen, setIsOpen] = React.useState(false);
+  const [isModalOpen, setIsModalOpen] = React.useState(false);
 
   const openModal = () => {
-    setIsOpen(true);
+    setIsModalOpen(true);
   };
 
   const closeModal = () => {
-    setIsOpen(false);
+    setIsModalOpen(false);
   };
 
   return (
-    <ModalContext.Provider value={{isOpen, openModal, closeModal}}>
+    <ModalContext.Provider value={{isModalOpen, openModal, closeModal}}>
       {children}
+      <Modal />
     </ModalContext.Provider>
   );
 };
 
+// Exports
 export const useModal = () => {
   const value = useContext(ModalContext);
   return value;
