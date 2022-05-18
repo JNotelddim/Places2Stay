@@ -1,6 +1,6 @@
 import React, {useContext} from 'react';
 
-import Modal from 'component/base/Modal';
+import {Modal} from 'component/base';
 
 // ModalProvider.type.ts
 export interface ModalProviderProps {}

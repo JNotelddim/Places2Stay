@@ -1,35 +1,18 @@
 import React from 'react';
 import VectorImage from 'react-native-vector-image';
-import {ImageStyle, StyleProp} from 'react-native';
 
 import closeSvg from 'asset/close.svg';
 import homeSvg from 'asset/home.svg';
 import calendarSvg from 'asset/calendar.svg';
 import kebabSvg from 'asset/kebab.svg';
 
-// Icon.type.ts
-export interface IconProps {
-  name: 'calendar' | 'close' | 'home' | 'kebab';
-  // size, color, etc?
-  size?: number;
-  color?: string;
-  style?: StyleProp<ImageStyle>;
-}
+import {IconProps} from './Icon.type';
 
-// Icon.util.ts
-const getSourceByName = (name: string) => {
-  switch (name) {
-    case 'calendar':
-      return calendarSvg;
-    case 'close':
-      return closeSvg;
-    case 'home':
-      return homeSvg;
-    case 'kebab':
-      return kebabSvg;
-    default:
-      return null;
-  }
+export const iconSources = {
+  calendar: calendarSvg,
+  close: closeSvg,
+  home: homeSvg,
+  kebab: kebabSvg,
 };
 
 const getColorStyle = (color?: string) => {
@@ -59,7 +42,7 @@ const Icon: React.FC<IconProps> = ({name, color, size, style, ...other}) => {
     <VectorImage
       style={[style, getColorStyle(color), getSizeStyle(size)]}
       {...other}
-      source={getSourceByName(name)}
+      source={iconSources[name]}
     />
   );
 };

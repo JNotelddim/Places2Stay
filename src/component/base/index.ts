@@ -1,2 +1,4 @@
-export {default as Icon} from './Icon';
-export {default as Text} from './Text';
+export * from './Icon';
+export * from './IconButton';
+export * from './Modal';
+export * from './Text';
