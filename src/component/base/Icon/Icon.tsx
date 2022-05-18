@@ -40,6 +40,8 @@ const getSizeStyle = (size?: number) => {
 const Icon: React.FC<IconProps> = ({name, color, size, style, ...other}) => {
   return (
     <VectorImage
+      accessible
+      accessibilityLabel={`Icon. ${name}.`}
       style={[style, getColorStyle(color), getSizeStyle(size)]}
       {...other}
       source={iconSources[name]}

@@ -10,6 +10,7 @@ const Carousel: React.FC<CarouselProps> = ({
   contentContainerStyle,
 }) => (
   <FlatList
+    accessible
     style={style}
     contentContainerStyle={contentContainerStyle}
     horizontal

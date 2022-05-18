@@ -5,6 +5,7 @@ export const getFakePlace = () => {
   return {
     id: faker.datatype.uuid(),
     imageSource: img, // require(faker.image.city())
+    accessibilityLabel: 'Table in restaurant.',
     label: `From $${faker.datatype.number(1100)}`,
     address: `${faker.address.secondaryAddress()} - ${faker.address.streetAddress()}`,
     location: `${faker.address.city()}, ${faker.address.state()}`,

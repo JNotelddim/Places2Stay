@@ -5,12 +5,19 @@ import {Icon} from 'component/base';
 import {IconButtonProps} from './IconButton.type';
 import styles from './IconButton.style';
 
-const IconButton: React.FC<IconButtonProps> = ({onPress, name, style}) => {
+const IconButton: React.FC<IconButtonProps> = ({
+  onPress,
+  name,
+  style,
+  accessibilityAction,
+}) => {
   // TODO: animate opacity on Pressable / Animated.View
   // https://stackoverflow.com/questions/68413202/react-native-how-to-add-opacity-feedback-to-pressable-component
 
   return (
-    <Pressable onPress={onPress}>
+    <Pressable
+      onPress={onPress}
+      accessibilityLabel={`Icon Button. ${accessibilityAction}. Tap to perform action.`}>
       <View style={[styles.container, style]}>
         {/* Does size need to be configurable? Let's not optimize early. */}
         <Icon name={name} size={24} />

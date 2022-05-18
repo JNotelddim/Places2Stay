@@ -5,6 +5,8 @@
 
 - [x] iconButton component
 
+- [ ] add `usePressable` hook for handling animating pressable components' opacity
+
 - [ ] create theme provider
     - want some basic spacing values
     - color consts + refactor all color instances

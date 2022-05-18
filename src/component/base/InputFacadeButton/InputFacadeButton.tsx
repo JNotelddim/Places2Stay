@@ -11,7 +11,10 @@ const InputFacadeButton: React.FC<InputFacadeButtonProps> = ({
   onPress,
 }) => {
   return (
-    <Pressable onPress={onPress}>
+    <Pressable
+      onPress={onPress}
+      accessible
+      accessibilityLabel="Button for opening Search Modal. Tap to open.">
       <View style={styles.inputWrapper}>
         <Text variant="body1" color="#858585" style={styles.input}>
           {title}

@@ -13,6 +13,8 @@ const Modal: React.FC<ModalProps> = ({children}) => {
 
   return (
     <RNModal
+      accessible
+      accessibilityLabel="Modal Card."
       animationType="slide"
       transparent={true}
       visible={!!currentModal}
@@ -20,7 +22,11 @@ const Modal: React.FC<ModalProps> = ({children}) => {
       <View style={styles.overlay}>
         <View style={styles.modalCard}>
           <View style={styles.topRow}>
-            <IconButton name="close" onPress={closeModal} />
+            <IconButton
+              accessibilityAction="Close Modal"
+              name="close"
+              onPress={closeModal}
+            />
           </View>
 
           {children}

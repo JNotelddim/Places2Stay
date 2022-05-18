@@ -52,7 +52,11 @@ const Text: React.FC<TextProps> = ({
 }) => {
   const stylesFromProps = getStylesFromProps(variant, color);
 
-  return <RNText style={[style, stylesFromProps]}>{children}</RNText>;
+  return (
+    <RNText accessible style={[style, stylesFromProps]}>
+      {children}
+    </RNText>
+  );
 };
 
 export default Text;

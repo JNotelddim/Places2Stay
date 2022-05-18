@@ -33,6 +33,7 @@ const Home: React.FC = () => {
         <ImageCard style={styles.cta} {...getFakePlace()} />
 
         <SectionHeader heading="25+ Cities To Explore" />
+
         <Carousel style={styles.carousel} items={CITIES} component={CityCard} />
       </ScrollView>
     </SafeAreaView>

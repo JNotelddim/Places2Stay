@@ -5,4 +5,5 @@ export interface IconButtonProps {
   onPress: () => void;
   name: IconOption;
   style?: StyleProp<ViewStyle>;
+  accessibilityAction?: string;
 }
