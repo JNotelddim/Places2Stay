@@ -1,3 +1,4 @@
+import {colors} from 'const';
 import {Dimensions, StyleSheet} from 'react-native';
 
 const styles = StyleSheet.create({
@@ -6,7 +7,7 @@ const styles = StyleSheet.create({
     width: Dimensions.get('screen').width,
     alignItems: 'center',
     justifyContent: 'center',
-    backgroundColor: '#ffffff77',
+    backgroundColor: colors.highOpacityWhite,
   },
   modalCard: {
     marginTop: '5%',
@@ -14,10 +15,10 @@ const styles = StyleSheet.create({
     width: '95%',
     borderRadius: 8,
     padding: 40,
-    backgroundColor: 'white',
+    backgroundColor: colors.white,
     opacity: 1,
 
-    shadowColor: '#000000',
+    shadowColor: colors.black,
     shadowOffset: {
       width: 0,
       height: 3,

@@ -7,10 +7,7 @@
 
 - [ ] add `usePressable` hook for handling animating pressable components' opacity
 
-- [ ] create theme provider
-    - want some basic spacing values
-    - color consts + refactor all color instances
-    - MUI?
+- [x] move colors to global const
 
 - [x] move any util fns to src/utils
 

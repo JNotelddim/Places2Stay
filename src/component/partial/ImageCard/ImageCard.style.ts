@@ -1,3 +1,4 @@
+import {colors} from 'const';
 import {StyleSheet} from 'react-native';
 
 const styles = StyleSheet.create({
@@ -6,17 +7,16 @@ const styles = StyleSheet.create({
     marginBottom: 20,
     borderRadius: 8,
     overflow: 'hidden',
-    // maxWidth: '100%',
   },
   image: {
     maxWidth: '100%',
-    height: 150, // TODO: make this not hardcoded -- why doesn't auto work?
+    height: 150,
   },
   imageLabel: {
     position: 'absolute',
     top: 0,
     right: 0,
-    backgroundColor: '#FFA500',
+    backgroundColor: colors.orange,
     paddingVertical: 8,
     paddingHorizontal: 16,
     borderBottomLeftRadius: 8,

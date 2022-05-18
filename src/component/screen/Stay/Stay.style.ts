@@ -1,8 +1,9 @@
+import {colors} from 'const';
 import {Dimensions, StyleSheet} from 'react-native';
 
 const styles = StyleSheet.create({
   wrapper: {
-    backgroundColor: '#FFF1D2',
+    backgroundColor: colors.paleYellow,
   },
   headerImage: {
     width: Dimensions.get('screen').width,
