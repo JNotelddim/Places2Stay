@@ -20,6 +20,12 @@ const variantStyles = {
     fontWeight: '400',
     fontFamily: 'Encode Sans',
   },
+  body2: {
+    fontSize: 16,
+    lineHeight: 20,
+    fontWeight: '400',
+    fontFamily: 'Encode Sans',
+  },
 };
 
 const getStylesFromProps = (variant: TextVariant, color?: string) => {

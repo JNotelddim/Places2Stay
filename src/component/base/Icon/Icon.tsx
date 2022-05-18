@@ -1,10 +1,11 @@
 import React from 'react';
 import VectorImage from 'react-native-vector-image';
 
+import calendarSvg from 'asset/calendar.svg';
 import closeSvg from 'asset/close.svg';
 import homeSvg from 'asset/home.svg';
-import calendarSvg from 'asset/calendar.svg';
 import kebabSvg from 'asset/kebab.svg';
+import locationPinSvg from 'asset/location_pin.svg';
 
 import {IconProps} from './Icon.type';
 
@@ -13,6 +14,7 @@ export const iconSources = {
   close: closeSvg,
   home: homeSvg,
   kebab: kebabSvg,
+  locationPin: locationPinSvg,
 };
 
 const getColorStyle = (color?: string) => {
