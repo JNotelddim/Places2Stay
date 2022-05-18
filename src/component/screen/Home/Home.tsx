@@ -20,7 +20,10 @@ const Home: React.FC = () => {
     <SafeAreaView>
       {/* Do I need both the SafeAreaView and the ScrollView? */}
       <ScrollView style={styles.wrapper}>
-        <InputFacadeButton title="Try 'Boston'" onPress={openModal} />
+        <InputFacadeButton
+          title="Try 'Boston'"
+          onPress={() => openModal('CitySearch')}
+        />
 
         <SectionHeader
           heading="Find your getaway"

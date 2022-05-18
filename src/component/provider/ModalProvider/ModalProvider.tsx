@@ -1,44 +1,53 @@
 import React, {useContext} from 'react';
 
-import {Modal} from 'component/base';
+import {CitySearch} from 'component/modal';
 
-// ModalProvider.type.ts
-export interface ModalProviderProps {}
+import {
+  ModalContextType,
+  ModalOption,
+  ModalProviderProps,
+} from './ModalProvider.type';
 
 // ModalProvider consts
+export const modals = {
+  CitySearch: <CitySearch />,
+};
+
 const initNoOpFn = () => {
   console.error(
     "If you're seeing this, there was an error initializing the ModalContext.",
   );
 };
 
-const ModalContext = React.createContext({
-  isModalOpen: false,
+const ModalContext = React.createContext<ModalContextType>({
+  currentModal: undefined,
   openModal: initNoOpFn,
   closeModal: initNoOpFn,
 });
 
 // Component
 const ModalProvider: React.FC<ModalProviderProps> = ({children}) => {
-  const [isModalOpen, setIsModalOpen] = React.useState(false);
+  const [currentModal, setCurrentModal] = React.useState<
+    ModalOption | undefined
+  >(undefined);
 
-  const openModal = () => {
-    setIsModalOpen(true);
+  const openModal = (modalName: ModalOption) => {
+    setCurrentModal(modalName);
   };
 
   const closeModal = () => {
-    setIsModalOpen(false);
+    setCurrentModal(undefined);
   };
 
   return (
-    <ModalContext.Provider value={{isModalOpen, openModal, closeModal}}>
+    <ModalContext.Provider value={{currentModal, openModal, closeModal}}>
       {children}
-      <Modal />
+      {currentModal && modals[currentModal]}
     </ModalContext.Provider>
   );
 };
 
-// Exports
+// Export custom hook for consuming
 export const useModal = () => {
   const value = useContext(ModalContext);
   return value;

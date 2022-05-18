@@ -26,6 +26,11 @@ const styles = StyleSheet.create({
     shadowRadius: 3.05,
     elevation: 4,
   },
+  topRow: {
+    flexDirection: 'row',
+    justifyContent: 'flex-end',
+    marginBottom: 8,
+  },
 });
 
 export default styles;

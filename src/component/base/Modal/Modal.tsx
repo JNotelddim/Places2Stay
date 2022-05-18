@@ -2,42 +2,28 @@ import {useModal} from 'component/provider';
 import React from 'react';
 import {Modal as RNModal, View} from 'react-native';
 
-import {IconButton, SearchInput, Text} from 'component/base';
-import {CITIES} from 'const';
+import {IconButton} from 'component/base';
 
 import styles from './Modal.style';
 
 export interface ModalProps {}
 
-const Modal: React.FC<ModalProps> = () => {
-  const [searchVal, setSearchVal] = React.useState('');
-  const {isModalOpen, closeModal} = useModal();
-
-  const filteredCites = CITIES.filter(
-    ({cityName}) => cityName.includes(searchVal) || searchVal === '',
-  );
+const Modal: React.FC<ModalProps> = ({children}) => {
+  const {currentModal, closeModal} = useModal();
 
   return (
     <RNModal
       animationType="slide"
       transparent={true}
-      visible={isModalOpen}
+      visible={!!currentModal}
       onRequestClose={closeModal}>
       <View style={styles.overlay}>
         <View style={styles.modalCard}>
-          <IconButton name="close" onPress={closeModal} />
+          <View style={styles.topRow}>
+            <IconButton name="close" onPress={closeModal} />
+          </View>
 
-          <SearchInput
-            placeholder="Try 'Boston'"
-            value={searchVal}
-            onChangeText={setSearchVal}
-          />
-
-          {filteredCites.map(({cityName}) => (
-            <Text key={cityName} variant="body1">
-              {cityName}
-            </Text>
-          ))}
+          {children}
         </View>
       </View>
     </RNModal>
