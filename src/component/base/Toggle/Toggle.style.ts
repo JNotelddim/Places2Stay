@@ -19,7 +19,7 @@ const styles = StyleSheet.create({
     position: 'absolute',
     borderRadius: 15,
     top: 6,
-    width: '48%',
+    width: '44%',
     zIndex: -1,
   },
   textRow: {
@@ -32,6 +32,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     padding: 6,
+    width: '50%',
   },
 });
 

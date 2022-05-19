@@ -27,11 +27,11 @@ const Toggle: React.FC<ToggleProps> = ({
   return (
     <View style={[style, styles.container]}>
       <View style={styles.textRow}>
-        <Pressable onPress={() => handleChange(0)}>
-          <Text style={styles.textOption}>{leftOptionText}</Text>
+        <Pressable onPress={() => handleChange(0)} style={styles.textOption}>
+          <Text>{leftOptionText}</Text>
         </Pressable>
-        <Pressable onPress={() => handleChange(1)}>
-          <Text style={styles.textOption}>{rightOptionText}</Text>
+        <Pressable onPress={() => handleChange(1)} style={styles.textOption}>
+          <Text>{rightOptionText}</Text>
         </Pressable>
       </View>
       <Animated.View
@@ -40,7 +40,7 @@ const Toggle: React.FC<ToggleProps> = ({
           {
             marginLeft: animated.interpolate({
               inputRange: [0, 1],
-              outputRange: ['6%', '56%'],
+              outputRange: ['6%', '53%'],
             }),
           },
         ]}
