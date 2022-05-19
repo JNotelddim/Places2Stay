@@ -27,6 +27,9 @@ const styles = StyleSheet.create({
     marginTop: 24,
     marginBottom: 32,
   },
+  toggle: {
+    width: '60%',
+  },
 });
 
 export default styles;

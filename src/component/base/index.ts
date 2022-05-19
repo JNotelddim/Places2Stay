@@ -6,3 +6,4 @@ export * from './Modal';
 export * from './Pressable';
 export * from './SearchInput';
 export * from './Text';
+export * from './Toggle';

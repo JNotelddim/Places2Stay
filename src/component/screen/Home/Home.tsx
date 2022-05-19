@@ -45,6 +45,7 @@ const Browse: React.FC = () => {
       scrollEventThrottle={90}>
       <Animated.View
         style={[styles.fixedHeader, {transform: [{translateY: animated}]}]}>
+        {/* TODO: use gradient for header background */}
         <InputFacadeButton
           title="Try 'Boston'"
           onPress={() => openModal('CitySearch')}
