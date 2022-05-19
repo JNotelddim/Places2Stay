@@ -9,6 +9,7 @@ const IconButton: React.FC<IconButtonProps> = ({
   onPress,
   name,
   style,
+  color,
   accessibilityAction,
 }) => {
   // TODO: animate opacity on Pressable / Animated.View
@@ -20,7 +21,7 @@ const IconButton: React.FC<IconButtonProps> = ({
       accessibilityLabel={`Icon Button. ${accessibilityAction}. Tap to perform action.`}>
       <View style={[styles.container, style]}>
         {/* Does size need to be configurable? Let's not optimize early. */}
-        <Icon name={name} size={24} />
+        <Icon name={name} size={24} color={color} />
       </View>
     </Pressable>
   );

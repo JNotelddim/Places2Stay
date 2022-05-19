@@ -9,6 +9,7 @@ const styles = StyleSheet.create({
     width: Dimensions.get('screen').width,
     height: 300,
   },
+  backButton: {},
   content: {
     paddingVertical: 50,
     paddingHorizontal: 40,

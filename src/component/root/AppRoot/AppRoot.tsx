@@ -23,6 +23,16 @@ import ModalProvider from 'component/provider/ModalProvider';
 
 import {colors} from 'const';
 
+export type RootStackParamList = {
+  Home: undefined;
+  Stay: {place: {cityName: string}};
+};
+
+export type HomeTabsParamList = {
+  Browse: undefined;
+  Other: undefined;
+};
+
 const Tabs = createBottomTabNavigator();
 const Stack = createStackNavigator();
 
@@ -69,15 +79,14 @@ const TabsNavigator = () => {
 
 const AppRoot = () => {
   return (
-    <ModalProvider>
-      <NavigationContainer>
+    <NavigationContainer>
+      <ModalProvider>
         <Stack.Navigator screenOptions={{header: () => null}}>
           <Stack.Screen name="Home" component={TabsNavigator} />
           <Stack.Screen name="Stay" component={Stay} />
-          {/* <Stack.Screen name="City" component={City} /> */}
         </Stack.Navigator>
-      </NavigationContainer>
-    </ModalProvider>
+      </ModalProvider>
+    </NavigationContainer>
   );
 };
 
