@@ -47,7 +47,7 @@ const ModalProvider: React.FC<ModalProviderProps> = ({children}) => {
   );
 };
 
-// Export custom hook for consuming
+// Export custom hook for consuming the context
 export const useModal = () => {
   const value = useContext(ModalContext);
   return value;
