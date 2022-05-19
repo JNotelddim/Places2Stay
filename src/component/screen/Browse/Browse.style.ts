@@ -9,14 +9,17 @@ const styles = StyleSheet.create({
     backgroundColor: colors.paleYellow,
     height: '100%', // why doesn't flex: 1  have the same effect?
   },
-  cta: {
+  imageCard: {
     marginVertical: 24,
   },
   carousel: {
-    marginTop: 16,
+    marginVertical: 16,
     paddingLeft: 50,
     marginLeft: -50,
     width: Dimensions.get('screen').width,
+  },
+  cta: {
+    marginVertical: 12,
   },
 });
 
