@@ -1,20 +1,31 @@
-import {Text} from 'component/base';
 import React from 'react';
+
+import {Text} from 'component/base';
+import {OverlaidCard} from 'component/layout';
 import {StyleSheet} from 'react-native';
-import {SafeAreaView} from 'react-native-safe-area-context';
+import {colors} from 'const';
 
 export interface OtherProps {}
 
 const Other: React.FC<OtherProps> = () => {
   return (
-    <SafeAreaView style={styles.container}>
-      <Text>Other Screen (placeholder) </Text>
-    </SafeAreaView>
+    <OverlaidCard
+      header={() => <Text variant="heading1">Background Heading</Text>}
+      headerContainerStyles={styles.headerContainerStyles}
+      contentContainerStyles={styles.cardStyles}>
+      <Text variant="heading1">Card Heading</Text>
+      <Text>Here is some body text.</Text>
+    </OverlaidCard>
   );
 };
 
 const styles = StyleSheet.create({
-  container: {},
+  headerContainerStyles: {
+    backgroundColor: colors.orange,
+  },
+  cardStyles: {
+    backgroundColor: colors.extraPaleYellow,
+  },
 });
 
 export default Other;
