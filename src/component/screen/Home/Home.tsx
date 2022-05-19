@@ -1,5 +1,5 @@
 import React from 'react';
-import {ScrollView} from 'react-native';
+import {View, ScrollView} from 'react-native';
 
 import {
   Carousel,
@@ -25,29 +25,33 @@ const Browse: React.FC = () => {
   const {openModal} = useModal();
 
   return (
-    <ScrollView style={styles.wrapper}>
-      <InputFacadeButton
-        title="Try 'Boston'"
-        onPress={() => openModal('CitySearch')}
-      />
+    <View style={styles.screenContainer}>
+      <View style={styles.fixedHeader}>
+        <InputFacadeButton
+          title="Try 'Boston'"
+          onPress={() => openModal('CitySearch')}
+        />
+      </View>
 
-      <SectionHeader
-        heading="Find your getaway"
-        description="Our spaces are designed for comfort - whether you are working, relaxing, or craving some spaces"
-      />
+      <ScrollView style={styles.wrapper}>
+        <SectionHeader
+          heading="Find your getaway"
+          description="Our spaces are designed for comfort - whether you are working, relaxing, or craving some spaces"
+        />
+        <ImageCard style={styles.imageCard} {...getFakePlace()} />
 
-      <ImageCard style={styles.imageCard} {...getFakePlace()} />
+        <SectionHeader heading="25+ Cities To Explore" />
+        <Carousel style={styles.carousel} items={CITIES} component={CityCard} />
 
-      <SectionHeader heading="25+ Cities To Explore" />
-
-      <Carousel style={styles.carousel} items={CITIES} component={CityCard} />
-
-      <SectionHeader heading="Places" description="Browse individual places" />
-
-      {fakePlaces.map(place => (
-        <PlaceCTA key={place.id} style={styles.cta} {...place} />
-      ))}
-    </ScrollView>
+        <SectionHeader
+          heading="Places"
+          description="Browse individual places"
+        />
+        {fakePlaces.map(place => (
+          <PlaceCTA key={place.id} style={styles.cta} {...place} />
+        ))}
+      </ScrollView>
+    </View>
   );
 };
 
