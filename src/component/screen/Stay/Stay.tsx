@@ -32,14 +32,15 @@ const Stay: React.FC = () => {
 
   return (
     <ScrollView style={styles.wrapper}>
-      <Image style={styles.headerImage} source={imageSource} />
-      {/* TODO: replace icon with <  */}
       <IconButton
         name="close"
         onPress={handleGoBack}
         style={styles.backButton}
         color={colors.black}
+        opaque
       />
+      <Image style={styles.headerImage} source={imageSource} />
+      {/* TODO: replace icon with <  */}
 
       <View style={styles.content}>
         <SectionHeader heading={heading} />
