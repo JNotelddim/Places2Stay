@@ -9,82 +9,16 @@
  */
 
 import React from 'react';
-import {
-  NavigationContainer,
-  ParamListBase,
-  RouteProp,
-} from '@react-navigation/native';
-import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
-import {createStackNavigator} from '@react-navigation/stack';
+import {NavigationContainer} from '@react-navigation/native';
 
-import {Browse, Stay, Other} from '/component/screen';
-import {Icon} from 'component/base';
-import ModalProvider from 'component/provider/ModalProvider';
-
-import {colors} from 'const';
-
-export type RootStackParamList = {
-  Home: undefined;
-  Stay: {place: {cityName: string}};
-};
-
-export type HomeTabsParamList = {
-  Browse: undefined;
-  Other: undefined;
-};
-
-const Tabs = createBottomTabNavigator();
-const Stack = createStackNavigator();
-
-// TODO: move
-const getTabScreenOptions = ({
-  route,
-}: {
-  route: RouteProp<ParamListBase, string>;
-  navigation: any;
-}) => ({
-  tabBarStyle: {
-    backgroundColor: colors.extraPaleYellow,
-    paddingTop: 16,
-  },
-  tabBarIcon: ({focused}: {focused: boolean}) => {
-    switch (route.name) {
-      case 'Other':
-        return (
-          <Icon
-            name="calendar"
-            color={focused ? colors.black : colors.slateGrey}
-          />
-        );
-      case 'Browse':
-      default:
-        return (
-          <Icon name="home" color={focused ? colors.black : colors.slateGrey} />
-        );
-    }
-  },
-  header: () => null,
-  tabBarLabel: () => null,
-});
-
-// TODO: move
-const TabsNavigator = () => {
-  return (
-    <Tabs.Navigator screenOptions={getTabScreenOptions}>
-      <Tabs.Screen name="Browse" component={Browse} />
-      <Tabs.Screen name="Other" component={Other} />
-    </Tabs.Navigator>
-  );
-};
+import {ModalProvider, NavigationRoot} from 'component/provider/';
 
 const AppRoot = () => {
   return (
     <NavigationContainer>
+      {/* Modal Provider must be within the NavigationContainer AND must wrap all screens. */}
       <ModalProvider>
-        <Stack.Navigator screenOptions={{header: () => null}}>
-          <Stack.Screen name="Home" component={TabsNavigator} />
-          <Stack.Screen name="Stay" component={Stay} />
-        </Stack.Navigator>
+        <NavigationRoot />
       </ModalProvider>
     </NavigationContainer>
   );

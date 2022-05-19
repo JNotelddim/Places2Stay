@@ -13,7 +13,7 @@ import {InputFacadeButton} from 'component/base';
 /**
  * Home is the screen the user comes to first when they open the application
  */
-const Home: React.FC = () => {
+const Browse: React.FC = () => {
   const {openModal} = useModal();
 
   return (
@@ -38,4 +38,4 @@ const Home: React.FC = () => {
   );
 };
 
-export default Home;
+export default Browse;
