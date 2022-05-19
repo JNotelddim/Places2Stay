@@ -6,4 +6,6 @@ export interface IconButtonProps {
   name: IconOption;
   style?: StyleProp<ViewStyle>;
   accessibilityAction?: string;
+  color?: string;
+  opaque?: boolean;
 }

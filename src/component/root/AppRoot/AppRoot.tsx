@@ -10,40 +10,17 @@
 
 import React from 'react';
 import {NavigationContainer} from '@react-navigation/native';
-import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
-import {Home, Stay} from '/component/screen';
-import {Icon} from 'component/base';
-import ModalProvider from 'component/provider/ModalProvider';
 
-const {Navigator, Screen} = createBottomTabNavigator();
+import {ModalProvider, NavigationRoot} from 'component/provider/';
 
 const AppRoot = () => {
   return (
-    <ModalProvider>
-      <NavigationContainer>
-        <Navigator
-          screenOptions={({route}) => ({
-            tabBarStyle: {backgroundColor: '#FFF8E8', paddingTop: 16},
-            tabBarIcon: ({focused}) => {
-              switch (route.name) {
-                case 'Stay':
-                  return (
-                    <Icon name="calendar" color={focused ? 'black' : 'grey'} />
-                  );
-                case 'Home':
-                default:
-                  return (
-                    <Icon name="home" color={focused ? 'black' : 'grey'} />
-                  );
-              }
-            },
-            tabBarLabel: () => null,
-          })}>
-          <Screen name="Home" component={Home} />
-          <Screen name="Stay" component={Stay} />
-        </Navigator>
-      </NavigationContainer>
-    </ModalProvider>
+    <NavigationContainer>
+      {/* Modal Provider must be within the NavigationContainer AND must wrap all screens. */}
+      <ModalProvider>
+        <NavigationRoot />
+      </ModalProvider>
+    </NavigationContainer>
   );
 };
 
