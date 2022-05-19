@@ -8,6 +8,7 @@ export const colors = {
   // colors
   blue: '#4169E1',
   paleYellow: '#FFF1D2',
+  extraPaleYellow: '#FFF8E8',
   orange: '#FFA500',
 
   // opacities
