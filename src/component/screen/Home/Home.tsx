@@ -12,7 +12,7 @@ import {
 import {getFakePlace} from 'utils';
 import {CITIES} from 'const';
 
-import styles from './Browse.style';
+import styles from './Home.style';
 import {useModal} from 'component/provider';
 import {InputFacadeButton} from 'component/base';
 
@@ -26,7 +26,6 @@ const Browse: React.FC = () => {
 
   return (
     <ScrollView style={styles.wrapper}>
-      {/* Do I need both the SafeAreaView and the ScrollView? */}
       <InputFacadeButton
         title="Try 'Boston'"
         onPress={() => openModal('CitySearch')}
