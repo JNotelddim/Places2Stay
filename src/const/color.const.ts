@@ -14,4 +14,5 @@ export const colors = {
   // opacities
   lowOpacityBlack: 'rgba(0, 0, 0, 0.19)',
   highOpacityWhite: '#ffffff77',
+  highOpacityPaleYellow: '#FFF1D2DD',
 };

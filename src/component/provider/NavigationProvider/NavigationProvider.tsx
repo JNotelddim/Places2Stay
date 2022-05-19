@@ -3,7 +3,7 @@ import React from 'react';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import {createStackNavigator} from '@react-navigation/stack';
 
-import {Browse, Stay, Other} from '/component/screen';
+import {Home, Stay, Other} from '/component/screen';
 import {Icon} from 'component/base';
 
 import {colors} from 'const';
@@ -41,7 +41,7 @@ const getTabScreenOptions = ({
             color={focused ? colors.black : colors.slateGrey}
           />
         );
-      case 'Browse':
+      case 'Home':
       default:
         return (
           <Icon name="home" color={focused ? colors.black : colors.slateGrey} />
@@ -55,7 +55,7 @@ const getTabScreenOptions = ({
 const TabsNavigator = () => {
   return (
     <Tabs.Navigator screenOptions={getTabScreenOptions}>
-      <Tabs.Screen name="Browse" component={Browse} />
+      <Tabs.Screen name="Home" component={Home} />
       <Tabs.Screen name="Other" component={Other} />
     </Tabs.Navigator>
   );
@@ -64,7 +64,7 @@ const TabsNavigator = () => {
 const NavigationRoot = () => {
   return (
     <Stack.Navigator screenOptions={{header: () => null}}>
-      <Stack.Screen name="Home" component={TabsNavigator} />
+      <Stack.Screen name="HomeRoot" component={TabsNavigator} />
       <Stack.Screen name="Stay" component={Stay} />
     </Stack.Navigator>
   );

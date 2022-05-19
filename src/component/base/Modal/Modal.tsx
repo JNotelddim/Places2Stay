@@ -1,8 +1,8 @@
-import {useModal} from 'component/provider';
 import React from 'react';
 import {Modal as RNModal, StyleProp, View, ViewStyle} from 'react-native';
 
 import {IconButton} from 'component/base';
+import {useModal} from 'component/provider';
 
 import styles from './Modal.style';
 

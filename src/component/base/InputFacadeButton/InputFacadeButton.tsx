@@ -1,7 +1,7 @@
 import React from 'react';
-import {Pressable, View} from 'react-native';
+import {View} from 'react-native';
 
-import {Text} from 'component/base';
+import {Text, Pressable} from 'component/base';
 
 import {InputFacadeButtonProps} from './InputFacadeButton.type';
 import styles from './InputFacadeButton.style';

@@ -1,12 +1,13 @@
 import React from 'react';
 import {Image, ScrollView, View} from 'react-native';
+import {useNavigation} from '@react-navigation/native';
 
+import {colors} from 'const';
+import {IconButton, Text, Toggle} from 'component/base';
 import {SectionHeader, StayInfoSection} from 'component/partial';
-import {IconButton, Text} from 'component/base';
+
 import img from 'asset/stock-photo.jpg';
 import styles from './Stay.style';
-import {useNavigation} from '@react-navigation/native';
-import {colors} from 'const';
 
 /**
  * Stay is the screen that a user is taken to when they click on a place to stay at.
@@ -28,6 +29,10 @@ const Stay: React.FC = () => {
 
   const handleGoBack = () => {
     navigation.goBack();
+  };
+
+  const onToggleChange = (newVal: Boolean) => {
+    console.log('toggle isChecked:', newVal);
   };
 
   return (
@@ -52,6 +57,13 @@ const Stay: React.FC = () => {
         <Text variant="body1" style={styles.bodyText} color="#858585">
           {`${dates.startDate} - ${dates.endDate}`}
         </Text>
+
+        <Toggle
+          style={styles.toggle}
+          leftOptionText="Calendar"
+          rightOptionText="I'm Flexible"
+          onChanged={onToggleChange}
+        />
 
         <StayInfoSection
           style={styles.marginedInfoSection}
