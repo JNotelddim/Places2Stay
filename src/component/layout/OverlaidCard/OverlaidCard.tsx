@@ -1,28 +1,10 @@
-import {Pressable} from 'component/base';
-import {colors} from 'const';
 import React from 'react';
-import {Animated, StyleProp, View, ViewStyle} from 'react-native';
+import {Animated, View} from 'react-native';
+
+import {CardDragBar} from 'component/base';
 
 import styles from './OverlaidCard.style';
 import {OverlaidCardProps} from './OverlaidCard.type';
-
-interface CardDragBarProps {
-  onPress: () => void;
-  style?: StyleProp<ViewStyle>;
-}
-
-const CardDragBar: React.FC<CardDragBarProps> = ({onPress, style}) => (
-  <Pressable style={style} onPress={onPress} hitSlop={12}>
-    <View
-      // eslint-disable-next-line react-native/no-inline-styles
-      style={{
-        height: 2,
-        width: 30,
-        backgroundColor: colors.slateGrey,
-      }}
-    />
-  </Pressable>
-);
 
 const OverlaidCard: React.FC<OverlaidCardProps> = ({
   header: Header,
