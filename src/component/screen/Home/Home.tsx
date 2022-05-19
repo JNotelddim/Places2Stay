@@ -1,9 +1,9 @@
 import React from 'react';
 import {
-  View,
   ScrollView,
   NativeScrollEvent,
   NativeSyntheticEvent,
+  Animated,
 } from 'react-native';
 
 import {
@@ -28,12 +28,14 @@ const fakePlaces = new Array(6).fill(undefined).map(() => getFakePlace());
  */
 const Browse: React.FC = () => {
   const {openModal} = useModal();
-  const [headerTranslateXValue, setHeaderTranslateXValue] = React.useState(0);
+  const animated = React.useRef(new Animated.Value(0)).current;
 
   const handleViewScroll = (e: NativeSyntheticEvent<NativeScrollEvent>) => {
-    // TODO: animate Translate value
-    // console.log({offset: e.nativeEvent.contentOffset.y});
-    setHeaderTranslateXValue(e.nativeEvent.contentOffset.y);
+    Animated.timing(animated, {
+      duration: 200,
+      useNativeDriver: false,
+      toValue: e.nativeEvent.contentOffset.y,
+    }).start();
   };
 
   return (
@@ -41,16 +43,13 @@ const Browse: React.FC = () => {
       style={styles.wrapper}
       onScroll={handleViewScroll}
       scrollEventThrottle={90}>
-      <View
-        style={[
-          styles.fixedHeader,
-          {transform: [{translateY: headerTranslateXValue}]},
-        ]}>
+      <Animated.View
+        style={[styles.fixedHeader, {transform: [{translateY: animated}]}]}>
         <InputFacadeButton
           title="Try 'Boston'"
           onPress={() => openModal('CitySearch')}
         />
-      </View>
+      </Animated.View>
       <SectionHeader
         heading="Find your getaway"
         description="Our spaces are designed for comfort - whether you are working, relaxing, or craving some spaces"
