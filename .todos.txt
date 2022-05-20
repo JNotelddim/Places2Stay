@@ -1,5 +1,8 @@
 
 ## TODO
+- [ ] webview in Account?
+- [ ] finish integrating use of MockDb
+- [ ] use personalized architecture
 - [ ] expo auth
   - https://gist.github.com/relaxedtomato/6bab1d06027033e33f9b8c8fa855f002
   - https://docs.expo.dev/versions/latest/sdk/auth-session/

@@ -9,7 +9,8 @@ import {
 } from 'react-native';
 
 import {getFakePlace} from 'utils';
-import {CITIES, colors} from 'const';
+import {colors} from 'const';
+import {RootStackNavigation, useData} from 'component/provider';
 import {IconButton, InputFacadeButton} from 'component/base';
 import {
   Carousel,
@@ -18,7 +19,6 @@ import {
   PlaceCTA,
   SectionHeader,
 } from 'component/partial';
-import {RootStackNavigation} from 'component/provider';
 
 import styles from './Home.style';
 
@@ -30,6 +30,7 @@ const fakePlaces = new Array(6).fill(undefined).map(() => getFakePlace());
 const Home: React.FC = () => {
   const animated = React.useRef(new Animated.Value(0)).current;
   const navigation = useNavigation<RootStackNavigation>();
+  const {cities} = useData();
 
   // Nav header options:
   React.useEffect(() => {
@@ -83,7 +84,11 @@ const Home: React.FC = () => {
       <ImageCard style={styles.imageCard} {...fakePlaces[0]} />
 
       <SectionHeader heading="25+ Cities To Explore" />
-      <Carousel style={styles.carousel} items={CITIES} component={CityCard} />
+      <Carousel
+        style={styles.carousel}
+        items={cities.map(city => ({cityName: city.name, ...city}))}
+        component={CityCard}
+      />
 
       <SectionHeader heading="Places" description="Home individual places" />
       {fakePlaces.map(place => (
