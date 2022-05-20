@@ -18,8 +18,9 @@ import {getFakePlace} from 'utils';
 import {CITIES} from 'const';
 
 import styles from './Home.style';
-import {useModal} from 'component/provider';
 import {InputFacadeButton} from 'component/base';
+import {useNavigation} from '@react-navigation/native';
+import {RootStackNavigation} from 'component/provider';
 
 const fakePlaces = new Array(6).fill(undefined).map(() => getFakePlace());
 
@@ -27,8 +28,8 @@ const fakePlaces = new Array(6).fill(undefined).map(() => getFakePlace());
  * Home is the screen the user comes to first when they open the application
  */
 const Browse: React.FC = () => {
-  const {openModal} = useModal();
   const animated = React.useRef(new Animated.Value(0)).current;
+  const {navigate} = useNavigation<RootStackNavigation>();
 
   const handleViewScroll = (e: NativeSyntheticEvent<NativeScrollEvent>) => {
     Animated.timing(animated, {
@@ -48,7 +49,7 @@ const Browse: React.FC = () => {
         {/* TODO: use gradient for header background */}
         <InputFacadeButton
           title="Try 'Boston'"
-          onPress={() => openModal('CitySearch')}
+          onPress={() => navigate('CitySearchModal')}
         />
       </Animated.View>
       <SectionHeader
