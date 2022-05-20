@@ -1,9 +1,16 @@
 
 ## TODO
 - [ ] expo auth
+  - https://gist.github.com/relaxedtomato/6bab1d06027033e33f9b8c8fa855f002
+  - https://docs.expo.dev/versions/latest/sdk/auth-session/
+  - https://docs.expo.dev/bare/using-libraries/
 - [ ] alternate runs between ios & android!
+- [ ] navigation header  w/ bell + profile icons
+- [ ] update navigation stacks
+
 
 ## Nice-To-Haves
+- [ ] replace icons
 - [ ] MUI Theme, w/ Light + Dark theming
 - [ ] Linear Gradient on fixed search header in Home
 - [ ] handle gestures in OverlaidCard layout

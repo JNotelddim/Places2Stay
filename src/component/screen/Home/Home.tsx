@@ -27,7 +27,7 @@ const fakePlaces = new Array(6).fill(undefined).map(() => getFakePlace());
 /**
  * Home is the screen the user comes to first when they open the application
  */
-const Browse: React.FC = () => {
+const Home: React.FC = () => {
   const animated = React.useRef(new Animated.Value(0)).current;
   const {navigate} = useNavigation<RootStackNavigation>();
 
@@ -61,7 +61,7 @@ const Browse: React.FC = () => {
       <SectionHeader heading="25+ Cities To Explore" />
       <Carousel style={styles.carousel} items={CITIES} component={CityCard} />
 
-      <SectionHeader heading="Places" description="Browse individual places" />
+      <SectionHeader heading="Places" description="Home individual places" />
       {fakePlaces.map(place => (
         <PlaceCTA key={place.id} style={styles.cta} {...place} />
       ))}
@@ -69,4 +69,4 @@ const Browse: React.FC = () => {
   );
 };
 
-export default Browse;
+export default Home;

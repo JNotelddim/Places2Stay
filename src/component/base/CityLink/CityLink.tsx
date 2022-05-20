@@ -13,7 +13,7 @@ const CityLink: React.FC<CityLinkProps> = ({cityName}) => {
   const navigation = useNavigation<RootStackNavigation>();
 
   const goToStay = () => {
-    navigation.navigate('Stay', {place: {cityName}});
+    navigation.navigate('Stay', {city: cityName});
   };
 
   return (

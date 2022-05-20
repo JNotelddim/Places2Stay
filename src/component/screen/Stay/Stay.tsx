@@ -1,13 +1,15 @@
 import React from 'react';
 import {Image, ScrollView, View} from 'react-native';
-import {useNavigation} from '@react-navigation/native';
 
 import {colors} from 'const';
 import {IconButton, Text, Toggle} from 'component/base';
 import {SectionHeader, StayInfoSection} from 'component/partial';
+import {StayScreenProps} from 'component/provider';
 
 import img from 'asset/stock-photo.jpg';
 import styles from './Stay.style';
+// import { StackNavigationProp, StackScreenProps } from '@react-navigation/stack';
+// import { RootStackParamList } from 'component/provider';
 
 /**
  * Stay is the screen that a user is taken to when they click on a place to stay at.
@@ -23,9 +25,13 @@ const place = {
     endDate: 'Oct.31, 2022',
   },
 };
-const Stay: React.FC = () => {
+
+const Stay: React.FC<StayScreenProps> = ({navigation, route}) => {
   const {imageSource, heading, placeName, dates} = place;
-  const navigation = useNavigation();
+  /**
+   TODO: get info by city selected?
+   */
+  console.log({city: route.params.city});
 
   const handleGoBack = () => {
     navigation.goBack();
