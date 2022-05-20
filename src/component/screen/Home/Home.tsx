@@ -38,12 +38,12 @@ const Home: React.FC = () => {
         return (
           <View style={styles.header}>
             <IconButton
-              name="kebab"
+              name="bell"
               color={colors.black}
               onPress={() => navigation.push('CitySearchModal')}
             />
             <IconButton
-              name="locationPin"
+              name="user"
               color={colors.black}
               onPress={() => navigation.push('CitySearchModal')}
             />

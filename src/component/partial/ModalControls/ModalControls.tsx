@@ -19,7 +19,7 @@ const ModalControls: React.FC<ModalControlsProps> = ({style, children}) => {
       <IconButton
         style={styles.icon}
         accessibilityAction="Close Modal"
-        name="close"
+        name="x"
         onPress={() => {
           navigation.canGoBack() && navigation.goBack();
         }}

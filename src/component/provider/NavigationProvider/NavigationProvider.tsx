@@ -2,9 +2,9 @@ import React from 'react';
 
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import {createStackNavigator} from '@react-navigation/stack';
+import Icon from 'react-native-vector-icons/Feather';
 
 import {Home, Stay, Other, CitySearchModal} from '/component/screen';
-import {Icon} from 'component/base';
 
 import {colors} from 'const';
 import {ParamListBase, RouteProp} from '@react-navigation/native';
@@ -28,13 +28,18 @@ const getTabScreenOptions = ({
         return (
           <Icon
             name="calendar"
+            size={24}
             color={focused ? colors.black : colors.slateGrey}
           />
         );
       case 'Home':
       default:
         return (
-          <Icon name="home" color={focused ? colors.black : colors.slateGrey} />
+          <Icon
+            name="home"
+            size={24}
+            color={focused ? colors.black : colors.slateGrey}
+          />
         );
     }
   },

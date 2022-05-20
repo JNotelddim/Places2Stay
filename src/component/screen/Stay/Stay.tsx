@@ -44,14 +44,13 @@ const Stay: React.FC<StayScreenProps> = ({navigation, route}) => {
   return (
     <ScrollView style={styles.wrapper}>
       <IconButton
-        name="close"
+        name="chevron-left"
         onPress={handleGoBack}
         style={styles.backButton}
         color={colors.black}
         opaque
       />
       <Image style={styles.headerImage} source={imageSource} />
-      {/* TODO: replace icon with <  */}
 
       <View style={styles.content}>
         <SectionHeader heading={heading} />
