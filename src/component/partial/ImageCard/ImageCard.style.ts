@@ -1,10 +1,10 @@
-import {colors} from 'const';
+import {colors, spacing} from 'const';
 import {StyleSheet} from 'react-native';
 
 const styles = StyleSheet.create({
   imageWrapper: {
     position: 'relative',
-    marginBottom: 20,
+    marginBottom: spacing.whitespace.large,
     borderRadius: 8,
     overflow: 'hidden',
   },

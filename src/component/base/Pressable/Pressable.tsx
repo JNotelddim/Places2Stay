@@ -7,6 +7,10 @@ import {
 
 export interface PressableProps extends RNPressableProps {}
 
+const MAX_OPACITY = 1;
+const MIN_OPACITY = 0.3;
+const DURATION = 150;
+
 /**
  * Pressable wraps the RN Pressable component and handles animating the opacity
  */
@@ -15,15 +19,15 @@ const Pressable: React.FC<PressableProps> = ({children, ...props}) => {
 
   const handlePressIn = () => {
     Animated.timing(animated, {
-      toValue: 0.3,
-      duration: 150,
+      toValue: MIN_OPACITY,
+      duration: DURATION,
       useNativeDriver: false,
     }).start();
   };
   const handlePressOut = () => {
     Animated.timing(animated, {
-      toValue: 1,
-      duration: 150,
+      toValue: MAX_OPACITY,
+      duration: DURATION,
       useNativeDriver: false,
     }).start();
   };

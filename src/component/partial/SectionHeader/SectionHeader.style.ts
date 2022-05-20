@@ -1,8 +1,9 @@
+import {spacing} from 'const';
 import {StyleSheet} from 'react-native';
 
 const styles = StyleSheet.create({
   bottomMargin: {
-    marginBottom: 8,
+    marginBottom: spacing.whitespace.small,
   },
   noMargin: {
     marginBottom: 0,

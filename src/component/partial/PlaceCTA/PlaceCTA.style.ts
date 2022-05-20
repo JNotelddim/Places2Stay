@@ -1,10 +1,10 @@
-import {colors} from 'const';
+import {colors, spacing} from 'const';
 import {StyleSheet} from 'react-native';
 
 const styles = StyleSheet.create({
   locationText: {
     color: colors.slateGrey,
-    marginTop: 8,
+    marginTop: spacing.whitespace.small,
   },
 });
 export default styles;

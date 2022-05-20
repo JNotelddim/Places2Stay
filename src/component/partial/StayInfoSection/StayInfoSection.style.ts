@@ -1,4 +1,4 @@
-import {colors} from 'const';
+import {colors, spacing} from 'const';
 import {StyleSheet} from 'react-native';
 
 const styles = StyleSheet.create({
@@ -34,7 +34,7 @@ const styles = StyleSheet.create({
     paddingHorizontal: 32,
   },
   marginBottom: {
-    marginBottom: 12,
+    marginBottom: spacing.whitespace.medium,
   },
 });
 

@@ -1,28 +1,29 @@
 import {Dimensions, StyleSheet} from 'react-native';
 
+import {spacing} from 'const';
+
 const styles = StyleSheet.create({
   container: {
     position: 'relative',
     height: Dimensions.get('screen').height,
   },
   header: {
-    paddingTop: 80,
-    paddingBottom: 40,
-    paddingHorizontal: 50,
+    paddingTop: spacing.whitespace.unsafeScreenTop,
+    paddingBottom: spacing.whitespace.xlarge,
+    paddingHorizontal: spacing.whitespace.screenHorizontal,
     height: '100%',
   },
   card: {
-    padding: 50,
-    paddingTop: 12,
+    padding: spacing.whitespace.screenHorizontal,
+    paddingTop: spacing.whitespace.medium,
     width: Dimensions.get('screen').width,
     position: 'absolute',
-    top: 150,
     bottom: 0,
     borderRadius: 16,
   },
   dragBar: {
     alignSelf: 'center',
-    marginBottom: 38,
+    marginBottom: spacing.whitespace.xlarge,
   },
 });
 

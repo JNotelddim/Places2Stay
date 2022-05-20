@@ -8,4 +8,5 @@ export interface IconButtonProps {
   accessibilityAction?: string;
   color?: string;
   opaque?: boolean;
+  iconSize?: number;
 }

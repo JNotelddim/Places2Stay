@@ -1,6 +1,7 @@
 import React from 'react';
 import {View} from 'react-native';
 
+import {colors} from 'const';
 import {Text, Pressable} from 'component/base';
 
 import {InputFacadeButtonProps} from './InputFacadeButton.type';
@@ -16,7 +17,7 @@ const InputFacadeButton: React.FC<InputFacadeButtonProps> = ({
       accessible
       accessibilityLabel="Button for opening Search Modal. Tap to open.">
       <View style={styles.inputWrapper}>
-        <Text variant="body1" color="#858585" style={styles.input}>
+        <Text variant="body1" color={colors.slateGrey} style={styles.input}>
           {title}
         </Text>
       </View>
