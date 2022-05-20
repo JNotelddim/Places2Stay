@@ -3,6 +3,7 @@
 - [ ] move spacing values to global const const/spacing.const.ts
 - [ ] momve all magic numbers at least to local consts
 - [ ] replace modalProvider with Stack modal screen & a `useModal()` hook?
+=> RootModal, ModalWrapper, ModalControls
 - [ ] expo auth
 - [ ] alternate runs between ios & android!
 

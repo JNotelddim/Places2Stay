@@ -1,1 +1,1 @@
-export {default as ModalProvider, useModal} from './ModalProvider';
+export {default as ModalProvider, useModal, modals} from './ModalProvider';

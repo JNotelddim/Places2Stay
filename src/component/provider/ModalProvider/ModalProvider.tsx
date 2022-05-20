@@ -2,6 +2,7 @@ import React, {useContext} from 'react';
 import {useNavigation} from '@react-navigation/native';
 
 import {RootStackNavigation} from 'component/provider';
+import {CitySearch} from 'component/modal';
 
 import {
   ModalContextType,
@@ -10,6 +11,10 @@ import {
 } from './ModalProvider.type';
 
 // Consts
+export const modals = {
+  CitySearch: <CitySearch />,
+};
+
 const initNoOpFn = () => {
   console.error(
     "If you're seeing this, there was an error initializing the ModalContext.",

@@ -11,15 +11,12 @@
 import React from 'react';
 import {NavigationContainer} from '@react-navigation/native';
 
-import {ModalProvider, NavigationRoot} from 'component/provider/';
+import {NavigationRoot} from 'component/provider';
 
 const AppRoot = () => {
   return (
     <NavigationContainer>
-      {/* Modal Provider must be within the NavigationContainer AND must wrap all screens. */}
-      <ModalProvider>
-        <NavigationRoot />
-      </ModalProvider>
+      <NavigationRoot />
     </NavigationContainer>
   );
 };
