@@ -1,9 +1,10 @@
 import React from 'react';
 import {View} from 'react-native';
 import {useNavigation} from '@react-navigation/native';
+import Icon from 'react-native-vector-icons/Feather';
 
 import {colors} from 'const';
-import {Text, Icon, Pressable} from 'component/base';
+import {Text, Pressable} from 'component/base';
 import {RootStackNavigation} from 'component/provider';
 
 import styles from './CityLink.style';
@@ -19,7 +20,7 @@ const CityLink: React.FC<CityLinkProps> = ({cityName}) => {
   return (
     <Pressable onPress={goToStay}>
       <View style={styles.container}>
-        <Icon name="locationPin" color={colors.blue} style={styles.icon} />
+        <Icon name="map-pin" color={colors.blue} style={styles.icon} />
         <Text variant="body2">{cityName}</Text>
       </View>
     </Pressable>

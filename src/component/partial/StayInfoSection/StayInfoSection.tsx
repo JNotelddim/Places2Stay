@@ -1,7 +1,8 @@
 import React from 'react';
 import {View} from 'react-native';
+import Icon from 'react-native-vector-icons/Feather';
 
-import {Icon, Text} from 'component/base';
+import {Text} from 'component/base';
 import {capitalizeText} from 'utils';
 
 import {StayInfoSectionProps} from './StayInfoSection.type';
@@ -24,7 +25,12 @@ const StayInfoSection: React.FC<StayInfoSectionProps> = ({
         </View>
 
         {/* TODO: IconButton / some form of being clickable */}
-        <Icon name="kebab" color="blue" style={styles.kebabIcon} />
+        <Icon
+          name="more-horizontal"
+          color="blue"
+          style={styles.kebabIcon}
+          size={16}
+        />
       </View>
 
       <View style={styles.content}>
