@@ -9,9 +9,10 @@ import styles from './SectionHeader.style';
 const SectionHeader: React.FC<SectionHeaderProps> = ({
   heading,
   description,
+  style,
 }) => {
   return (
-    <View>
+    <View style={style}>
       <Text
         style={description ? styles.bottomMargin : styles.noMargin}
         variant="heading1">

@@ -6,6 +6,7 @@ export const spacing = {
     large: 20,
     xlarge: 40,
     unsafeScreenTop: 80,
+    unsafeHeaderTop: 60,
     screenHorizontal: 50,
   },
 };

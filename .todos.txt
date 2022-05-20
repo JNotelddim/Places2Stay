@@ -1,7 +1,12 @@
 
 ## TODO
 - [ ] expo auth
+  - https://gist.github.com/relaxedtomato/6bab1d06027033e33f9b8c8fa855f002
+  - https://docs.expo.dev/versions/latest/sdk/auth-session/
+  - https://docs.expo.dev/bare/using-libraries/
 - [ ] alternate runs between ios & android!
+- [ ] update navigation stacks
+
 
 ## Nice-To-Haves
 - [ ] MUI Theme, w/ Light + Dark theming
@@ -31,3 +36,5 @@
 - [x] replace modalProvider with Stack modal screen & a `useModal()` hook?
 - [x] move spacing values to global const const/spacing.const.ts
 - [x] momve all magic numbers at least to local consts
+- [x] replace icons
+- [x] navigation header  w/ bell + profile icons

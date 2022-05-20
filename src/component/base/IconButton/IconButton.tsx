@@ -1,7 +1,8 @@
 import React from 'react';
 import {View} from 'react-native';
+import Icon from 'react-native-vector-icons/Feather';
 
-import {Icon, Pressable} from 'component/base';
+import {Pressable} from 'component/base';
 
 import {IconButtonProps} from './IconButton.type';
 import styles from './IconButton.style';

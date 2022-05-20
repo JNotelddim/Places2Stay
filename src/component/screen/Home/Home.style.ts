@@ -33,6 +33,15 @@ const styles = StyleSheet.create({
   cta: {
     marginVertical: medium,
   },
+  header: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+    paddingTop: spacing.whitespace.unsafeHeaderTop,
+    paddingHorizontal: spacing.whitespace.screenHorizontal,
+    paddingBottom: spacing.whitespace.large,
+    backgroundColor: colors.extraPaleYellow,
+  },
 });
 
 export default styles;
