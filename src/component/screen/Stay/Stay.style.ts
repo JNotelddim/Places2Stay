@@ -1,5 +1,7 @@
-import {colors} from 'const';
+import {colors, spacing} from 'const';
 import {Dimensions, StyleSheet} from 'react-native';
+
+const {xlarge, screenHorizontal} = spacing.whitespace;
 
 const styles = StyleSheet.create({
   wrapper: {
@@ -13,12 +15,12 @@ const styles = StyleSheet.create({
   backButton: {
     position: 'absolute',
     zIndex: 2,
-    top: 40,
+    top: xlarge,
     left: 16,
   },
   content: {
-    paddingVertical: 50,
-    paddingHorizontal: 40,
+    paddingVertical: screenHorizontal,
+    paddingHorizontal: xlarge,
   },
   bodyText: {
     marginBottom: 8,

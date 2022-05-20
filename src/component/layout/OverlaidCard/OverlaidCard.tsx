@@ -6,6 +6,9 @@ import {CardDragBar} from 'component/base';
 import styles from './OverlaidCard.style';
 import {OverlaidCardProps} from './OverlaidCard.type';
 
+const MIN_TOP_MARGIN = 40;
+const MAX_TOP_MARGIN = 150;
+
 const OverlaidCard: React.FC<OverlaidCardProps> = ({
   header: Header,
   children,
@@ -35,7 +38,7 @@ const OverlaidCard: React.FC<OverlaidCardProps> = ({
           {
             top: animated.interpolate({
               inputRange: [0, 1],
-              outputRange: [150, 40],
+              outputRange: [MAX_TOP_MARGIN, MIN_TOP_MARGIN],
             }),
           },
         ]}>

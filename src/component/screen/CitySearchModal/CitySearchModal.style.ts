@@ -1,4 +1,4 @@
-import {colors} from 'const';
+import {colors, spacing} from 'const';
 import {StyleSheet} from 'react-native';
 
 const styles = StyleSheet.create({
@@ -7,8 +7,8 @@ const styles = StyleSheet.create({
     height: '100%',
   },
   content: {
-    padding: 40,
-    paddingTop: 12,
+    padding: spacing.whitespace.xlarge,
+    paddingTop: spacing.whitespace.medium,
   },
 });
 

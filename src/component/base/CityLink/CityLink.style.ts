@@ -1,13 +1,14 @@
+import {spacing} from 'const';
 import {StyleSheet} from 'react-native';
 
 const styles = StyleSheet.create({
   container: {
     flexDirection: 'row',
     alignItems: 'center',
-    marginBottom: 12,
+    marginBottom: spacing.whitespace.medium,
   },
   icon: {
-    marginRight: 12,
+    marginRight: spacing.whitespace.medium,
   },
 });
 export default styles;

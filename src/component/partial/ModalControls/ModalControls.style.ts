@@ -1,10 +1,11 @@
+import {spacing} from 'const';
 import {StyleSheet} from 'react-native';
 
 const styles = StyleSheet.create({
   topRow: {
     flexDirection: 'row',
     justifyContent: 'flex-end',
-    marginBottom: 8,
+    marginBottom: spacing.whitespace.small,
   },
   icon: {
     marginTop: 16,

@@ -1,37 +1,37 @@
-import {colors} from 'const';
+import {colors, spacing} from 'const';
 import {Dimensions, StyleSheet} from 'react-native';
 
-const SCREEN_HORIZONTAL_PADDING = 50;
+const {medium, large, xlarge, screenHorizontal} = spacing.whitespace;
 
 const styles = StyleSheet.create({
   wrapper: {
-    paddingBottom: 40,
-    paddingHorizontal: SCREEN_HORIZONTAL_PADDING,
+    paddingBottom: xlarge,
+    paddingHorizontal: screenHorizontal,
     backgroundColor: colors.paleYellow,
     height: '100%', // why doesn't flex: 1  have the same effect?
   },
   fixedHeader: {
     width: Dimensions.get('screen').width,
-    paddingHorizontal: SCREEN_HORIZONTAL_PADDING,
-    marginLeft: -SCREEN_HORIZONTAL_PADDING,
+    paddingHorizontal: screenHorizontal,
+    marginLeft: -screenHorizontal,
     paddingTop: 80,
-    paddingBottom: 20,
+    paddingBottom: large,
     backgroundColor: colors.highOpacityPaleYellow,
     zIndex: 2,
   },
   imageCard: {
     marginTop: 24,
-    marginBottom: 40,
+    marginBottom: xlarge,
   },
   carousel: {
     width: Dimensions.get('screen').width,
-    paddingLeft: SCREEN_HORIZONTAL_PADDING,
-    marginLeft: -SCREEN_HORIZONTAL_PADDING,
+    paddingLeft: screenHorizontal,
+    marginLeft: -screenHorizontal,
     marginTop: 16,
-    marginBottom: 40,
+    marginBottom: xlarge,
   },
   cta: {
-    marginVertical: 12,
+    marginVertical: medium,
   },
 });
 

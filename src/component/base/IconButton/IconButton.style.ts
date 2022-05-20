@@ -1,11 +1,14 @@
-import {colors} from 'const';
 import {StyleSheet} from 'react-native';
 
+import {colors} from 'const';
+
+const SIZE = 38;
 const styles = StyleSheet.create({
   container: {
-    width: 38,
-    height: 38,
-    borderRadius: 16,
+    // TODO: handle configurable size
+    width: SIZE,
+    height: SIZE,
+    borderRadius: SIZE / 2,
     alignItems: 'center',
     justifyContent: 'center',
   },
