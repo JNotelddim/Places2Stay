@@ -1,11 +1,16 @@
 import React from 'react';
+import {useNavigation} from '@react-navigation/native';
 import {
   ScrollView,
   NativeScrollEvent,
   NativeSyntheticEvent,
   Animated,
+  View,
 } from 'react-native';
 
+import {getFakePlace} from 'utils';
+import {CITIES, colors} from 'const';
+import {IconButton, InputFacadeButton} from 'component/base';
 import {
   Carousel,
   CityCard,
@@ -13,14 +18,9 @@ import {
   PlaceCTA,
   SectionHeader,
 } from 'component/partial';
-
-import {getFakePlace} from 'utils';
-import {CITIES} from 'const';
+import {RootStackNavigation} from 'component/provider';
 
 import styles from './Home.style';
-import {InputFacadeButton} from 'component/base';
-import {useNavigation} from '@react-navigation/native';
-import {RootStackNavigation} from 'component/provider';
 
 const fakePlaces = new Array(6).fill(undefined).map(() => getFakePlace());
 
@@ -29,8 +29,31 @@ const fakePlaces = new Array(6).fill(undefined).map(() => getFakePlace());
  */
 const Home: React.FC = () => {
   const animated = React.useRef(new Animated.Value(0)).current;
-  const {navigate} = useNavigation<RootStackNavigation>();
+  const navigation = useNavigation<RootStackNavigation>();
 
+  // Nav header options:
+  React.useEffect(() => {
+    navigation.setOptions({
+      header: () => {
+        return (
+          <View style={styles.header}>
+            <IconButton
+              name="kebab"
+              color={colors.black}
+              onPress={() => navigation.push('CitySearchModal')}
+            />
+            <IconButton
+              name="locationPin"
+              color={colors.black}
+              onPress={() => navigation.push('CitySearchModal')}
+            />
+          </View>
+        );
+      },
+    });
+  }, [navigation]);
+
+  // Handlers
   const handleViewScroll = (e: NativeSyntheticEvent<NativeScrollEvent>) => {
     Animated.timing(animated, {
       duration: 200,
@@ -39,6 +62,7 @@ const Home: React.FC = () => {
     }).start();
   };
 
+  // Render
   return (
     <ScrollView
       style={styles.wrapper}
@@ -49,7 +73,7 @@ const Home: React.FC = () => {
         {/* TODO: use gradient for header background */}
         <InputFacadeButton
           title="Try 'Boston'"
-          onPress={() => navigate('CitySearchModal')}
+          onPress={() => navigation.navigate('CitySearchModal')}
         />
       </Animated.View>
       <SectionHeader

@@ -38,15 +38,22 @@ const getTabScreenOptions = ({
         );
     }
   },
-  header: () => null,
   tabBarLabel: () => null,
 });
 
 const HomeTabsNavigator = () => {
   return (
     <Tabs.Navigator screenOptions={getTabScreenOptions}>
-      <Tabs.Screen name="Home" component={Home} />
-      <Tabs.Screen name="Other" component={Other} />
+      <Tabs.Screen
+        name="Home"
+        component={Home}
+        // See Component file for header options
+      />
+      <Tabs.Screen
+        name="Other"
+        component={Other}
+        options={{header: () => null}}
+      />
     </Tabs.Navigator>
   );
 };

@@ -6,6 +6,8 @@ import closeSvg from 'asset/close.svg';
 import homeSvg from 'asset/home.svg';
 import kebabSvg from 'asset/kebab.svg';
 import locationPinSvg from 'asset/location_pin.svg';
+// import notificationSvg from 'asset/notification.svg';
+import profileSvg from 'asset/profile.svg';
 
 import {IconProps} from './Icon.type';
 
@@ -15,6 +17,8 @@ export const iconSources = {
   home: homeSvg,
   kebab: kebabSvg,
   locationPin: locationPinSvg,
+  // notification: notificationSvg,
+  profile: profileSvg,
 };
 
 const getColorStyle = (color?: string) => {
