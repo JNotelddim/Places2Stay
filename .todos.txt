@@ -5,12 +5,10 @@
   - https://docs.expo.dev/versions/latest/sdk/auth-session/
   - https://docs.expo.dev/bare/using-libraries/
 - [ ] alternate runs between ios & android!
-- [ ] navigation header  w/ bell + profile icons
 - [ ] update navigation stacks
 
 
 ## Nice-To-Haves
-- [ ] replace icons
 - [ ] MUI Theme, w/ Light + Dark theming
 - [ ] Linear Gradient on fixed search header in Home
 - [ ] handle gestures in OverlaidCard layout
@@ -38,3 +36,5 @@
 - [x] replace modalProvider with Stack modal screen & a `useModal()` hook?
 - [x] move spacing values to global const const/spacing.const.ts
 - [x] momve all magic numbers at least to local consts
+- [x] replace icons
+- [x] navigation header  w/ bell + profile icons

@@ -40,12 +40,12 @@ const Home: React.FC = () => {
             <IconButton
               name="bell"
               color={colors.black}
-              onPress={() => navigation.push('CitySearchModal')}
+              onPress={() => navigation.push('NotificationModal')}
             />
             <IconButton
               name="user"
               color={colors.black}
-              onPress={() => navigation.push('CitySearchModal')}
+              onPress={() => navigation.push('Account')}
             />
           </View>
         );

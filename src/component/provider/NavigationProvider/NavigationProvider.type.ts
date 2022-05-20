@@ -1,22 +1,20 @@
 import {StackNavigationProp, StackScreenProps} from '@react-navigation/stack';
 
-export type CitySearchModalParams = {};
-export type HomeScreenParams = {};
-export type OtherScreenParams = {};
-export type StayScreenParams = {city: string};
-
 export type RootStackParamList = {
   HomeTabsRoot: undefined;
   CitySearchModal: undefined;
-  Stay: StayScreenParams;
+  NotificationModal: undefined;
+  Account: undefined;
+  Stay: {city: string};
 };
 
 export type HomeTabsParamList = {
-  Home: HomeScreenParams;
-  Other: OtherScreenParams;
+  Home: undefined;
+  Search: undefined;
+  // Stay: {};
+  // Stay: {city: string};
 };
 
-// Remember, tab screens (Home, Other) don't get params...
-export type CitySearchModalProps = StackScreenProps<CitySearchModalParams>;
+// Remember, tab screens (Home, Search, Stay) don't get params...
 export type StayScreenProps = StackScreenProps<RootStackParamList, 'Stay'>;
 export type RootStackNavigation = StackNavigationProp<RootStackParamList>;
