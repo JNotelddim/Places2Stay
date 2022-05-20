@@ -17,6 +17,7 @@ const ModalControls: React.FC<ModalControlsProps> = ({style, children}) => {
     <View style={[styles.topRow, style]}>
       {children}
       <IconButton
+        style={styles.icon}
         accessibilityAction="Close Modal"
         name="close"
         onPress={() => {

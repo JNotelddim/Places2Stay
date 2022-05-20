@@ -49,7 +49,7 @@ const Browse: React.FC = () => {
         {/* TODO: use gradient for header background */}
         <InputFacadeButton
           title="Try 'Boston'"
-          onPress={() => navigate('HomeStack', {screen: 'CitySearchModal'})}
+          onPress={() => navigate('CitySearchModal')}
         />
       </Animated.View>
       <SectionHeader

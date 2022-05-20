@@ -20,17 +20,19 @@ const CitySearchModal: React.FC<CitySearchModalProps> = () => {
     <View style={styles.cardStyles}>
       <ModalControls />
 
-      <SearchInput
-        placeholder="Try 'Boston'"
-        value={searchVal}
-        onChangeText={setSearchModalVal}
-      />
+      <View style={styles.content}>
+        <SearchInput
+          placeholder="Try 'Boston'"
+          value={searchVal}
+          onChangeText={setSearchModalVal}
+        />
 
-      <ScrollView showsVerticalScrollIndicator={false}>
-        {filteredCites.map(({cityName}) => (
-          <CityLink key={cityName} cityName={cityName} />
-        ))}
-      </ScrollView>
+        <ScrollView showsVerticalScrollIndicator={false}>
+          {filteredCites.map(({cityName}) => (
+            <CityLink key={cityName} cityName={cityName} />
+          ))}
+        </ScrollView>
+      </View>
     </View>
   );
 };

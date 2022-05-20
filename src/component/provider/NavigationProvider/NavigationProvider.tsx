@@ -51,24 +51,16 @@ const HomeTabsNavigator = () => {
   );
 };
 
-const HomeStack = () => {
+const NavigationRoot = () => {
   return (
     <Stack.Navigator screenOptions={{header: () => null}}>
+      <Stack.Screen name="HomeTabsRoot" component={HomeTabsNavigator} />
       <Stack.Screen name="Stay" component={Stay} />
       <Stack.Screen
         name="CitySearchModal"
         component={CitySearchModal}
         options={{presentation: 'modal'}}
       />
-    </Stack.Navigator>
-  );
-};
-
-const NavigationRoot = () => {
-  return (
-    <Stack.Navigator screenOptions={{header: () => null}}>
-      <Stack.Screen name="HomeTabsRoot" component={HomeTabsNavigator} />
-      <Stack.Screen name="HomeStack" component={HomeStack} />
     </Stack.Navigator>
   );
 };
