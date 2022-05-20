@@ -1,6 +1,7 @@
 import React, {useContext} from 'react';
+import {useNavigation} from '@react-navigation/native';
 
-import {CitySearch} from 'component/modal';
+import {RootStackNavigation} from 'component/provider';
 
 import {
   ModalContextType,
@@ -8,17 +9,14 @@ import {
   ModalProviderProps,
 } from './ModalProvider.type';
 
-// ModalProvider consts
-export const modals = {
-  CitySearch: <CitySearch />,
-};
-
+// Consts
 const initNoOpFn = () => {
   console.error(
     "If you're seeing this, there was an error initializing the ModalContext.",
   );
 };
 
+// Context
 const ModalContext = React.createContext<ModalContextType>({
   currentModal: undefined,
   openModal: initNoOpFn,
@@ -27,22 +25,24 @@ const ModalContext = React.createContext<ModalContextType>({
 
 // Component
 const ModalProvider: React.FC<ModalProviderProps> = ({children}) => {
+  const navigation = useNavigation<RootStackNavigation>();
   const [currentModal, setCurrentModal] = React.useState<
     ModalOption | undefined
   >(undefined);
 
   const openModal = (modalName: ModalOption) => {
     setCurrentModal(modalName);
+    navigation.navigate('Modal', {name: 'CitySearch'});
   };
 
   const closeModal = () => {
     setCurrentModal(undefined);
+    navigation.canGoBack() && navigation.goBack();
   };
 
   return (
     <ModalContext.Provider value={{currentModal, openModal, closeModal}}>
       {children}
-      {currentModal && modals[currentModal]}
     </ModalContext.Provider>
   );
 };

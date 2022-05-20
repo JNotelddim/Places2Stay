@@ -4,20 +4,10 @@ import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import {createStackNavigator} from '@react-navigation/stack';
 
 import {Home, Stay, Other} from '/component/screen';
-import {Icon} from 'component/base';
+import {Icon, Modal} from 'component/base';
 
 import {colors} from 'const';
 import {ParamListBase, RouteProp} from '@react-navigation/native';
-
-export type RootStackParamList = {
-  Home: undefined;
-  Stay: {place: {cityName: string}};
-};
-
-export type HomeTabsParamList = {
-  Browse: undefined;
-  Other: undefined;
-};
 
 const Tabs = createBottomTabNavigator();
 const Stack = createStackNavigator();
@@ -66,6 +56,11 @@ const NavigationRoot = () => {
     <Stack.Navigator screenOptions={{header: () => null}}>
       <Stack.Screen name="HomeRoot" component={TabsNavigator} />
       <Stack.Screen name="Stay" component={Stay} />
+      <Stack.Screen
+        name="Modal"
+        component={Modal}
+        options={{presentation: 'modal'}}
+      />
     </Stack.Navigator>
   );
 };

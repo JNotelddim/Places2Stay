@@ -1,4 +1,4 @@
-import {modals} from './ModalProvider';
+import {modals} from 'component/base';
 
 export interface ModalProviderProps {}
 

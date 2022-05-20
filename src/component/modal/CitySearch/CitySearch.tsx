@@ -1,10 +1,12 @@
 import React from 'react';
+import {View} from 'react-native';
 
-import {SearchInput, Modal, CityLink} from 'component/base';
+import {SearchInput, CityLink} from 'component/base';
 import {CITIES} from 'const';
 
-import styles from './CitySearch.style';
+// import styles from './CitySearch.style';
 import {ScrollView} from 'react-native';
+import styles from './CitySearch.style';
 
 export interface CitySearchProps {}
 
@@ -16,7 +18,7 @@ const CitySearch: React.FC<CitySearchProps> = () => {
   );
 
   return (
-    <Modal cardStyles={styles.cardStyles}>
+    <View style={styles.cardStyles}>
       <SearchInput
         placeholder="Try 'Boston'"
         value={searchVal}
@@ -28,7 +30,7 @@ const CitySearch: React.FC<CitySearchProps> = () => {
           <CityLink key={cityName} cityName={cityName} />
         ))}
       </ScrollView>
-    </Modal>
+    </View>
   );
 };
 

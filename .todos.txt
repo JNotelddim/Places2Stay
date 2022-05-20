@@ -1,16 +1,33 @@
-- [x] handle text variants
 
+## TODO
+- [ ] move spacing values to global const const/spacing.const.ts
+- [ ] momve all magic numbers at least to local consts
+- [ ] replace modalProvider with Stack modal screen & a `useModal()` hook?
+- [ ] expo auth
+- [ ] alternate runs between ios & android!
+
+## Nice-To-Haves
+- [ ] MUI Theme, w/ Light + Dark theming
+- [ ] Linear Gradient on fixed search header in Home
+- [ ] handle gestures in OverlaidCard layout
+    => also, convert OverlaidCard to compound component pattern?
+    => & convert PlaceCTA to Compound Component?
+
+- DIY Firabase/Firestore API in lieu of hard-coded content
+ => react-query for getting the data
+ => GraphQL / Apollo (probably a bit much for these two weeks)
+
+
+
+## Complete 
+
+- [x] handle text variants
 - [x] handle icons
 - [x] create 'Icon' component
-
 - [x] iconButton component
-
-- [ ] add `usePressable` hook for handling animating pressable components' opacity
-
+- [x] add `usePressable` hook for handling animating pressable components' opacity
 - [x] move colors to global const
-
 - [x] move any util fns to src/utils
-
-- [ ] move Navigator config into separate file
+- [x] move Navigator config into separate file
 - [x] complete navigator icon differences
-- [ ] remove nav screen headings
+- [x] remove nav screen headings
