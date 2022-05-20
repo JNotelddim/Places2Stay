@@ -5,12 +5,12 @@ import {CITIES} from 'const';
 import {SearchInput, CityLink} from 'component/base';
 import {ModalControls} from 'component/partial';
 
-import styles from './CitySearch.style';
+import styles from './CitySearchModal.style';
 
-export interface CitySearchProps {}
+export interface CitySearchModalProps {}
 
-const CitySearch: React.FC<CitySearchProps> = () => {
-  const [searchVal, setSearchVal] = React.useState('');
+const CitySearchModal: React.FC<CitySearchModalProps> = () => {
+  const [searchVal, setSearchModalVal] = React.useState('');
 
   const filteredCites = CITIES.filter(
     ({cityName}) => cityName.includes(searchVal) || searchVal === '',
@@ -23,7 +23,7 @@ const CitySearch: React.FC<CitySearchProps> = () => {
       <SearchInput
         placeholder="Try 'Boston'"
         value={searchVal}
-        onChangeText={setSearchVal}
+        onChangeText={setSearchModalVal}
       />
 
       <ScrollView showsVerticalScrollIndicator={false}>
@@ -35,4 +35,4 @@ const CitySearch: React.FC<CitySearchProps> = () => {
   );
 };
 
-export default CitySearch;
+export default CitySearchModal;

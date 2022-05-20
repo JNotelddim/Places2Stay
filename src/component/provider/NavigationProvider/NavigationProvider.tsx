@@ -3,8 +3,7 @@ import React from 'react';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import {createStackNavigator} from '@react-navigation/stack';
 
-import {ModalProvider} from 'component/provider/';
-import {Home, Stay, Other, RootModal} from '/component/screen';
+import {Home, Stay, Other, CitySearchModal} from '/component/screen';
 import {Icon} from 'component/base';
 
 import {colors} from 'const';
@@ -43,7 +42,7 @@ const getTabScreenOptions = ({
   tabBarLabel: () => null,
 });
 
-const TabsNavigator = () => {
+const HomeTabsNavigator = () => {
   return (
     <Tabs.Navigator screenOptions={getTabScreenOptions}>
       <Tabs.Screen name="Home" component={Home} />
@@ -52,16 +51,24 @@ const TabsNavigator = () => {
   );
 };
 
-const NavigationRoot = () => {
+const HomeStack = () => {
   return (
     <Stack.Navigator screenOptions={{header: () => null}}>
       <Stack.Screen name="Stay" component={Stay} />
-      <Stack.Screen name="HomeRoot" component={TabsNavigator} />
       <Stack.Screen
-        name="RootModal"
-        component={RootModal}
+        name="CitySearchModal"
+        component={CitySearchModal}
         options={{presentation: 'modal'}}
       />
+    </Stack.Navigator>
+  );
+};
+
+const NavigationRoot = () => {
+  return (
+    <Stack.Navigator screenOptions={{header: () => null}}>
+      <Stack.Screen name="HomeTabsRoot" component={HomeTabsNavigator} />
+      <Stack.Screen name="HomeStack" component={HomeStack} />
     </Stack.Navigator>
   );
 };

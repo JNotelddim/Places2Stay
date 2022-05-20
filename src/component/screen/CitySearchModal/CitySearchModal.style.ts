@@ -2,8 +2,9 @@ import {colors} from 'const';
 import {StyleSheet} from 'react-native';
 
 const styles = StyleSheet.create({
-  container: {},
   cardStyles: {
+    // TODO: remove padding
+    paddingTop: 50,
     backgroundColor: colors.paleYellow,
     paddingBottom: 0,
   },

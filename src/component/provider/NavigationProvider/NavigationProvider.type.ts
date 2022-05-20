@@ -1,15 +1,21 @@
 import {StackNavigationProp} from '@react-navigation/stack';
-import {ModalOption} from '../ModalProvider/ModalProvider.type';
+
+export type HomeStackScreen = keyof HomeStackParamList;
 
 export type RootStackParamList = {
-  Home: undefined;
+  HomeTabsRoot: undefined;
+  HomeStack: {screen: HomeStackScreen};
+};
+
+export type HomeStackParamList = {
+  CitySearchModal: undefined;
   Stay: {place: {cityName: string}};
-  Modal: {name: ModalOption};
 };
 
 export type HomeTabsParamList = {
-  Browse: undefined;
+  Home: undefined;
   Other: undefined;
 };
 
 export type RootStackNavigation = StackNavigationProp<RootStackParamList>;
+export type HomeStackNavigation = StackNavigationProp<HomeStackParamList>;
