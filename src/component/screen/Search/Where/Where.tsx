@@ -7,7 +7,7 @@ import {CityLink, SearchInput} from 'component/base';
 import {SectionHeader} from 'component/partial';
 import {useMockDb} from 'component/provider';
 
-//TODO: nest in 'WhereStack'
+// TODO: why is it suddenly acting like it's using a safeAreaView? is this cause of the Stack Navigator?
 
 const Where: React.FC = () => {
   const [searchVal, setWhereModalVal] = React.useState('');
@@ -26,6 +26,7 @@ const Where: React.FC = () => {
 
       <SectionHeader heading="Getaways Near You" style={styles.header} />
 
+      {/** TODO: clicking city link goes to When instead of to City */}
       <ScrollView showsVerticalScrollIndicator={false}>
         {filteredCites.map(({name}) => (
           <CityLink key={name} cityName={name} />
