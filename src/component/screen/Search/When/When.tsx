@@ -1,5 +1,5 @@
 import React from 'react';
-import {Button, StyleSheet, View} from 'react-native';
+import {StyleSheet, View} from 'react-native';
 import {Calendar, DateData} from 'react-native-calendars';
 import {MarkingProps} from 'react-native-calendars/src/calendar/day/marking';
 
@@ -45,7 +45,6 @@ const When: React.FC<WhenScreenProps> = ({navigation, route}) => {
   const [durationSelection, setDurationSelection] = React.useState<
     'Weekend' | 'Week' | 'Month'
   >('Weekend');
-  const numMarkedDays = Object.keys(calendarMarkedDays).length;
 
   // Show options for Calendar or Flexible
   // then depending on which is selected, show a calendar (wix) or
@@ -117,7 +116,12 @@ const When: React.FC<WhenScreenProps> = ({navigation, route}) => {
   return (
     <SearchStep
       title="When will you be there?"
-      cityName={city?.name || 'Error'}>
+      cityName={city?.name || 'Error'}
+      showNext
+      showSkip
+      onNextPress={handleNextPress}
+      onSkipPress={handleSkipPress}
+      nextDisabled={!startDate || !endDate}>
       <View>
         <Toggle
           style={styles.toggle}
@@ -143,16 +147,6 @@ const When: React.FC<WhenScreenProps> = ({navigation, route}) => {
             </View>
           </View>
         )}
-
-        <View style={styles.buttonRow}>
-          <Button title="Skip" onPress={handleSkipPress} />
-
-          <Button
-            disabled={numMarkedDays < 2}
-            onPress={handleNextPress}
-            title="Next"
-          />
-        </View>
       </View>
     </SearchStep>
   );

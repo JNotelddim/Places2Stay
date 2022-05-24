@@ -1,5 +1,5 @@
 import React from 'react';
-import {StyleSheet, View} from 'react-native';
+import {Button, StyleSheet, View} from 'react-native';
 import {useNavigation} from '@react-navigation/native';
 
 import {colors, spacing} from 'const';
@@ -10,16 +10,36 @@ import {OverlaidCard} from 'component/layout';
 export interface SearchStepProps {
   title: string;
   cityName: string;
+  showSkip?: boolean;
+  showNext?: boolean;
+  onNextPress?: () => void;
+  onSkipPress?: () => void;
+  nextDisabled?: boolean;
 }
 
-const SearchStep: React.FC<SearchStepProps> = ({cityName, title, children}) => {
+const SearchStep: React.FC<SearchStepProps> = ({
+  cityName,
+  title,
+  children,
+  showNext,
+  showSkip,
+  onNextPress,
+  onSkipPress,
+  nextDisabled = false,
+}) => {
   const navigation = useNavigation<SearchStackNavigation>();
 
   const handleGoBack = () => {
     navigation.canGoBack() && navigation.goBack();
   };
 
-  // TODO: fix alignment for iconbutton  and cityName
+  const handleSkipPress = () => {
+    onSkipPress?.();
+  };
+  const handleNextPress = () => {
+    onNextPress?.();
+  };
+
   return (
     <OverlaidCard
       header={() => (
@@ -36,7 +56,18 @@ const SearchStep: React.FC<SearchStepProps> = ({cityName, title, children}) => {
       </View>
 
       {children}
-      {/* TODO: next button? */}
+
+      <View style={styles.buttonRow}>
+        {showSkip && <Button title="Skip" onPress={handleSkipPress} />}
+
+        {showNext && (
+          <Button
+            disabled={nextDisabled}
+            onPress={handleNextPress}
+            title="Next"
+          />
+        )}
+      </View>
     </OverlaidCard>
   );
 };
@@ -55,6 +86,11 @@ const styles = StyleSheet.create({
   cityName: {
     width: '75%',
     textAlign: 'center',
+  },
+  buttonRow: {
+    marginTop: spacing.whitespace.large,
+    flexDirection: 'row',
+    justifyContent: 'space-between',
   },
 });
 

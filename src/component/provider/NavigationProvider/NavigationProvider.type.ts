@@ -16,8 +16,9 @@ export type DateSelection = {
 };
 export type OccupantsSelection = {
   adults: number;
-  kids: number;
-  dogs: number;
+  children: number;
+  infants: number;
+  pets: number;
 };
 
 interface ParamsFromWhere {
