@@ -1,5 +1,8 @@
 
 ## TODO
+
+- [ ] create a layout component for wrapping all these Search Stack screens with
+
 - [ ] webview in Account?
 - [ ] use personalized architecture
 - [ ] expo auth
@@ -7,7 +10,6 @@
   - https://docs.expo.dev/versions/latest/sdk/auth-session/
   - https://docs.expo.dev/bare/using-libraries/
 - [ ] alternate runs between ios & android!
-- [ ] update navigation stacks
 
 
 ## Nice-To-Haves
@@ -41,3 +43,4 @@
 - [x] replace icons
 - [x] navigation header  w/ bell + profile icons
 - [x] finish integrating use of MockDb
+- [x] update navigation stacks

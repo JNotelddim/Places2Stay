@@ -10,6 +10,40 @@ export type RootStackParamList = {
   Stay: {city: string};
 };
 
+export type DateSelection = {
+  startDate: Date;
+  endDate: Date;
+};
+export type OccupantsSelection = {
+  adults: number;
+  kids: number;
+  dogs: number;
+};
+
+interface ParamsFromWhere {
+  cityId: string;
+}
+
+interface ParamsFromWhat extends ParamsFromWhere {
+  stayType: 'Place' | 'Monthly' | 'Experience';
+}
+
+interface ParamsFromWhen extends ParamsFromWhat {
+  dates: DateSelection;
+}
+
+interface ParamsFromWho extends ParamsFromWhen {
+  occupants: OccupantsSelection;
+}
+
+export type SearchStackParamList = {
+  Where: undefined;
+  What: ParamsFromWhere;
+  When: ParamsFromWhat;
+  Who: ParamsFromWhen;
+  Results: ParamsFromWho;
+};
+
 export type HomeTabsParamList = {
   Home: undefined;
   Search: undefined;
@@ -24,3 +58,9 @@ export type ListingScreenProps = StackScreenProps<
   RootStackParamList,
   'Listing'
 >;
+
+// Search
+export type WhereScreenProps = StackScreenProps<SearchStackParamList, 'Where'>;
+export type WhatScreenProps = StackScreenProps<SearchStackParamList, 'What'>;
+export type WhenScreenProps = StackScreenProps<SearchStackParamList, 'When'>;
+export type WhoScreenProps = StackScreenProps<SearchStackParamList, 'Who'>;

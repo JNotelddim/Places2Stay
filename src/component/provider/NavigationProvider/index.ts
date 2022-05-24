@@ -7,4 +7,8 @@ export type {
   StayScreenProps,
   CityScreenProps,
   ListingScreenProps,
+  WhereScreenProps,
+  WhatScreenProps,
+  WhenScreenProps,
+  WhoScreenProps,
 } from './NavigationProvider.type';
