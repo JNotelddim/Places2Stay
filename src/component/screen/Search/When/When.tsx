@@ -14,11 +14,31 @@ const EDGE_DAY_TEXT_COLOR = colors.white;
 const FILL_DAY_COLOR = colors.midOpacityBlue;
 const FILL_DAY_TEXT_COLOR = colors.white;
 
+const formatDateForCalendarMarking = (input: Date) => {
+  const ISOString = input.toISOString();
+  const formatted = ISOString.slice(0, ISOString.indexOf('T'));
+  return formatted;
+};
+
+const getDaysBetweenDates = (startDate: Date, endDate: Date) => {
+  var dateArray = [];
+  var currentDate = new Date(startDate);
+  // Start the day after the 'start' date (we only want the ones in between)
+  currentDate.setDate(startDate.getDate() + 1);
+  while (currentDate <= endDate) {
+    dateArray.push(formatDateForCalendarMarking(new Date(currentDate)));
+    currentDate.setDate(currentDate.getDate() + 1);
+  }
+  return dateArray;
+};
+
 const When: React.FC<WhenScreenProps> = ({navigation, route}) => {
   const mockDb = useMockDb();
   const city = mockDb.getCityById(route.params.cityId);
 
   const [isCalendar, setIsCalendar] = React.useState(true);
+  const [startDate, setStartDate] = React.useState<Date | undefined>();
+  const [endDate, setEndDate] = React.useState<Date | undefined>();
   const [calendarMarkedDays, setCalendarMarkedDays] = React.useState<{
     [key: string]: MarkingProps;
   }>({});
@@ -35,31 +55,44 @@ const When: React.FC<WhenScreenProps> = ({navigation, route}) => {
 
   // Keep button disabled until sufficient selection is made,
 
-  console.log({calendarMarkedDays});
   // When button is enabled, it goes to 'Who' and passes along the built up selection info
 
   const handleToggleChange = (isChecked: Boolean) => {
     setIsCalendar(!isChecked);
   };
 
+  /* Sorry this function in messy, I hope to come back to it later, but for now it's working and I don't want to fall behind */
   const handleCalendarDayPress = (day: DateData) => {
     let tempMarkedDays = {...calendarMarkedDays};
     let options: MarkingProps = {
-      // TODO: change color
       color: EDGE_DAY_COLOR,
       textColor: EDGE_DAY_TEXT_COLOR,
     };
 
-    // TODO: endDate must be after startDate or else startDate re-selects
-    // TODO: mark all the days in between.
-    if (numMarkedDays >= 2) {
+    const isDateBeforeCurrentStart =
+      startDate && new Date(day.dateString) < startDate;
+    if ((startDate && endDate) || isDateBeforeCurrentStart) {
       // Clear out existing marked days if you're clicking a new start date;
       tempMarkedDays = {};
+      setStartDate(new Date(day.dateString));
+      setEndDate(undefined);
       options.startingDay = true;
-    } else if (numMarkedDays === 0) {
+    } else if (!startDate) {
       options.startingDay = true;
-    } else if (numMarkedDays === 1) {
+      setStartDate(new Date(day.dateString));
+    } else if (!endDate) {
       options.endingDay = true;
+      const newEndDate = new Date(day.dateString);
+      setEndDate(newEndDate);
+
+      // Fill in-between days:
+      const daysBetween = getDaysBetweenDates(startDate, newEndDate);
+      for (const betweenDay of daysBetween) {
+        tempMarkedDays[betweenDay] = {
+          color: FILL_DAY_COLOR,
+          textColor: FILL_DAY_TEXT_COLOR,
+        };
+      }
     }
 
     setCalendarMarkedDays({...tempMarkedDays, [day.dateString]: options});
@@ -70,13 +103,12 @@ const When: React.FC<WhenScreenProps> = ({navigation, route}) => {
   };
 
   const handleNextPress = () => {
-    if (numMarkedDays >= 2) {
+    if (startDate && endDate) {
       navigation.push('Who', {
         ...route.params,
         dates: {
-          // TODO fix this so no magic indexes
-          startDate: Object.keys(calendarMarkedDays)[0],
-          endDate: Object.keys(calendarMarkedDays)[1],
+          startDate: startDate?.toISOString(),
+          endDate: endDate?.toISOString(),
         },
       });
     }
