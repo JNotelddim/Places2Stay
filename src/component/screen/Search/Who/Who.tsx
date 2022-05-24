@@ -1,57 +1,11 @@
 import React from 'react';
-import {StyleProp, StyleSheet, View, ViewStyle} from 'react-native';
 
-import {colors, spacing} from 'const';
 import {SearchStep} from 'component/layout';
-import {IconButton, Text} from 'component/base';
+import {CounterRow} from 'component/partial';
 import {useMockDb, WhoScreenProps} from 'component/provider';
 import {OccupantsSelection} from 'component/provider/NavigationProvider/NavigationProvider.type';
 
-export interface CounterRowProps {
-  title: string;
-  description?: string;
-  value: number;
-  setValue: (newValue: number) => void;
-  maximum?: number;
-  minimum?: number;
-  style?: StyleProp<ViewStyle>;
-}
-
-const CounterRow = ({
-  title,
-  description = 'description',
-  value,
-  setValue,
-  maximum,
-  minimum = 0,
-  style,
-}: CounterRowProps) => {
-  const handleIncrement = () => {
-    if (maximum === undefined || value < maximum) {
-      setValue(value + 1);
-    }
-  };
-
-  const handleDecrement = () => {
-    if (value > minimum) {
-      setValue(value - 1);
-    }
-  };
-
-  return (
-    <View style={[style, styles.counterWrapper]}>
-      <View>
-        <Text variant="heading2">{title}</Text>
-        <Text color={colors.slateGrey}>{description}</Text>
-      </View>
-      <View style={styles.counterControlRow}>
-        <IconButton name="minus" onPress={handleDecrement} />
-        <Text>{value}</Text>
-        <IconButton name="plus" onPress={handleIncrement} />
-      </View>
-    </View>
-  );
-};
+import styles from './Who.style';
 
 const Who: React.FC<WhoScreenProps> = ({navigation, route}) => {
   const mockDb = useMockDb();
@@ -115,26 +69,5 @@ const Who: React.FC<WhoScreenProps> = ({navigation, route}) => {
     </SearchStep>
   );
 };
-
-const styles = StyleSheet.create({
-  container: {},
-  firstCounter: {
-    marginTop: spacing.whitespace.xlarge,
-  },
-
-  // Counter
-  counterWrapper: {
-    borderTopWidth: 1,
-    borderTopColor: colors.slateGrey,
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    paddingVertical: spacing.whitespace.large,
-  },
-  counterControlRow: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    // justifyContent: 'space-between'
-  },
-});
 
 export default Who;

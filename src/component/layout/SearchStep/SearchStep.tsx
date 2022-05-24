@@ -49,7 +49,7 @@ const SearchStep: React.FC<SearchStepProps> = ({
       )}
       headerContainerStyles={styles.headerContainer}>
       <View style={styles.topRow}>
-        <IconButton name="chevron-left" onPress={handleGoBack} opaque />
+        <IconButton name="chevron-left" onPress={handleGoBack} outlined />
         <Text variant="heading2" style={styles.cityName}>
           {cityName}
         </Text>

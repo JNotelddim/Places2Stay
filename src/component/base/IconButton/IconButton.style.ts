@@ -1,6 +1,6 @@
 import {StyleSheet} from 'react-native';
 
-import {colors} from 'const';
+import {colors, spacing} from 'const';
 
 const SIZE = 38;
 const styles = StyleSheet.create({
@@ -14,6 +14,10 @@ const styles = StyleSheet.create({
   },
   opaqueStyle: {
     backgroundColor: colors.highOpacityWhite,
+  },
+  outlinedStyle: {
+    borderColor: colors.black,
+    borderWidth: 1,
   },
 });
 

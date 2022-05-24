@@ -11,7 +11,7 @@ const Results: React.FC<ResultsScreenProps> = ({route}) => {
 
   return (
     <SearchStep title="Results" cityName={city?.name || 'Error'}>
-      <Text>Results </Text>
+      <Text>Results</Text>
     </SearchStep>
   );
 };

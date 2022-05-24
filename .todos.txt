@@ -1,7 +1,8 @@
 
 ## TODO
+- [ ] radio select component for "When"
+- [ ] multi-select component for "When"
 
-- [ ] create a layout component for wrapping all these Search Stack screens with
 
 - [ ] webview in Account?
 - [ ] use personalized architecture
@@ -44,3 +45,4 @@
 - [x] navigation header  w/ bell + profile icons
 - [x] finish integrating use of MockDb
 - [x] update navigation stacks
+- [x] create a layout component for wrapping all these Search Stack screens with

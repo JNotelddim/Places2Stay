@@ -4,33 +4,16 @@ import {Calendar, DateData} from 'react-native-calendars';
 import {MarkingProps} from 'react-native-calendars/src/calendar/day/marking';
 
 import {colors, spacing} from 'const';
-import {useMockDb, WhenScreenProps} from 'component/provider';
+import {getDaysBetweenDates} from 'utils';
 import {Toggle} from 'component/base';
 import {SearchStep} from 'component/layout';
 import {SectionHeader} from 'component/partial';
+import {useMockDb, WhenScreenProps} from 'component/provider';
 
 const EDGE_DAY_COLOR = colors.blue;
 const EDGE_DAY_TEXT_COLOR = colors.white;
 const FILL_DAY_COLOR = colors.midOpacityBlue;
 const FILL_DAY_TEXT_COLOR = colors.white;
-
-const formatDateForCalendarMarking = (input: Date) => {
-  const ISOString = input.toISOString();
-  const formatted = ISOString.slice(0, ISOString.indexOf('T'));
-  return formatted;
-};
-
-const getDaysBetweenDates = (startDate: Date, endDate: Date) => {
-  var dateArray = [];
-  var currentDate = new Date(startDate);
-  // Start the day after the 'start' date (we only want the ones in between)
-  currentDate.setDate(startDate.getDate() + 1);
-  while (currentDate <= endDate) {
-    dateArray.push(formatDateForCalendarMarking(new Date(currentDate)));
-    currentDate.setDate(currentDate.getDate() + 1);
-  }
-  return dateArray;
-};
 
 const When: React.FC<WhenScreenProps> = ({navigation, route}) => {
   const mockDb = useMockDb();
