@@ -2,6 +2,8 @@
 ## TODO
 - [ ] radio select component for "When"
 - [ ] multi-select component for "When"
+- [ ] show filtered PlaceCTAs on Results
+    => replace PlaceCTA with ListingCard
 
 
 - [ ] webview in Account?

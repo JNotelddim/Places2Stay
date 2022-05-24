@@ -21,19 +21,19 @@ export type OccupantsSelection = {
   pets: number;
 };
 
-interface ParamsFromWhere {
+export interface ParamsFromWhere {
   cityId: string;
 }
 
-interface ParamsFromWhat extends ParamsFromWhere {
+export interface ParamsFromWhat extends ParamsFromWhere {
   stayType?: 'Place' | 'Monthly' | 'Experience';
 }
 
-interface ParamsFromWhen extends ParamsFromWhat {
+export interface ParamsFromWhen extends ParamsFromWhat {
   dates?: DateSelection;
 }
 
-interface ParamsFromWho extends ParamsFromWhen {
+export interface ParamsFromWho extends ParamsFromWhen {
   occupants?: OccupantsSelection;
 }
 

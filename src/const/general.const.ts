@@ -6,6 +6,7 @@ import montreal from 'asset/montreal.jpg';
 import vancouver from 'asset/vancouver.jpg';
 import toronto from 'asset/toronto.jpg';
 import newYork from 'asset/new-york.jpg';
+import {ParamsFromWho} from 'component/provider/NavigationProvider/NavigationProvider.type';
 
 // TODO: move all this to utils?
 
@@ -143,6 +144,44 @@ export const initMockDb = () => {
     return listings.find(listing => listing.id === listingId);
   };
 
+  const getFilteredListings = ({
+    cityId,
+    // stayType,
+    // dates,
+    occupants,
+  }: ParamsFromWho) => {
+    return listings.filter(listing => {
+      if (listing.cityId !== cityId) {
+        return false;
+      }
+
+      // nothing to do with the stayType...
+      // TODO: update
+
+      // TODO: logic for aligning dates
+      const datesAlign = true;
+      if (!datesAlign) {
+        return false;
+      }
+
+      const totalOccupants = Object.values({
+        ...occupants,
+        infants: 0,
+        pets: 0,
+      }).reduce((prevValue, currentValue) => prevValue + currentValue, 0);
+
+      if (listing.capacity >= totalOccupants) {
+        return false;
+      }
+
+      if (!listing.allowsDogs && occupants && occupants.pets > 0) {
+        return false;
+      }
+
+      return true;
+    });
+  };
+
   return {
     user: currentUser,
     notifications: thisUsersNotifications,
@@ -152,6 +191,7 @@ export const initMockDb = () => {
     listingAvailabilities,
     getListingsByCity,
     getListingAvailabilities,
+    getFilteredListings,
     getCityById,
     getListingById,
   };
