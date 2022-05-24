@@ -30,7 +30,9 @@ const SearchStep: React.FC<SearchStepProps> = ({cityName, title, children}) => {
       headerContainerStyles={styles.headerContainer}>
       <View style={styles.topRow}>
         <IconButton name="chevron-left" onPress={handleGoBack} opaque />
-        <Text style={styles.cityName}>{cityName} </Text>
+        <Text variant="heading2" style={styles.cityName}>
+          {cityName}
+        </Text>
       </View>
 
       {children}

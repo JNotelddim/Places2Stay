@@ -25,15 +25,15 @@ interface ParamsFromWhere {
 }
 
 interface ParamsFromWhat extends ParamsFromWhere {
-  stayType: 'Place' | 'Monthly' | 'Experience';
+  stayType?: 'Place' | 'Monthly' | 'Experience';
 }
 
 interface ParamsFromWhen extends ParamsFromWhat {
-  dates: DateSelection;
+  dates?: DateSelection;
 }
 
 interface ParamsFromWho extends ParamsFromWhen {
-  occupants: OccupantsSelection;
+  occupants?: OccupantsSelection;
 }
 
 export type SearchStackParamList = {
