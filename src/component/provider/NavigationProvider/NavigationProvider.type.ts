@@ -11,8 +11,8 @@ export type RootStackParamList = {
 };
 
 export type DateSelection = {
-  startDate: Date;
-  endDate: Date;
+  startDate: string; // Date.toISODateString();
+  endDate: string; // Date.toISODateString();
 };
 export type OccupantsSelection = {
   adults: number;
@@ -65,3 +65,7 @@ export type WhereScreenProps = StackScreenProps<SearchStackParamList, 'Where'>;
 export type WhatScreenProps = StackScreenProps<SearchStackParamList, 'What'>;
 export type WhenScreenProps = StackScreenProps<SearchStackParamList, 'When'>;
 export type WhoScreenProps = StackScreenProps<SearchStackParamList, 'Who'>;
+export type ResultsScreenProps = StackScreenProps<
+  SearchStackParamList,
+  'Results'
+>;

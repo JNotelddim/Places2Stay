@@ -12,4 +12,5 @@ export type {
   WhatScreenProps,
   WhenScreenProps,
   WhoScreenProps,
+  ResultsScreenProps,
 } from './NavigationProvider.type';

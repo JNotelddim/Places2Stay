@@ -5,6 +5,7 @@ import Where from './Where';
 import What from './What';
 import When from './When';
 import Who from './Who';
+import Results from './Results';
 
 export interface SearchProps {}
 
@@ -17,6 +18,7 @@ const Search: React.FC<SearchProps> = () => {
       <Stack.Screen name="What" component={What} />
       <Stack.Screen name="When" component={When} />
       <Stack.Screen name="Who" component={Who} />
+      <Stack.Screen name="Results" component={Results} />
     </Stack.Navigator>
   );
 };

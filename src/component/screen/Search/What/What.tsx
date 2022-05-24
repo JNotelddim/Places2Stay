@@ -34,9 +34,8 @@ const WhatCard: React.FC<WhatCardProps> = ({
 );
 
 const What: React.FC<WhatScreenProps> = ({navigation, route}) => {
-  const {cityId} = route.params;
   const mockDb = useMockDb();
-  const city = mockDb.getCityById(cityId);
+  const city = mockDb.getCityById(route.params.cityId);
 
   return (
     <SearchStep

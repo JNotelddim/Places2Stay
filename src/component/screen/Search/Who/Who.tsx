@@ -1,14 +1,32 @@
 import React from 'react';
-import {StyleSheet, View} from 'react-native';
+import {Button, StyleSheet, View} from 'react-native';
 
-import {WhoScreenProps} from 'component/provider';
+import {useMockDb, WhoScreenProps} from 'component/provider';
 import {Text} from 'component/base';
+import {SearchStep} from 'component/layout';
 
-const Who: React.FC<WhoScreenProps> = () => {
+const Who: React.FC<WhoScreenProps> = ({navigation, route}) => {
+  const mockDb = useMockDb();
+  const city = mockDb.getCityById(route.params.cityId);
   return (
-    <View style={styles.container}>
-      <Text>Who</Text>
-    </View>
+    <SearchStep title="Who's going?" cityName={city?.name || 'Error'}>
+      <View>
+        <Text>Who</Text>
+        <Button
+          onPress={() =>
+            navigation.push('Results', {
+              ...route.params,
+              occupants: {
+                adults: 3,
+                kids: 2,
+                dogs: 4,
+              },
+            })
+          }
+          title="Results"
+        />
+      </View>
+    </SearchStep>
   );
 };
 
