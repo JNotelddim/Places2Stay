@@ -10,6 +10,8 @@ import {
   Search,
   NotificationModal,
   Account,
+  City,
+  Listing,
 } from '/component/screen';
 
 import {colors} from 'const';
@@ -77,6 +79,8 @@ const NavigationRoot = () => {
       <Stack.Screen name="HomeTabsRoot" component={HomeTabsNavigator} />
       <Stack.Screen name="Account" component={Account} />
       <Stack.Screen name="Stay" component={Stay} />
+      <Stack.Screen name="City" component={City} />
+      <Stack.Screen name="Listing" component={Listing} />
       <Stack.Screen
         name="NotificationModal"
         component={NotificationModal}

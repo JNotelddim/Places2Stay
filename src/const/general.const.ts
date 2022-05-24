@@ -7,6 +7,9 @@ import vancouver from 'asset/vancouver.jpg';
 import toronto from 'asset/toronto.jpg';
 import newYork from 'asset/new-york.jpg';
 
+// TODO: move all this to utils?
+
+// TODO: move types to src/types?
 export interface User {
   id: string;
   firstName: string;
@@ -133,6 +136,13 @@ export const initMockDb = () => {
     );
   };
 
+  const getCityById = (cityId: string) => {
+    return cities.find(city => city.id === cityId);
+  };
+  const getListingById = (listingId: string) => {
+    return listings.find(listing => listing.id === listingId);
+  };
+
   return {
     user: currentUser,
     notifications: thisUsersNotifications,
@@ -142,5 +152,7 @@ export const initMockDb = () => {
     listingAvailabilities,
     getListingsByCity,
     getListingAvailabilities,
+    getCityById,
+    getListingById,
   };
 };

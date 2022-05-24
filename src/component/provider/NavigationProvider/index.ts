@@ -4,6 +4,7 @@ export type {
   RootStackParamList,
   HomeTabsParamList,
   RootStackNavigation,
-  CitySearchModalProps,
   StayScreenProps,
+  CityScreenProps,
+  ListingScreenProps,
 } from './NavigationProvider.type';

@@ -5,6 +5,8 @@ export type RootStackParamList = {
   CitySearchModal: undefined;
   NotificationModal: undefined;
   Account: undefined;
+  City: {cityId: string};
+  Listing: {listingId: string};
   Stay: {city: string};
 };
 
@@ -12,9 +14,13 @@ export type HomeTabsParamList = {
   Home: undefined;
   Search: undefined;
   // Stay: {};
-  // Stay: {city: string};
 };
 
+export type RootStackNavigation = StackNavigationProp<RootStackParamList>;
 // Remember, tab screens (Home, Search, Stay) don't get params...
 export type StayScreenProps = StackScreenProps<RootStackParamList, 'Stay'>;
-export type RootStackNavigation = StackNavigationProp<RootStackParamList>;
+export type CityScreenProps = StackScreenProps<RootStackParamList, 'City'>;
+export type ListingScreenProps = StackScreenProps<
+  RootStackParamList,
+  'Listing'
+>;
