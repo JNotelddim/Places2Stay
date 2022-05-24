@@ -1,6 +1,6 @@
 import {Dimensions, StyleSheet} from 'react-native';
 
-import {spacing} from 'const';
+import {colors, spacing} from 'const';
 
 const styles = StyleSheet.create({
   container: {
@@ -14,6 +14,7 @@ const styles = StyleSheet.create({
     height: '100%',
   },
   card: {
+    backgroundColor: colors.paleYellow,
     padding: spacing.whitespace.screenHorizontal,
     paddingTop: spacing.whitespace.medium,
     width: Dimensions.get('screen').width,

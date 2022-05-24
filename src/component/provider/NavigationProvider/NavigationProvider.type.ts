@@ -60,6 +60,7 @@ export type ListingScreenProps = StackScreenProps<
 >;
 
 // Search
+export type SearchStackNavigation = StackNavigationProp<SearchStackParamList>;
 export type WhereScreenProps = StackScreenProps<SearchStackParamList, 'Where'>;
 export type WhatScreenProps = StackScreenProps<SearchStackParamList, 'What'>;
 export type WhenScreenProps = StackScreenProps<SearchStackParamList, 'When'>;

@@ -12,7 +12,7 @@ const Stack = createStackNavigator();
 
 const Search: React.FC<SearchProps> = () => {
   return (
-    <Stack.Navigator>
+    <Stack.Navigator screenOptions={{header: () => null}}>
       <Stack.Screen name="Where" component={Where} />
       <Stack.Screen name="What" component={What} />
       <Stack.Screen name="When" component={When} />

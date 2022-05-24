@@ -7,6 +7,7 @@ export type {
   StayScreenProps,
   CityScreenProps,
   ListingScreenProps,
+  SearchStackNavigation,
   WhereScreenProps,
   WhatScreenProps,
   WhenScreenProps,
