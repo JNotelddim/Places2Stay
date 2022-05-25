@@ -2,7 +2,7 @@ import React from 'react';
 import {StyleSheet} from 'react-native';
 import {ScrollView} from 'react-native-gesture-handler';
 
-import {spacing} from 'const';
+import {colors, spacing} from 'const';
 import {getFakePlace, pluralize} from 'utils';
 import {Text} from 'component/base';
 import {PlaceCTA} from 'component/partial';
@@ -23,7 +23,7 @@ const Results: React.FC<ResultsScreenProps> = ({route}) => {
 
   return (
     <SearchStep title="Results" cityName={city?.name || 'Error'}>
-      <Text variant="heading2" style={styles.resultsText}>
+      <Text variant="body1" color={colors.slateGrey} style={styles.resultsText}>
         {filteredListings.length}{' '}
         {pluralize('listing', filteredListings.length)} out of{' '}
         {cityListings.length} in {city?.name} matched what you're looking for.
@@ -42,7 +42,9 @@ const Results: React.FC<ResultsScreenProps> = ({route}) => {
 
 const styles = StyleSheet.create({
   resultsText: {
-    marginVertical: spacing.whitespace.medium,
+    marginTop: spacing.whitespace.large,
+    marginBottom: spacing.whitespace.xlarge,
+    textAlign: 'center',
   },
 });
 
