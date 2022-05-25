@@ -112,21 +112,25 @@ export const initMockDb = () => {
     // dates,
     occupants,
   }: ParamsFromWho) => {
-    return listings.filter(listing => {
+    const misMatchTotals = {
+      wrongCity: 0,
+      datesBooked: 0,
+      tooManyPeople: 0,
+      doesntAllowDogs: 0,
+    };
+
+    const filteredListings = listings.filter(listing => {
       if (listing.cityId !== cityId) {
-        console.log(
-          `listing cityID ${listing.cityId} does not match city Id ${cityId}`,
-        );
+        misMatchTotals.wrongCity += 1;
         return false;
       }
 
       // nothing to do with the stayType...
-      // TODO: update
 
       // TODO: logic for aligning dates
       const datesAlign = true;
       if (!datesAlign) {
-        console.log('listing dates do not match dates');
+        misMatchTotals.datesBooked += 1;
         return false;
       }
 
@@ -137,21 +141,30 @@ export const initMockDb = () => {
       }).reduce((prevValue, currentValue) => prevValue + currentValue, 0);
 
       if (listing.capacity < totalOccupants) {
-        console.log(
-          `listing capacity ${listing.capacity} does not allow for ${totalOccupants} occupants`,
-        );
+        misMatchTotals.tooManyPeople += 1;
         return false;
       }
 
       if (!listing.allowsDogs && occupants && occupants.pets > 0) {
-        console.log(
-          `listing does not allow dogs ${listing.allowsDogs} ${occupants.pets}`,
-        );
+        misMatchTotals.doesntAllowDogs += 1;
         return false;
       }
 
-      return true;
+      const doFiltersAlignWithListing =
+        // If the city doesn't match
+        listing.cityId == cityId &&
+        // Or the dates don't align
+        datesAlign &&
+        // Or the occupants outnumber the capacity
+        listing.capacity >= totalOccupants &&
+        // Or the listing doesn't allow dogs but occupants want to bring them
+        (!occupants || occupants.pets === 0 || listing.allowsDogs);
+      // then return value will be false, (ie, doesn't match) -- otherwise true :)
+      return doFiltersAlignWithListing;
     });
+
+    console.log({misMatchTotals, totalListings: listings.length});
+    return filteredListings;
   };
 
   return {

@@ -1,6 +1,9 @@
 import React from 'react';
+import {StyleSheet} from 'react-native';
+import {ScrollView} from 'react-native-gesture-handler';
 
-import {getFakePlace} from 'utils';
+import {spacing} from 'const';
+import {getFakePlace, pluralize} from 'utils';
 import {Text} from 'component/base';
 import {PlaceCTA} from 'component/partial';
 import {SearchStep} from 'component/layout';
@@ -10,6 +13,7 @@ const Results: React.FC<ResultsScreenProps> = ({route}) => {
   const mockDb = useMockDb();
   const {cityId, stayType, dates, occupants} = route.params;
   const city = mockDb.getCityById(cityId);
+  const cityListings = mockDb.getListingsByCity(cityId);
   const filteredListings = mockDb.getFilteredListings({
     cityId,
     stayType,
@@ -19,28 +23,27 @@ const Results: React.FC<ResultsScreenProps> = ({route}) => {
 
   return (
     <SearchStep title="Results" cityName={city?.name || 'Error'}>
-      <Text>Results</Text>
-      <Text>{cityId}</Text>
-      <Text>{stayType}</Text>
-      <Text>
-        {dates?.startDate} {dates?.endDate}
-      </Text>
-      <Text>
-        {occupants?.adults} {occupants?.children} {occupants?.infants}{' '}
-        {occupants?.pets}
+      <Text variant="heading2" style={styles.resultsText}>
+        {filteredListings.length}{' '}
+        {pluralize('listing', filteredListings.length)} out of{' '}
+        {cityListings.length} in {city?.name} matched what you're looking for.
       </Text>
 
-      {filteredListings.length ? (
-        filteredListings.map(listing => (
-          <PlaceCTA key={listing.id} {...getFakePlace()} {...listing} />
-        ))
-      ) : (
-        <Text variant="heading2">
-          No results found which can accommodate your search filters.
-        </Text>
+      {filteredListings.length && (
+        <ScrollView>
+          {filteredListings.map(listing => (
+            <PlaceCTA key={listing.id} {...getFakePlace()} {...listing} />
+          ))}
+        </ScrollView>
       )}
     </SearchStep>
   );
 };
+
+const styles = StyleSheet.create({
+  resultsText: {
+    marginVertical: spacing.whitespace.medium,
+  },
+});
 
 export default Results;
