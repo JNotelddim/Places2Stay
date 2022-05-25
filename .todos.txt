@@ -4,6 +4,7 @@
 - [ ] multi-select component for "When"
 - [ ] show filtered PlaceCTAs on Results
     => replace PlaceCTA with ListingCard
+- [ ] move mockdb out of consts file
 
 
 - [ ] webview in Account?

@@ -94,7 +94,7 @@ export const initMockDb = () => {
     id: faker.datatype.uuid(),
     cityId: getRandomExistingItem(cities).id,
     userId: getRandomExistingItem(users).id,
-    address: '',
+    address: faker.address.streetAddress(),
     capacity: getRandomNumber(24),
     allowsDogs: faker.datatype.boolean(),
   }));
@@ -152,6 +152,9 @@ export const initMockDb = () => {
   }: ParamsFromWho) => {
     return listings.filter(listing => {
       if (listing.cityId !== cityId) {
+        console.log(
+          `listing cityID ${listing.cityId} does not match city Id ${cityId}`,
+        );
         return false;
       }
 
@@ -161,6 +164,7 @@ export const initMockDb = () => {
       // TODO: logic for aligning dates
       const datesAlign = true;
       if (!datesAlign) {
+        console.log('listing dates do not match dates');
         return false;
       }
 
@@ -170,11 +174,17 @@ export const initMockDb = () => {
         pets: 0,
       }).reduce((prevValue, currentValue) => prevValue + currentValue, 0);
 
-      if (listing.capacity >= totalOccupants) {
+      if (listing.capacity < totalOccupants) {
+        console.log(
+          `listing capacity ${listing.capacity} does not allow for ${totalOccupants} occupants`,
+        );
         return false;
       }
 
       if (!listing.allowsDogs && occupants && occupants.pets > 0) {
+        console.log(
+          `listing does not allow dogs ${listing.allowsDogs} ${occupants.pets}`,
+        );
         return false;
       }
 
