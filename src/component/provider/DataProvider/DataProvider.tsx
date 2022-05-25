@@ -1,4 +1,4 @@
-import {initMockDb} from 'const';
+import {initMockDb} from 'utils';
 import React from 'react';
 
 const mockDb = initMockDb();

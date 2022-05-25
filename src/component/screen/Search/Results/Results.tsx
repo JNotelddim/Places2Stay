@@ -1,5 +1,4 @@
 import React from 'react';
-import {StyleSheet} from 'react-native';
 
 import {getFakePlace} from 'utils';
 import {Text} from 'component/base';
@@ -43,9 +42,5 @@ const Results: React.FC<ResultsScreenProps> = ({route}) => {
     </SearchStep>
   );
 };
-
-const styles = StyleSheet.create({
-  container: {},
-});
 
 export default Results;
