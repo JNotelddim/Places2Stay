@@ -8,9 +8,16 @@ import {
   View,
 } from 'react-native';
 
+import Constants from 'expo-constants';
+console.log(Constants.systemFonts);
+
 import {getFakePlace} from 'utils';
 import {colors} from 'const';
-import {RootStackNavigation, useMockDb} from 'component/provider';
+import {
+  HomeTabsNavigation,
+  RootStackNavigation,
+  useMockDb,
+} from 'component/provider';
 import {IconButton, InputFacadeButton} from 'component/base';
 import {
   Carousel,
@@ -30,6 +37,7 @@ const fakePlaces = new Array(6).fill(undefined).map(() => getFakePlace());
 const Home: React.FC = () => {
   const animated = React.useRef(new Animated.Value(0)).current;
   const navigation = useNavigation<RootStackNavigation>();
+  const tabNavigation = useNavigation<HomeTabsNavigation>();
   const {cities} = useMockDb();
 
   // Nav header options:
@@ -74,7 +82,7 @@ const Home: React.FC = () => {
         {/* TODO: use gradient for header background */}
         <InputFacadeButton
           title="Try 'Boston'"
-          onPress={() => navigation.navigate('CitySearchModal')}
+          onPress={() => tabNavigation.navigate('Search')}
         />
       </Animated.View>
       <SectionHeader

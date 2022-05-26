@@ -4,4 +4,5 @@ export type {
   RootStackParamList,
   HomeTabsParamList,
   RootStackNavigation,
+  HomeTabsNavigation,
 } from './NavigationProvider.type';

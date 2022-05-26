@@ -1,8 +1,8 @@
+import {BottomTabNavigationProp} from '@react-navigation/bottom-tabs';
 import {StackNavigationProp} from '@react-navigation/stack';
 
 export type RootStackParamList = {
   HomeTabsRoot: undefined;
-  CitySearchModal: undefined;
   NotificationModal: undefined;
   Account: undefined;
   City: {cityId: string};
@@ -17,3 +17,4 @@ export type HomeTabsParamList = {
 };
 
 export type RootStackNavigation = StackNavigationProp<RootStackParamList>;
+export type HomeTabsNavigation = BottomTabNavigationProp<HomeTabsParamList>;
