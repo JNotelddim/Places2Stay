@@ -21,6 +21,7 @@ const styles = StyleSheet.create({
     position: 'absolute',
     bottom: 0,
     borderRadius: 16,
+    marginBottom: 65, // 80 is height of BottomTabs but can't be full or else the bottom of the card will show
   },
   dragBar: {
     alignSelf: 'center',

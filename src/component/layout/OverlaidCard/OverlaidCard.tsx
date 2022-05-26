@@ -34,7 +34,6 @@ const OverlaidCard: React.FC<OverlaidCardProps> = ({
       <Animated.View
         style={[
           styles.card,
-          contentContainerStyles,
           {
             top: animated.interpolate({
               inputRange: [0, 1],
@@ -43,7 +42,7 @@ const OverlaidCard: React.FC<OverlaidCardProps> = ({
           },
         ]}>
         <CardDragBar onPress={handleCardTogglePress} style={styles.dragBar} />
-        {children}
+        <View style={contentContainerStyles}>{children}</View>
       </Animated.View>
     </View>
   );
