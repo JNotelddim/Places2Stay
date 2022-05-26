@@ -9,11 +9,15 @@ const styles = StyleSheet.create({
     borderRadius: 20,
     backgroundColor: colors.white,
     paddingVertical: spacing.whitespace.small,
-    paddingHorizontal: spacing.whitespace.medium,
+    paddingHorizontal: spacing.whitespace.large,
     marginRight: spacing.whitespace.medium,
+    alignItems: 'center',
   },
   selected: {
     borderColor: colors.black,
+  },
+  icon: {
+    marginBottom: spacing.whitespace.small,
   },
 });
 

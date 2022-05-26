@@ -8,13 +8,9 @@ import styles from './WeekendOption.style';
 import {WeekendOptionProps} from './WeekendOption.type';
 import {Text} from 'component/base';
 
-const getMmDdDateString = (inputDate: Date) => {
+const getMonthString = (inputDate: Date) => {
   // Wed March 24 1998
-  return inputDate
-    .toDateString()
-    .split(' ')
-    .filter((v, index) => index === 1 || index === 2)
-    .join(' ');
+  return inputDate.toDateString().split(' ')[1];
 };
 
 const WeekendOption: React.FC<WeekendOptionProps> = ({
@@ -35,10 +31,11 @@ const WeekendOption: React.FC<WeekendOptionProps> = ({
   return (
     <Pressable onPress={handlePress}>
       <View style={[styles.container, isSelected && styles.selected]}>
+        <Icon name="calendar" size={36} style={styles.icon} />
+        <Text variant="body2">{getMonthString(startDate)}</Text>
         <Text>
-          {getMmDdDateString(startDate)}, {endDate.getDate()}
+          {startDate.getDate()}, {endDate.getDate()}
         </Text>
-        <Icon name="calendar" size={24} />
       </View>
     </Pressable>
   );
