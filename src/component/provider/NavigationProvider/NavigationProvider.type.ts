@@ -10,6 +10,11 @@ export type RootStackParamList = {
   Stay: {city: string};
 };
 
+export type UnauthenticatedStackParamList = {
+  SignIn: undefined;
+  SignUp: undefined;
+};
+
 export type HomeTabsParamList = {
   Home: undefined;
   Search: undefined;
@@ -17,4 +22,6 @@ export type HomeTabsParamList = {
 };
 
 export type RootStackNavigation = StackNavigationProp<RootStackParamList>;
+export type UnauthenticatedStackNavigation =
+  StackNavigationProp<UnauthenticatedStackParamList>;
 export type HomeTabsNavigation = BottomTabNavigationProp<HomeTabsParamList>;
