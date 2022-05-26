@@ -1,21 +1,15 @@
 import React from 'react';
-import {Button, StyleSheet, View} from 'react-native';
+import {Button, View} from 'react-native';
 import {useNavigation} from '@react-navigation/native';
 
-import {colors, spacing} from 'const';
+import {colors} from 'const';
 import {IconButton, Text} from 'component/base';
-import {SearchStackNavigation} from 'component/provider';
 import {OverlaidCard} from 'component/layout';
 
-export interface SearchStepProps {
-  title: string;
-  cityName: string;
-  showSkip?: boolean;
-  showNext?: boolean;
-  onNextPress?: () => void;
-  onSkipPress?: () => void;
-  nextDisabled?: boolean;
-}
+import styles from './SearchStep.style';
+
+import {SearchStackNavigation} from 'component/screen/Search/Search.type';
+import {SearchStepProps} from './SearchStep.type';
 
 const SearchStep: React.FC<SearchStepProps> = ({
   cityName,
@@ -47,15 +41,18 @@ const SearchStep: React.FC<SearchStepProps> = ({
           {title}
         </Text>
       )}
-      headerContainerStyles={styles.headerContainer}>
-      <View style={styles.topRow}>
-        <IconButton name="chevron-left" onPress={handleGoBack} outlined />
-        <Text variant="heading2" style={styles.cityName}>
-          {cityName}
-        </Text>
-      </View>
+      headerContainerStyles={styles.headerContainer}
+      contentContainerStyles={styles.wrapperContent}>
+      <View>
+        <View style={styles.topRow}>
+          <IconButton name="chevron-left" onPress={handleGoBack} outlined />
+          <Text variant="heading2" style={styles.cityName}>
+            {cityName}
+          </Text>
+        </View>
 
-      {children}
+        {children}
+      </View>
 
       <View style={styles.buttonRow}>
         {showSkip && <Button title="Skip" onPress={handleSkipPress} />}
@@ -71,27 +68,5 @@ const SearchStep: React.FC<SearchStepProps> = ({
     </OverlaidCard>
   );
 };
-
-const styles = StyleSheet.create({
-  container: {},
-  topRow: {
-    flexDirection: 'row',
-    alignItems: 'center',
-  },
-  headerContainer: {
-    backgroundColor: colors.blue,
-    color: colors.white,
-    padding: spacing.whitespace.xlarge,
-  },
-  cityName: {
-    width: '75%',
-    textAlign: 'center',
-  },
-  buttonRow: {
-    marginTop: spacing.whitespace.large,
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-  },
-});
 
 export default SearchStep;

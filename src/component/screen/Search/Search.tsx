@@ -7,11 +7,9 @@ import When from './When';
 import Who from './Who';
 import Results from './Results';
 
-export interface SearchProps {}
-
 const Stack = createStackNavigator();
 
-const Search: React.FC<SearchProps> = () => {
+const Search: React.FC = () => {
   return (
     <Stack.Navigator screenOptions={{header: () => null}}>
       <Stack.Screen name="Where" component={Where} />

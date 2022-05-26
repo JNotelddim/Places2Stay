@@ -35,15 +35,15 @@ export const getNextXWeekends = (howMany: number): DurationOption[] => {
   const weekends = [];
   const nearestWeekendStartDate = getNextDayOfWeek(5);
 
-  const startDate = new Date();
-  const endDate = new Date();
+  const rotatingStart = new Date();
+  const rotatingEnd = new Date();
   for (let i = 0; i <= howMany; i++) {
-    startDate.setDate(nearestWeekendStartDate.getDate() + 7 * i);
-    endDate.setDate(nearestWeekendStartDate.getDate() + 7 * i + 1);
+    rotatingStart.setDate(nearestWeekendStartDate.getDate() + 7 * i);
+    rotatingEnd.setDate(nearestWeekendStartDate.getDate() + 7 * i + 1);
     weekends.push({
-      startDate,
-      endDate,
-      label: `${startDate.toDateString()} => ${endDate.toDateString()}`,
+      startDate: new Date(rotatingStart),
+      endDate: new Date(rotatingEnd),
+      label: `${rotatingStart.toDateString()} => ${rotatingEnd.toDateString()}`,
     });
   }
 
@@ -53,15 +53,15 @@ export const getNextXWeeks = (howMany: number): DurationOption[] => {
   const weeks = [];
   const nearestWeekStartDate = getNextDayOfWeek(0);
 
-  const startDate = new Date();
-  const endDate = new Date();
+  const rotatingStart = new Date();
+  const rotatingEnd = new Date();
   for (let i = 0; i <= howMany; i++) {
-    startDate.setDate(nearestWeekStartDate.getDate() + 7 * i);
-    endDate.setDate(nearestWeekStartDate.getDate() + 7 * i + 6);
+    rotatingStart.setDate(nearestWeekStartDate.getDate() + 7 * i);
+    rotatingEnd.setDate(nearestWeekStartDate.getDate() + 7 * i + 6);
     weeks.push({
-      startDate,
-      endDate,
-      label: `${startDate.toDateString()} => ${endDate.toDateString()}`,
+      startDate: new Date(rotatingStart),
+      endDate: new Date(rotatingEnd),
+      label: `${rotatingStart.toDateString()} => ${rotatingEnd.toDateString()}`,
     });
   }
 

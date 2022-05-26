@@ -1,57 +1,8 @@
 import React from 'react';
-import {
-  StyleSheet,
-  Text as RNText,
-  TextProps as RNTextProps,
-  TextStyle,
-} from 'react-native';
+import {Text as RNText} from 'react-native';
 
-// Utils
-const variantStyles = {
-  heading1: {
-    fontSize: 24,
-    lineHeight: 29,
-    fontWeight: '400',
-    fontFamily: 'Bitter',
-  },
-  heading2: {
-    fontSize: 16,
-    lineHeight: 19,
-    fontWeight: '400',
-    fontFamily: 'Bitter',
-  },
-  body1: {
-    fontSize: 12,
-    lineHeight: 15,
-    fontWeight: '400',
-    fontFamily: 'Encode Sans',
-  },
-  body2: {
-    fontSize: 16,
-    lineHeight: 20,
-    fontWeight: '400',
-    fontFamily: 'Encode Sans',
-  },
-};
-
-const getStylesFromProps = (variant: TextVariant, color?: string) => {
-  let stylesObj: Record<string, unknown> = {
-    ...variantStyles[variant],
-  };
-
-  if (color) {
-    stylesObj.color = color as TextStyle;
-  }
-
-  return StyleSheet.create(stylesObj as StyleSheet.NamedStyles<TextStyle>);
-};
-
-// Text.type.ts
-type TextVariant = keyof typeof variantStyles;
-interface TextProps extends RNTextProps {
-  variant?: TextVariant;
-  color?: string;
-}
+import {TextProps} from './Text.type';
+import {getStylesFromProps} from './Text.util';
 
 /**
  * Text is a wrapper for the RN Text component which allows for some customization.

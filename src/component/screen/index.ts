@@ -5,4 +5,3 @@ export {default as Listing} from './Listing';
 export * from './Search';
 export {default as Stay} from './Stay';
 export {default as NotificationModal} from './NotificationModal';
-export {default as Other} from './Other';
