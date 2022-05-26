@@ -2,10 +2,12 @@ import React from 'react';
 
 import {SearchStep} from 'component/layout';
 import {CounterRow} from 'component/partial';
-import {useMockDb, WhoScreenProps} from 'component/provider';
-import {OccupantsSelection} from 'component/provider/NavigationProvider/NavigationProvider.type';
+import {useMockDb} from 'component/provider';
 
 import styles from './Who.style';
+
+import {OccupantsSelection} from '../Search.type';
+import {WhoScreenProps} from './Who.type';
 
 const Who: React.FC<WhoScreenProps> = ({navigation, route}) => {
   const mockDb = useMockDb();

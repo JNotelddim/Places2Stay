@@ -2,6 +2,7 @@
 ## TODO
 - [ ] show filtered PlaceCTAs on Results
     => replace PlaceCTA with ListingCard
+- [ ] fix search layout's bottom buttons alignment
     
 - [ ] deep links
 - [ ] expo auth

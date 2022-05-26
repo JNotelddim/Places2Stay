@@ -1,13 +1,16 @@
 import React from 'react';
-import {StyleSheet} from 'react-native';
 import {ScrollView} from 'react-native-gesture-handler';
 
-import {colors, spacing} from 'const';
+import {colors} from 'const';
 import {getFakePlace, pluralize} from 'utils';
 import {Text} from 'component/base';
 import {PlaceCTA} from 'component/partial';
 import {SearchStep} from 'component/layout';
-import {ResultsScreenProps, useMockDb} from 'component/provider';
+import {useMockDb} from 'component/provider';
+
+import styles from './Results.style';
+
+import {ResultsScreenProps} from './Results.type';
 
 const Results: React.FC<ResultsScreenProps> = ({route}) => {
   const mockDb = useMockDb();
@@ -39,13 +42,5 @@ const Results: React.FC<ResultsScreenProps> = ({route}) => {
     </SearchStep>
   );
 };
-
-const styles = StyleSheet.create({
-  resultsText: {
-    marginTop: spacing.whitespace.large,
-    marginBottom: spacing.whitespace.xlarge,
-    textAlign: 'center',
-  },
-});
 
 export default Results;

@@ -1,13 +1,14 @@
 import React from 'react';
-import {StyleSheet, View} from 'react-native';
+import {View} from 'react-native';
 import {ScrollView} from 'react-native-gesture-handler';
 
-import {colors, spacing} from 'const';
 import {CityLink, SearchInput} from 'component/base';
 import {SectionHeader} from 'component/partial';
-import {useMockDb, WhereScreenProps} from 'component/provider';
+import {useMockDb} from 'component/provider';
 
-// TODO: why is it suddenly acting like it's using a safeAreaView? is this cause of the Stack Navigator?
+import styles from './Where.style';
+
+import {WhereScreenProps} from './Where.type';
 
 const Where: React.FC<WhereScreenProps> = ({navigation}) => {
   const [searchVal, setWhereModalVal] = React.useState('');
@@ -16,8 +17,6 @@ const Where: React.FC<WhereScreenProps> = ({navigation}) => {
   const filteredCites = cities.filter(
     ({name}) => name.includes(searchVal) || searchVal === '',
   );
-
-  // TODO: create a layout component for wrapping all these Search Stack screens with 'Back' button and such
 
   return (
     <View style={styles.container}>
@@ -41,17 +40,5 @@ const Where: React.FC<WhereScreenProps> = ({navigation}) => {
     </View>
   );
 };
-
-const styles = StyleSheet.create({
-  container: {
-    backgroundColor: colors.paleYellow,
-    height: '100%',
-    paddingTop: spacing.whitespace.unsafeScreenTop,
-    paddingHorizontal: spacing.whitespace.screenHorizontal,
-  },
-  header: {
-    marginBottom: spacing.whitespace.large,
-  },
-});
 
 export default Where;

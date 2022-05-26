@@ -1,7 +1,6 @@
 import React from 'react';
 import {View} from 'react-native';
 import {Calendar} from 'react-native-calendars';
-import {MarkingProps} from 'react-native-calendars/src/calendar/day/marking';
 
 import {getDurationOptions} from 'utils';
 import {useHandleCalendarRange} from 'hook';
@@ -13,12 +12,8 @@ import {useMockDb} from 'component/provider';
 
 import styles from './When.style';
 
-import {Duration} from 'type/dates.type';
+import {Duration, MarkedDays} from 'type/dates.type';
 import {WhenScreenProps} from './when.type';
-
-type MarkedDays = {
-  [key: string]: MarkingProps;
-};
 
 const When: React.FC<WhenScreenProps> = ({navigation, route}) => {
   const [isCalendar, setIsCalendar] = React.useState(true);
