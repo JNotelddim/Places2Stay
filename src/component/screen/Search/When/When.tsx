@@ -1,20 +1,20 @@
 import React from 'react';
-import {StyleSheet, View} from 'react-native';
-import {Calendar, DateData} from 'react-native-calendars';
+import {View} from 'react-native';
+import {Calendar} from 'react-native-calendars';
 import {MarkingProps} from 'react-native-calendars/src/calendar/day/marking';
 
-import {colors, spacing} from 'const';
-import {getDaysBetweenDates, getDurationOptions} from 'utils';
+import {getDurationOptions} from 'utils';
+import {useHandleCalendarRange} from 'hook';
+
 import {Radio, RadioOption, Toggle} from 'component/base';
 import {SearchStep} from 'component/layout';
 import {SectionHeader} from 'component/partial';
-import {useMockDb, WhenScreenProps} from 'component/provider';
-import {Duration} from 'type/dates.type';
+import {useMockDb} from 'component/provider';
 
-const EDGE_DAY_COLOR = colors.blue;
-const EDGE_DAY_TEXT_COLOR = colors.white;
-const FILL_DAY_COLOR = colors.midOpacityBlue;
-const FILL_DAY_TEXT_COLOR = colors.white;
+import styles from './When.style';
+
+import {Duration} from 'type/dates.type';
+import {WhenScreenProps} from './when.type';
 
 const When: React.FC<WhenScreenProps> = ({navigation, route}) => {
   const mockDb = useMockDb();
@@ -31,51 +31,17 @@ const When: React.FC<WhenScreenProps> = ({navigation, route}) => {
   const [selectedDurationOption, setSelectedDurationOption] = React.useState();
   const durationOptions = getDurationOptions(durationSelection);
 
-  // Show options for Calendar or Flexible
-  // then depending on which is selected, show a calendar (wix) or
-  // options for (weekend, week ,month),
-  // and depending on which of those is selected,
-  // show a selector between options (if it's May now, show May, June, July for months.)
+  const {handleCalendarDayPress} = useHandleCalendarRange({
+    startDate,
+    endDate,
+    calendarMarkedDays,
+    setStartDate,
+    setEndDate,
+    setCalendarMarkedDays,
+  });
 
   const handleToggleChange = (isChecked: Boolean) => {
     setIsCalendar(!isChecked);
-  };
-
-  /* Sorry this function in messy, I hope to come back to it later, but for now it's working and I don't want to fall behind */
-  const handleCalendarDayPress = (day: DateData) => {
-    let tempMarkedDays = {...calendarMarkedDays};
-    let options: MarkingProps = {
-      color: EDGE_DAY_COLOR,
-      textColor: EDGE_DAY_TEXT_COLOR,
-    };
-
-    const isDateBeforeCurrentStart =
-      startDate && new Date(day.dateString) < startDate;
-    if ((startDate && endDate) || isDateBeforeCurrentStart) {
-      // Clear out existing marked days if you're clicking a new start date;
-      tempMarkedDays = {};
-      setStartDate(new Date(day.dateString));
-      setEndDate(undefined);
-      options.startingDay = true;
-    } else if (!startDate) {
-      options.startingDay = true;
-      setStartDate(new Date(day.dateString));
-    } else if (!endDate) {
-      options.endingDay = true;
-      const newEndDate = new Date(day.dateString);
-      setEndDate(newEndDate);
-
-      // Fill in-between days:
-      const daysBetween = getDaysBetweenDates(startDate, newEndDate);
-      for (const betweenDay of daysBetween) {
-        tempMarkedDays[betweenDay] = {
-          color: FILL_DAY_COLOR,
-          textColor: FILL_DAY_TEXT_COLOR,
-        };
-      }
-    }
-
-    setCalendarMarkedDays({...tempMarkedDays, [day.dateString]: options});
   };
 
   const handleSkipPress = () => {
@@ -163,30 +129,5 @@ const When: React.FC<WhenScreenProps> = ({navigation, route}) => {
     </SearchStep>
   );
 };
-
-const styles = StyleSheet.create({
-  container: {},
-  toggle: {
-    width: '80%',
-    marginLeft: 'auto',
-    marginRight: 'auto',
-    marginVertical: spacing.whitespace.large,
-  },
-  calendar: {
-    borderRadius: 8,
-  },
-  buttonRow: {
-    marginTop: spacing.whitespace.large,
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-  },
-  radio: {
-    marginVertical: spacing.whitespace.large,
-  },
-  weekendRadioOption: {
-    padding: 40,
-    backgroundColor: 'red',
-  },
-});
 
 export default When;
