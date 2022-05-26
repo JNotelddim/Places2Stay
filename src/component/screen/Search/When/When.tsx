@@ -6,7 +6,7 @@ import {MarkingProps} from 'react-native-calendars/src/calendar/day/marking';
 import {getDurationOptions} from 'utils';
 import {useHandleCalendarRange} from 'hook';
 
-import {Radio, RadioOption, Toggle} from 'component/base';
+import {Radio, RadioOption, Toggle, WeekendOption} from 'component/base';
 import {SearchStep} from 'component/layout';
 import {SectionHeader} from 'component/partial';
 import {useMockDb} from 'component/provider';
@@ -112,14 +112,7 @@ const When: React.FC<WhenScreenProps> = ({navigation, route}) => {
                   setSelectedDurationOption(newDurationOption);
                 }}>
                 {durationOptions.map(option => {
-                  return (
-                    <RadioOption
-                      key={option.label}
-                      value={option}
-                      valueComparatorKey="label">
-                      {option.label}
-                    </RadioOption>
-                  );
+                  return <WeekendOption key={option.label} value={option} />;
                 })}
               </Radio>
             </View>
