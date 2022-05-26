@@ -4,11 +4,12 @@ import {Calendar, DateData} from 'react-native-calendars';
 import {MarkingProps} from 'react-native-calendars/src/calendar/day/marking';
 
 import {colors, spacing} from 'const';
-import {getDaysBetweenDates} from 'utils';
-import {Toggle} from 'component/base';
+import {getDaysBetweenDates, getDurationOptions} from 'utils';
+import {Radio, RadioOption, Toggle} from 'component/base';
 import {SearchStep} from 'component/layout';
 import {SectionHeader} from 'component/partial';
 import {useMockDb, WhenScreenProps} from 'component/provider';
+import {Duration} from 'type/dates.type';
 
 const EDGE_DAY_COLOR = colors.blue;
 const EDGE_DAY_TEXT_COLOR = colors.white;
@@ -25,19 +26,16 @@ const When: React.FC<WhenScreenProps> = ({navigation, route}) => {
   const [calendarMarkedDays, setCalendarMarkedDays] = React.useState<{
     [key: string]: MarkingProps;
   }>({});
-  const [durationSelection, setDurationSelection] = React.useState<
-    'Weekend' | 'Week' | 'Month'
-  >('Weekend');
+  const [durationSelection, setDurationSelection] =
+    React.useState<Duration>('Weekend');
+  const [selectedDurationOption, setSelectedDurationOption] = React.useState();
+  const durationOptions = getDurationOptions(durationSelection);
 
   // Show options for Calendar or Flexible
   // then depending on which is selected, show a calendar (wix) or
   // options for (weekend, week ,month),
   // and depending on which of those is selected,
   // show a selector between options (if it's May now, show May, June, July for months.)
-
-  // Keep button disabled until sufficient selection is made,
-
-  // When button is enabled, it goes to 'Who' and passes along the built up selection info
 
   const handleToggleChange = (isChecked: Boolean) => {
     setIsCalendar(!isChecked);
@@ -123,10 +121,41 @@ const When: React.FC<WhenScreenProps> = ({navigation, route}) => {
         ) : (
           <View>
             <SectionHeader heading={`Stay for a ${durationSelection}`} />
-            <View>{/** TODO words Radio options: Weekend, Week, Month */}</View>
+            <View>
+              <Radio
+                style={styles.radio}
+                value={durationSelection}
+                onChange={(newValue: string) => {
+                  setDurationSelection(newValue as Duration);
+                  setStartDate(undefined);
+                  setEndDate(undefined);
+                }}>
+                <RadioOption value="Weekend">Weekend</RadioOption>
+                <RadioOption value="Week">Week</RadioOption>
+                <RadioOption value="Month">Month</RadioOption>
+              </Radio>
+            </View>
             <SectionHeader heading={`Go in ${durationSelection}`} />
             <View>
-              {/** TODO multi-select options for Weekends, Weeks, Months */}
+              <Radio
+                style={styles.radio}
+                value={selectedDurationOption}
+                onChange={newDurationOption => {
+                  setStartDate(newDurationOption.startDate);
+                  setEndDate(newDurationOption.endDate);
+                  setSelectedDurationOption(newDurationOption);
+                }}>
+                {durationOptions.map(option => {
+                  return (
+                    <RadioOption
+                      key={option.label}
+                      value={option}
+                      valueComparatorKey="label">
+                      {option.label}
+                    </RadioOption>
+                  );
+                })}
+              </Radio>
             </View>
           </View>
         )}
@@ -150,6 +179,13 @@ const styles = StyleSheet.create({
     marginTop: spacing.whitespace.large,
     flexDirection: 'row',
     justifyContent: 'space-between',
+  },
+  radio: {
+    marginVertical: spacing.whitespace.large,
+  },
+  weekendRadioOption: {
+    padding: 40,
+    backgroundColor: 'red',
   },
 });
 

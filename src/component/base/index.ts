@@ -3,6 +3,7 @@ export * from './CityLink';
 export * from './IconButton';
 export * from './InputFacadeButton';
 export * from './Pressable';
+export * from './Radio';
 export * from './SearchInput';
 export * from './Text';
 export * from './Toggle';
