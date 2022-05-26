@@ -1,5 +1,5 @@
 {
-  "scheme": null,
+  "scheme": "places2stay",
   "hostType": "lan",
   "lanType": "ip",
   "devClient": true,
