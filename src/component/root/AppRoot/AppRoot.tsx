@@ -10,8 +10,11 @@
 
 import React from 'react';
 import {NavigationContainer} from '@react-navigation/native';
+import {Logs} from 'expo';
 
 import {NavigationRoot} from 'component/provider';
+
+Logs.enableExpoCliLogging();
 
 const AppRoot = () => {
   return (
