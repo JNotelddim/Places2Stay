@@ -4,14 +4,17 @@ import {colors, spacing} from 'const';
 
 const styles = StyleSheet.create({
   container: {
+    width: 100,
+    height: 115,
     borderColor: colors.slateGrey,
     borderWidth: 1,
     borderRadius: 20,
     backgroundColor: colors.white,
     paddingVertical: spacing.whitespace.small,
-    paddingHorizontal: spacing.whitespace.large,
+    paddingHorizontal: 'auto',
     marginRight: spacing.whitespace.medium,
     alignItems: 'center',
+    justifyContent: 'center',
   },
   selected: {
     borderColor: colors.black,
@@ -21,6 +24,9 @@ const styles = StyleSheet.create({
   },
   smallIcon: {
     marginVertical: 4,
+  },
+  datesText: {
+    marginTop: 4,
   },
 });
 

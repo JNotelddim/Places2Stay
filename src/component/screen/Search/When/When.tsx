@@ -6,14 +6,7 @@ import {MarkingProps} from 'react-native-calendars/src/calendar/day/marking';
 import {getDurationOptions} from 'utils';
 import {useHandleCalendarRange} from 'hook';
 
-import {
-  Toggle,
-  Radio,
-  RadioOption,
-  WeekendOption,
-  WeekOption,
-  MonthOption,
-} from 'component/base';
+import {Toggle, Radio, RadioOption, TimeDurationOption} from 'component/base';
 import {SearchStep} from 'component/layout';
 import {SectionHeader} from 'component/partial';
 import {useMockDb} from 'component/provider';
@@ -22,12 +15,6 @@ import styles from './When.style';
 
 import {Duration} from 'type/dates.type';
 import {WhenScreenProps} from './when.type';
-
-const durationDiplayComponents = {
-  Weekend: WeekendOption,
-  Week: WeekOption,
-  Month: MonthOption,
-};
 
 type MarkedDays = {
   [key: string]: MarkingProps;
@@ -39,12 +26,10 @@ const When: React.FC<WhenScreenProps> = ({navigation, route}) => {
   const [endDate, setEndDate] = React.useState<Date | undefined>();
   const [calendarMarkedDays, setCalendarMarkedDays] =
     React.useState<MarkedDays>({});
-  const [durationSelection, setDurationSelection] =
-    React.useState<Duration>('Weekend');
+  const [durationType, setDurationType] = React.useState<Duration>('Weekend');
   const [selectedDurationOption, setSelectedDurationOption] = React.useState();
 
-  const durationOptions = getDurationOptions(durationSelection);
-  const DurationDisplayComponent = durationDiplayComponents[durationSelection];
+  const durationOptions = getDurationOptions(durationType);
 
   const mockDb = useMockDb();
   const city = mockDb.getCityById(route.params.cityId);
@@ -104,13 +89,13 @@ const When: React.FC<WhenScreenProps> = ({navigation, route}) => {
           />
         ) : (
           <View>
-            <SectionHeader heading={`Stay for a ${durationSelection}`} />
+            <SectionHeader heading={`Stay for a ${durationType}`} />
             <View>
               <Radio
                 style={styles.radio}
-                value={durationSelection}
+                value={durationType}
                 onChange={(newValue: string) => {
-                  setDurationSelection(newValue as Duration);
+                  setDurationType(newValue as Duration);
                   setStartDate(undefined);
                   setEndDate(undefined);
                 }}>
@@ -119,7 +104,7 @@ const When: React.FC<WhenScreenProps> = ({navigation, route}) => {
                 <RadioOption value="Month">Month</RadioOption>
               </Radio>
             </View>
-            <SectionHeader heading={`Go in ${durationSelection}`} />
+            <SectionHeader heading={`Go in ${durationType}`} />
             <View>
               <Radio
                 style={styles.radio}
@@ -130,7 +115,11 @@ const When: React.FC<WhenScreenProps> = ({navigation, route}) => {
                   setSelectedDurationOption(newDurationOption);
                 }}>
                 {durationOptions.map(option => (
-                  <DurationDisplayComponent key={option.label} value={option} />
+                  <TimeDurationOption
+                    key={option.label}
+                    value={option}
+                    durationType={durationType}
+                  />
                 ))}
               </Radio>
             </View>
