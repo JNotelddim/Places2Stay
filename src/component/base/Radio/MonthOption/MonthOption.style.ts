@@ -19,9 +19,6 @@ const styles = StyleSheet.create({
   icon: {
     marginBottom: spacing.whitespace.small,
   },
-  datesText: {
-    marginTop: 4,
-  },
 });
 
 export default styles;

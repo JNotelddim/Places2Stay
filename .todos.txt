@@ -1,6 +1,5 @@
 
 ## TODO
-- [ ] create WeekendOption, WeekOption, and MonthOption radio options for using in Radio component
 - [ ] show filtered PlaceCTAs on Results
     => replace PlaceCTA with ListingCard
     
@@ -14,6 +13,7 @@
 
 
 ## Nice-To-Haves
+- [ ] refactor Weekend/Week/Month Option components to be less redundant
 - [ ] MUI Theme, w/ Light + Dark theming
 - [ ] Linear Gradient on fixed search header in Home
 - [ ] handle gestures in OverlaidCard layout
@@ -49,3 +49,4 @@
 - [x] radio select component for "When"
 - [x] multi-select component for "When"
 - [x] move mockdb out of consts file
+- [x] create WeekendOption, WeekOption, and MonthOption radio options for using in Radio component

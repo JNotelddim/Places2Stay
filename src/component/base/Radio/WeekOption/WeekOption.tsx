@@ -2,14 +2,19 @@ import React from 'react';
 import {View} from 'react-native';
 import Icon from 'react-native-vector-icons/Feather';
 
-import {Text, Pressable} from 'component/base';
+import {Text} from 'component/base';
+import {Pressable} from 'component/base/Pressable';
 
-import styles from './WeekendOption.style';
-import {WeekendOptionProps} from './WeekendOption.type';
+import styles from './WeekOption.style';
+import {WeekendOptionProps} from './WeekOption.type';
 
-const getMonthString = (inputDate: Date) => {
-  // Wed March 24 1998
-  return inputDate.toDateString().split(' ')[1];
+const getMmDdDateString = (inputDate: Date) => {
+  // ex/ Wed March 24 1998
+  return inputDate
+    .toDateString()
+    .split(' ')
+    .filter((v, index) => index === 1 || index === 2)
+    .join(' ');
 };
 
 const WeekendOption: React.FC<WeekendOptionProps> = ({
@@ -30,11 +35,10 @@ const WeekendOption: React.FC<WeekendOptionProps> = ({
   return (
     <Pressable onPress={handlePress}>
       <View style={[styles.container, isSelected && styles.selected]}>
-        <Icon name="calendar" size={36} style={styles.icon} />
-        <Text variant="body2">{getMonthString(startDate)}</Text>
-        <Text style={styles.datesText}>
-          {startDate.getDate()}, {endDate.getDate()}
-        </Text>
+        <Icon name="calendar" size={36} style={styles.mainIcon} />
+        <Text> {getMmDdDateString(startDate)} </Text>
+        <Icon name="arrow-down" size={12} style={styles.smallIcon} />
+        <Text>{getMmDdDateString(endDate)} </Text>
       </View>
     </Pressable>
   );

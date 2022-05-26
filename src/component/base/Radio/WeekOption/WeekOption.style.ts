@@ -16,11 +16,11 @@ const styles = StyleSheet.create({
   selected: {
     borderColor: colors.black,
   },
-  icon: {
+  mainIcon: {
     marginBottom: spacing.whitespace.small,
   },
-  datesText: {
-    marginTop: 4,
+  smallIcon: {
+    marginVertical: 4,
   },
 });
 

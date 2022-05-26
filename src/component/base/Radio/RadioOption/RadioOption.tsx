@@ -1,8 +1,7 @@
 import React from 'react';
 import {View} from 'react-native';
 
-import {Pressable} from 'component/base/Pressable';
-import {Text} from 'component/base/Text';
+import {Pressable, Text} from 'component/base';
 
 import styles from './RadioOption.style';
 import {RadioOptionProps} from './RadioOption.type';

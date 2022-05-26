@@ -6,7 +6,14 @@ import {MarkingProps} from 'react-native-calendars/src/calendar/day/marking';
 import {getDurationOptions} from 'utils';
 import {useHandleCalendarRange} from 'hook';
 
-import {Radio, RadioOption, Toggle, WeekendOption} from 'component/base';
+import {
+  Toggle,
+  Radio,
+  RadioOption,
+  WeekendOption,
+  WeekOption,
+  MonthOption,
+} from 'component/base';
 import {SearchStep} from 'component/layout';
 import {SectionHeader} from 'component/partial';
 import {useMockDb} from 'component/provider';
@@ -16,20 +23,31 @@ import styles from './When.style';
 import {Duration} from 'type/dates.type';
 import {WhenScreenProps} from './when.type';
 
-const When: React.FC<WhenScreenProps> = ({navigation, route}) => {
-  const mockDb = useMockDb();
-  const city = mockDb.getCityById(route.params.cityId);
+const durationDiplayComponents = {
+  Weekend: WeekendOption,
+  Week: WeekOption,
+  Month: MonthOption,
+};
 
+type MarkedDays = {
+  [key: string]: MarkingProps;
+};
+
+const When: React.FC<WhenScreenProps> = ({navigation, route}) => {
   const [isCalendar, setIsCalendar] = React.useState(true);
   const [startDate, setStartDate] = React.useState<Date | undefined>();
   const [endDate, setEndDate] = React.useState<Date | undefined>();
-  const [calendarMarkedDays, setCalendarMarkedDays] = React.useState<{
-    [key: string]: MarkingProps;
-  }>({});
+  const [calendarMarkedDays, setCalendarMarkedDays] =
+    React.useState<MarkedDays>({});
   const [durationSelection, setDurationSelection] =
     React.useState<Duration>('Weekend');
   const [selectedDurationOption, setSelectedDurationOption] = React.useState();
+
   const durationOptions = getDurationOptions(durationSelection);
+  const DurationDisplayComponent = durationDiplayComponents[durationSelection];
+
+  const mockDb = useMockDb();
+  const city = mockDb.getCityById(route.params.cityId);
 
   const {handleCalendarDayPress} = useHandleCalendarRange({
     startDate,
@@ -111,9 +129,9 @@ const When: React.FC<WhenScreenProps> = ({navigation, route}) => {
                   setEndDate(newDurationOption.endDate);
                   setSelectedDurationOption(newDurationOption);
                 }}>
-                {durationOptions.map(option => {
-                  return <WeekendOption key={option.label} value={option} />;
-                })}
+                {durationOptions.map(option => (
+                  <DurationDisplayComponent key={option.label} value={option} />
+                ))}
               </Radio>
             </View>
           </View>
