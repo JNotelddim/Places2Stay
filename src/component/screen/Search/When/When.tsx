@@ -102,8 +102,9 @@ const When: React.FC<WhenScreenProps> = ({navigation, route}) => {
             <SectionHeader heading={`Go in ${durationType}`} />
             <View>
               <Radio
-                style={styles.radio}
                 value={selectedDurationOption}
+                style={[styles.radio, styles.overflowRadio]}
+                contentContainerStyle={styles.radioContent}
                 onChange={newDurationOption => {
                   setStartDate(newDurationOption.startDate);
                   setEndDate(newDurationOption.endDate);

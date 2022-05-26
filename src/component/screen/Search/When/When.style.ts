@@ -21,6 +21,12 @@ const styles = StyleSheet.create({
   radio: {
     marginVertical: spacing.whitespace.large,
   },
+  overflowRadio: {
+    marginHorizontal: -1 * spacing.whitespace.xlarge,
+  },
+  radioContent: {
+    paddingHorizontal: spacing.whitespace.xlarge,
+  },
   weekendRadioOption: {
     padding: 40,
     backgroundColor: 'red',
