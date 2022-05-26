@@ -1,6 +1,3 @@
-import {ImageSourcePropType} from 'react-native';
+import {City} from 'const';
 
-export interface CityCardProps {
-  cityName: string;
-  imageSource: ImageSourcePropType;
-}
+export interface CityCardProps extends City {}

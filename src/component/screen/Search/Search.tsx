@@ -1,46 +1,26 @@
 import React from 'react';
-import {StyleSheet, View} from 'react-native';
+import {createStackNavigator} from '@react-navigation/stack';
 
-import {CITIES, colors, spacing} from 'const';
-import {CityLink, SearchInput} from 'component/base';
-import {ScrollView} from 'react-native-gesture-handler';
-import {SectionHeader} from 'component/partial';
+import Where from './Where';
+import What from './What';
+import When from './When';
+import Who from './Who';
+import Results from './Results';
 
-const Search: React.FC = () => {
-  const [searchVal, setSearchModalVal] = React.useState('');
+export interface SearchProps {}
 
-  const filteredCites = CITIES.filter(
-    ({cityName}) => cityName.includes(searchVal) || searchVal === '',
-  );
+const Stack = createStackNavigator();
+
+const Search: React.FC<SearchProps> = () => {
   return (
-    <View style={styles.container}>
-      <SearchInput
-        placeholder="Try 'Boston'"
-        value={searchVal}
-        onChangeText={setSearchModalVal}
-      />
-
-      <SectionHeader heading="Getaways Near You" style={styles.header} />
-
-      <ScrollView showsVerticalScrollIndicator={false}>
-        {filteredCites.map(({cityName}) => (
-          <CityLink key={cityName} cityName={cityName} />
-        ))}
-      </ScrollView>
-    </View>
+    <Stack.Navigator screenOptions={{header: () => null}}>
+      <Stack.Screen name="Where" component={Where} />
+      <Stack.Screen name="What" component={What} />
+      <Stack.Screen name="When" component={When} />
+      <Stack.Screen name="Who" component={Who} />
+      <Stack.Screen name="Results" component={Results} />
+    </Stack.Navigator>
   );
 };
-
-const styles = StyleSheet.create({
-  container: {
-    backgroundColor: colors.paleYellow,
-    height: '100%',
-    paddingTop: spacing.whitespace.unsafeScreenTop,
-    paddingHorizontal: spacing.whitespace.screenHorizontal,
-  },
-  header: {
-    marginBottom: spacing.whitespace.large,
-  },
-});
 
 export default Search;

@@ -1,1 +1,1 @@
-export {DataProvider, useData} from './DataProvider';
+export {DataProvider, useMockDb} from './DataProvider';

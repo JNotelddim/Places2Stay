@@ -14,6 +14,12 @@ const variantStyles = {
     fontWeight: '400',
     fontFamily: 'Bitter',
   },
+  heading2: {
+    fontSize: 16,
+    lineHeight: 19,
+    fontWeight: '400',
+    fontFamily: 'Bitter',
+  },
   body1: {
     fontSize: 12,
     lineHeight: 15,

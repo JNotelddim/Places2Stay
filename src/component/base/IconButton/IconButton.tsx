@@ -14,13 +14,19 @@ const IconButton: React.FC<IconButtonProps> = ({
   color,
   accessibilityAction,
   opaque,
+  outlined,
   iconSize = 24,
 }) => (
   <Pressable
     onPress={onPress}
     style={style}
     accessibilityLabel={`Icon Button. ${accessibilityAction}. Tap to perform action.`}>
-    <View style={[styles.container, opaque && styles.opaqueStyle]}>
+    <View
+      style={[
+        styles.container,
+        opaque && styles.opaqueStyle,
+        outlined && styles.outlinedStyle,
+      ]}>
       <Icon name={name} size={iconSize} color={color} />
     </View>
   </Pressable>

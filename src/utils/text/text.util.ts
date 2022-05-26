@@ -7,3 +7,14 @@ export const capitalizeText = (input: string) => {
   }
   return input[0].toLocaleUpperCase() + input.slice(1);
 };
+
+export const pluralize = (
+  input: string,
+  num: number,
+  pluralizer: string = 's',
+) => {
+  if (num > 1) {
+    return input + pluralizer;
+  }
+  return input;
+};

@@ -14,7 +14,7 @@ const styles = StyleSheet.create({
     width: Dimensions.get('screen').width,
     paddingHorizontal: screenHorizontal,
     marginLeft: -screenHorizontal,
-    paddingTop: 80,
+    paddingTop: large,
     paddingBottom: large,
     backgroundColor: colors.highOpacityPaleYellow,
     zIndex: 2,

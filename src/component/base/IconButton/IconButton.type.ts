@@ -7,6 +7,7 @@ export interface IconButtonProps {
   style?: StyleProp<ViewStyle>;
   accessibilityAction?: string;
   color?: string;
-  opaque?: boolean;
   iconSize?: number;
+  opaque?: boolean;
+  outlined?: boolean;
 }
