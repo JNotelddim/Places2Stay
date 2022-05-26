@@ -1,7 +1,10 @@
-import {Text} from 'component/base';
-import {ListingScreenProps, useMockDb} from 'component/provider';
 import React from 'react';
 import {StyleSheet, View} from 'react-native';
+
+import {Text} from 'component/base';
+import {useMockDb} from 'component/provider';
+
+import {ListingScreenProps} from './Listing.type';
 
 const Listing: React.FC<ListingScreenProps> = ({route}) => {
   const {listingId} = route.params;

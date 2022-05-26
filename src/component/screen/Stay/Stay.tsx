@@ -1,13 +1,15 @@
 import React from 'react';
 import {Image, ScrollView, View} from 'react-native';
 
+import img from 'asset/stock-photo.jpg';
+
 import {colors} from 'const';
 import {IconButton, Text, Toggle} from 'component/base';
 import {SectionHeader, StayInfoSection} from 'component/partial';
-import {StayScreenProps} from 'component/provider';
 
-import img from 'asset/stock-photo.jpg';
 import styles from './Stay.style';
+
+import {StayScreenProps} from './Stay.type';
 // import { StackNavigationProp, StackScreenProps } from '@react-navigation/stack';
 // import { RootStackParamList } from 'component/provider';
 

@@ -1,13 +1,9 @@
 import React from 'react';
-import {StyleProp, StyleSheet, ViewStyle} from 'react-native';
 import {ScrollView} from 'react-native-gesture-handler';
 
-export interface RadioProps {
-  value: any;
-  onChange: (newValue: any) => void;
-  style?: StyleProp<ViewStyle>;
-  contentContainerStyle?: StyleProp<ViewStyle>;
-}
+import styles from './Radio.style';
+
+import {RadioProps} from './Radio.type';
 
 const Radio: React.FC<RadioProps> = ({
   children,
@@ -38,11 +34,5 @@ const Radio: React.FC<RadioProps> = ({
     </ScrollView>
   );
 };
-
-const styles = StyleSheet.create({
-  container: {
-    flexDirection: 'row',
-  },
-});
 
 export default Radio;

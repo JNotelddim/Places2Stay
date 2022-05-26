@@ -1,6 +1,6 @@
 import {StyleSheet} from 'react-native';
 
-import {colors, spacing} from 'const';
+import {colors} from 'const';
 
 const SIZE = 38;
 const styles = StyleSheet.create({

@@ -16,10 +16,8 @@ const ImageCard: React.FC<ImageCardProps> = ({
       style={[styles.imageWrapper, style]}
       accessible
       accessibilityLabel={`Image, ${accessibilityLabel}. Label: ${label}.`}>
-      {/** Image */}
       <Image style={styles.image} source={imageSource} />
 
-      {/** Label */}
       <View style={styles.imageLabel}>
         <Text variant="body1"> {label} </Text>
       </View>

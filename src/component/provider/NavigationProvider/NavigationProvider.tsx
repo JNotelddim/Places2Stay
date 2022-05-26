@@ -15,59 +15,47 @@ import {
 } from '/component/screen';
 
 import {colors} from 'const';
-import {ParamListBase, RouteProp} from '@react-navigation/native';
 
 const Tabs = createBottomTabNavigator();
 const Stack = createStackNavigator();
 
-const getTabScreenOptions = ({
-  route,
-}: {
-  route: RouteProp<ParamListBase, string>;
-  navigation: any;
-}) => ({
-  tabBarStyle: {
-    backgroundColor: colors.extraPaleYellow,
-    paddingTop: 16,
-  },
-  header: () => null,
-  tabBarLabel: () => null,
-  tabBarIcon: ({focused}: {focused: boolean}) => {
-    switch (route.name) {
-      case 'Search':
-        return (
-          <Icon
-            name="search"
-            size={24}
-            color={focused ? colors.black : colors.slateGrey}
-          />
-        );
-      case 'Stay':
-        return (
-          <Icon
-            name="map-pin"
-            size={24}
-            color={focused ? colors.black : colors.slateGrey}
-          />
-        );
-      case 'Home':
-      default:
-        return (
-          <Icon
-            name="home"
-            size={24}
-            color={focused ? colors.black : colors.slateGrey}
-          />
-        );
-    }
-  },
-});
-
 const HomeTabsNavigator = () => {
   return (
-    <Tabs.Navigator screenOptions={getTabScreenOptions}>
-      <Tabs.Screen name="Home" component={Home} />
-      <Tabs.Screen name="Search" component={Search} />
+    <Tabs.Navigator
+      screenOptions={() => ({
+        tabBarStyle: {
+          backgroundColor: colors.extraPaleYellow,
+          paddingTop: 16,
+        },
+        header: () => null,
+        tabBarLabel: () => null,
+      })}>
+      <Tabs.Screen
+        name="Home"
+        component={Home}
+        options={{
+          tabBarIcon: ({focused}) => (
+            <Icon
+              name="home"
+              size={24}
+              color={focused ? colors.black : colors.slateGrey}
+            />
+          ),
+        }}
+      />
+      <Tabs.Screen
+        name="Search"
+        component={Search}
+        options={{
+          tabBarIcon: ({focused}) => (
+            <Icon
+              name="search"
+              size={24}
+              color={focused ? colors.black : colors.slateGrey}
+            />
+          ),
+        }}
+      />
       {/* <Tabs.Screen name="Stay" component={Stay} /> */}
     </Tabs.Navigator>
   );

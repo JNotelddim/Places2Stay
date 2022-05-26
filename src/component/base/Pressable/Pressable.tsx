@@ -1,11 +1,5 @@
 import React from 'react';
-import {
-  Animated,
-  Pressable as RNPressable,
-  PressableProps as RNPressableProps,
-} from 'react-native';
-
-export interface PressableProps extends RNPressableProps {}
+import {Animated, Pressable as RNPressable, PressableProps} from 'react-native';
 
 const MAX_OPACITY = 1;
 const MIN_OPACITY = 0.3;

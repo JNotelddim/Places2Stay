@@ -1,9 +1,11 @@
 import React from 'react';
 import {Image, StyleSheet, View} from 'react-native';
 
-import {CityScreenProps, useMockDb} from 'component/provider';
-import {IconButton, Text} from 'component/base';
 import {colors, spacing} from 'const';
+import {useMockDb} from 'component/provider';
+import {IconButton, Text} from 'component/base';
+
+import {CityScreenProps} from './City.type';
 
 const City: React.FC<CityScreenProps> = ({route, navigation}) => {
   const {cityId} = route.params;
