@@ -1,14 +1,12 @@
 
 ## TODO
+- [ ] push notifications
 - [ ] expo auth
   - https://docs.expo.dev/bare/existing-apps/
   - https://docs.expo.dev/bare/installing-expo-modules/
   - https://gist.github.com/relaxedtomato/6bab1d06027033e33f9b8c8fa855f002
   - https://docs.expo.dev/versions/latest/sdk/auth-session/
   - https://docs.expo.dev/bare/using-libraries/
-- [ ] deep links
-- [ ] fix navigation from SearchFacade press 
- => how to navigate into SearchStack screens from outer stack?
 
 - [ ] webview in Account?
 - [ ] show filtered PlaceCTAs on Results
@@ -53,3 +51,6 @@
 - [x] move mockdb out of consts file
 - [x] create WeekendOption, WeekOption, and MonthOption radio options for using in Radio component
 - [x] fix search layout's bottom buttons alignment
+- [x] deep links
+- [x] fix navigation from SearchFacade press 
+ => how to navigate into SearchStack screens from outer stack?
