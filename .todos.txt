@@ -1,17 +1,14 @@
 
 ## TODO
-- [ ] show filtered PlaceCTAs on Results
-    => replace PlaceCTA with ListingCard
-- [ ] fix search layout's bottom buttons alignment
-    
-- [ ] deep links
 - [ ] expo auth
   - https://gist.github.com/relaxedtomato/6bab1d06027033e33f9b8c8fa855f002
   - https://docs.expo.dev/versions/latest/sdk/auth-session/
   - https://docs.expo.dev/bare/using-libraries/
+- [ ] deep links
 
 - [ ] webview in Account?
-
+- [ ] show filtered PlaceCTAs on Results
+    => replace PlaceCTA with ListingCard
 
 ## Nice-To-Haves
 - [ ] refactor Weekend/Week/Month Option components to be less redundant
@@ -51,3 +48,4 @@
 - [x] multi-select component for "When"
 - [x] move mockdb out of consts file
 - [x] create WeekendOption, WeekOption, and MonthOption radio options for using in Radio component
+- [x] fix search layout's bottom buttons alignment
