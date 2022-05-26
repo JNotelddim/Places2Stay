@@ -21,9 +21,10 @@ const RadioOption: React.FC<RadioOptionProps> = ({
   const comparisonValue = valueComparatorKey
     ? value[valueComparatorKey]
     : value;
-  const selectedComparisonValue = valueComparatorKey
-    ? selectedValue[valueComparatorKey]
-    : selectedValue;
+  const selectedComparisonValue =
+    valueComparatorKey && selectedValue
+      ? selectedValue[valueComparatorKey]
+      : selectedValue;
   const isSelected = comparisonValue === selectedComparisonValue;
 
   const handlePress = () => {
