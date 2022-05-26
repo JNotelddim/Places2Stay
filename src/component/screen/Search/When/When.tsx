@@ -4,97 +4,17 @@ import {Calendar, DateData} from 'react-native-calendars';
 import {MarkingProps} from 'react-native-calendars/src/calendar/day/marking';
 
 import {colors, spacing} from 'const';
-import {getDaysBetweenDates} from 'utils';
-import {Toggle} from 'component/base';
+import {getDaysBetweenDates, getDurationOptions} from 'utils';
+import {Radio, RadioOption, Toggle} from 'component/base';
 import {SearchStep} from 'component/layout';
 import {SectionHeader} from 'component/partial';
 import {useMockDb, WhenScreenProps} from 'component/provider';
+import {Duration} from 'type/dates.type';
 
 const EDGE_DAY_COLOR = colors.blue;
 const EDGE_DAY_TEXT_COLOR = colors.white;
 const FILL_DAY_COLOR = colors.midOpacityBlue;
 const FILL_DAY_TEXT_COLOR = colors.white;
-
-const getNextDayOfWeek = (dayOfWeek: number, relativeTo: Date = new Date()) => {
-  // Code to check that date and dayOfWeek are valid left as an exercise ;)
-  var resultDate = new Date(relativeTo.getTime());
-
-  resultDate.setDate(
-    relativeTo.getDate() + ((7 + dayOfWeek - relativeTo.getDay()) % 7),
-  );
-
-  return resultDate;
-};
-
-const getNextXWeekends = (howMany: number) => {
-  const weekends = [];
-  const nearestWeekendStartDate = getNextDayOfWeek(5);
-  // nearestWeekendStartDate.setDate(
-  // // saturday: idx 5 for days of week,
-  //   today.getDate() + ((7 + 5 - today.getDay()) % 7),
-  // );
-
-  const weekendStart = new Date();
-  const weekendEnd = new Date();
-  for (let i = 0; i <= howMany; i++) {
-    weekendStart.setDate(nearestWeekendStartDate.getDate() + 7 * i);
-    weekendEnd.setDate(nearestWeekendStartDate.getDate() + 7 * i + 1);
-    weekends.push({weekendStart, weekendEnd});
-  }
-
-  return weekends;
-};
-const getNextXWeeks = (howMany: number) => {
-  const weeks = [];
-  const nearestWeekStartDate = getNextDayOfWeek(0);
-
-  const weekStart = new Date();
-  const weekEnd = new Date();
-  for (let i = 0; i <= howMany; i++) {
-    weekStart.setDate(nearestWeekStartDate.getDate() + 7 * i);
-    weekEnd.setDate(nearestWeekStartDate.getDate() + 7 * i + 6);
-    weeks.push({weekStart, weekEnd});
-  }
-
-  return weeks;
-};
-const getNextXMonths = (howMany: number) => {
-  const months = [
-    'January',
-    'February',
-    'March',
-    'April',
-    'May',
-    'June',
-    'July',
-    'August',
-    'September',
-    'October',
-    'November',
-    'December',
-  ];
-  const thisMonth = new Date().getMonth();
-  const nextXMonths = new Array(howMany)
-    .fill(undefined)
-    .map((v, index) => months[thisMonth + index]);
-  return nextXMonths;
-};
-
-const getDurationOptions = (
-  durationSelection: 'Weekend' | 'Week' | 'Month',
-) => {
-  switch (durationSelection) {
-    case 'Weekend':
-      const upcomingWeekends = getNextXWeekends(4);
-      return upcomingWeekends;
-    case 'Week':
-      return getNextXWeeks(4);
-    case 'Month':
-      return getNextXMonths(4);
-    default:
-      return [];
-  }
-};
 
 const When: React.FC<WhenScreenProps> = ({navigation, route}) => {
   const mockDb = useMockDb();
@@ -106,10 +26,9 @@ const When: React.FC<WhenScreenProps> = ({navigation, route}) => {
   const [calendarMarkedDays, setCalendarMarkedDays] = React.useState<{
     [key: string]: MarkingProps;
   }>({});
-  const [durationSelection, setDurationSelection] = React.useState<
-    'Weekend' | 'Week' | 'Month'
-  >('Weekend');
-
+  const [durationSelection, setDurationSelection] =
+    React.useState<Duration>('Weekend');
+  const [selectedDurationOption, setSelectedDurationOption] = React.useState();
   const durationOptions = getDurationOptions(durationSelection);
 
   // Show options for Calendar or Flexible
@@ -202,10 +121,41 @@ const When: React.FC<WhenScreenProps> = ({navigation, route}) => {
         ) : (
           <View>
             <SectionHeader heading={`Stay for a ${durationSelection}`} />
-            <View>{/** TODO words Radio options: Weekend, Week, Month */}</View>
+            <View>
+              <Radio
+                style={styles.radio}
+                value={durationSelection}
+                onChange={(newValue: string) => {
+                  setDurationSelection(newValue as Duration);
+                  setStartDate(undefined);
+                  setEndDate(undefined);
+                }}>
+                <RadioOption value="Weekend">Weekend</RadioOption>
+                <RadioOption value="Week">Week</RadioOption>
+                <RadioOption value="Month">Month</RadioOption>
+              </Radio>
+            </View>
             <SectionHeader heading={`Go in ${durationSelection}`} />
             <View>
-              {/** TODO multi-select options for Weekends, Weeks, Months */}
+              <Radio
+                style={styles.radio}
+                value={selectedDurationOption}
+                onChange={newDurationOption => {
+                  setStartDate(newDurationOption.startDate);
+                  setEndDate(newDurationOption.endDate);
+                  setSelectedDurationOption(newDurationOption);
+                }}>
+                {durationOptions.map(option => {
+                  return (
+                    <RadioOption
+                      key={option.label}
+                      value={option}
+                      valueComparatorKey="label">
+                      {option.label}
+                    </RadioOption>
+                  );
+                })}
+              </Radio>
             </View>
           </View>
         )}
@@ -229,6 +179,13 @@ const styles = StyleSheet.create({
     marginTop: spacing.whitespace.large,
     flexDirection: 'row',
     justifyContent: 'space-between',
+  },
+  radio: {
+    marginVertical: spacing.whitespace.large,
+  },
+  weekendRadioOption: {
+    padding: 40,
+    backgroundColor: 'red',
   },
 });
 
