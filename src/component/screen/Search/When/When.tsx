@@ -15,6 +15,87 @@ const EDGE_DAY_TEXT_COLOR = colors.white;
 const FILL_DAY_COLOR = colors.midOpacityBlue;
 const FILL_DAY_TEXT_COLOR = colors.white;
 
+const getNextDayOfWeek = (dayOfWeek: number, relativeTo: Date = new Date()) => {
+  // Code to check that date and dayOfWeek are valid left as an exercise ;)
+  var resultDate = new Date(relativeTo.getTime());
+
+  resultDate.setDate(
+    relativeTo.getDate() + ((7 + dayOfWeek - relativeTo.getDay()) % 7),
+  );
+
+  return resultDate;
+};
+
+const getNextXWeekends = (howMany: number) => {
+  const weekends = [];
+  const nearestWeekendStartDate = getNextDayOfWeek(5);
+  // nearestWeekendStartDate.setDate(
+  // // saturday: idx 5 for days of week,
+  //   today.getDate() + ((7 + 5 - today.getDay()) % 7),
+  // );
+
+  const weekendStart = new Date();
+  const weekendEnd = new Date();
+  for (let i = 0; i <= howMany; i++) {
+    weekendStart.setDate(nearestWeekendStartDate.getDate() + 7 * i);
+    weekendEnd.setDate(nearestWeekendStartDate.getDate() + 7 * i + 1);
+    weekends.push({weekendStart, weekendEnd});
+  }
+
+  return weekends;
+};
+const getNextXWeeks = (howMany: number) => {
+  const weeks = [];
+  const nearestWeekStartDate = getNextDayOfWeek(0);
+
+  const weekStart = new Date();
+  const weekEnd = new Date();
+  for (let i = 0; i <= howMany; i++) {
+    weekStart.setDate(nearestWeekStartDate.getDate() + 7 * i);
+    weekEnd.setDate(nearestWeekStartDate.getDate() + 7 * i + 6);
+    weeks.push({weekStart, weekEnd});
+  }
+
+  return weeks;
+};
+const getNextXMonths = (howMany: number) => {
+  const months = [
+    'January',
+    'February',
+    'March',
+    'April',
+    'May',
+    'June',
+    'July',
+    'August',
+    'September',
+    'October',
+    'November',
+    'December',
+  ];
+  const thisMonth = new Date().getMonth();
+  const nextXMonths = new Array(howMany)
+    .fill(undefined)
+    .map((v, index) => months[thisMonth + index]);
+  return nextXMonths;
+};
+
+const getDurationOptions = (
+  durationSelection: 'Weekend' | 'Week' | 'Month',
+) => {
+  switch (durationSelection) {
+    case 'Weekend':
+      const upcomingWeekends = getNextXWeekends(4);
+      return upcomingWeekends;
+    case 'Week':
+      return getNextXWeeks(4);
+    case 'Month':
+      return getNextXMonths(4);
+    default:
+      return [];
+  }
+};
+
 const When: React.FC<WhenScreenProps> = ({navigation, route}) => {
   const mockDb = useMockDb();
   const city = mockDb.getCityById(route.params.cityId);
@@ -29,15 +110,13 @@ const When: React.FC<WhenScreenProps> = ({navigation, route}) => {
     'Weekend' | 'Week' | 'Month'
   >('Weekend');
 
+  const durationOptions = getDurationOptions(durationSelection);
+
   // Show options for Calendar or Flexible
   // then depending on which is selected, show a calendar (wix) or
   // options for (weekend, week ,month),
   // and depending on which of those is selected,
   // show a selector between options (if it's May now, show May, June, July for months.)
-
-  // Keep button disabled until sufficient selection is made,
-
-  // When button is enabled, it goes to 'Who' and passes along the built up selection info
 
   const handleToggleChange = (isChecked: Boolean) => {
     setIsCalendar(!isChecked);
