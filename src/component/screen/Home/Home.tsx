@@ -8,9 +8,6 @@ import {
   View,
 } from 'react-native';
 
-import Constants from 'expo-constants';
-console.log(Constants.systemFonts);
-
 import {getFakePlace} from 'utils';
 import {colors} from 'const';
 import {

@@ -10,7 +10,6 @@
 
 import React from 'react';
 import {NavigationContainer} from '@react-navigation/native';
-console.log('loading app');
 
 import {NavigationRoot} from 'component/provider';
 
