@@ -12,11 +12,8 @@ import React from 'react';
 import {LinkingOptions, NavigationContainer} from '@react-navigation/native';
 import {Logs} from 'expo';
 
-import {
-  NavigationRoot,
-  RootStackParamList,
-  UnauthenticatedRoot,
-} from 'component/provider';
+import {AuthRoot} from 'component/root';
+import {RootStackParamList, AuthProvider} from 'component/provider';
 
 Logs.enableExpoCliLogging();
 
@@ -35,13 +32,12 @@ const linking: LinkingOptions<RootStackParamList> = {
   },
 };
 
-// TODO: AuthSession + Google OAuth
-const isSignedIn = true;
-
 const AppRoot = () => {
   return (
     <NavigationContainer linking={linking}>
-      {isSignedIn ? <NavigationRoot /> : <UnauthenticatedRoot />}
+      <AuthProvider>
+        <AuthRoot />
+      </AuthProvider>
     </NavigationContainer>
   );
 };
