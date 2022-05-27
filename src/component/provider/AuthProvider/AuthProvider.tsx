@@ -1,5 +1,4 @@
 import React from 'react';
-import {Platform} from 'react-native';
 import * as WebBrowser from 'expo-web-browser';
 import {makeRedirectUri, ResponseType} from 'expo-auth-session';
 import {useIdTokenAuthRequest} from 'expo-auth-session/providers/google';
@@ -20,8 +19,8 @@ export const AuthProvider: React.FC = ({children}) => {
 
   const [, , promptAsync] = useIdTokenAuthRequest({
     responseType: ResponseType.Token,
-    iosClientId:
-      Platform.OS === 'ios' ? GOOGLE_IOS_CLIENT_ID : GOOGLE_ANDROID_CLIENT_ID,
+    iosClientId: GOOGLE_IOS_CLIENT_ID,
+    androidClientId: GOOGLE_ANDROID_CLIENT_ID,
     redirectUri: makeRedirectUri({
       scheme: 'org.reactjs.native.example.places2stay',
     }),
