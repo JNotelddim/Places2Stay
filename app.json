@@ -3,7 +3,7 @@
   "displayName": "Places2Stay",
   "expo": {
     "ios": {
-      "bundleIdentifier": "org.reactjs.native.example.places2stay"
+      "bundleIdentifier": "org.reactjs.native.example.Places2Stay"
     }
   }
 }
