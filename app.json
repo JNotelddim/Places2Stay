@@ -1,4 +1,9 @@
 {
   "name": "Places2Stay",
-  "displayName": "Places2Stay"
+  "displayName": "Places2Stay",
+  "expo": {
+    "ios": {
+      "bundleIdentifier": "org.reactjs.native.example.Places2Stay"
+    }
+  }
 }

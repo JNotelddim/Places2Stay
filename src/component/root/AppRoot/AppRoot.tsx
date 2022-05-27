@@ -9,14 +9,35 @@
  */
 
 import React from 'react';
-import {NavigationContainer} from '@react-navigation/native';
+import {LinkingOptions, NavigationContainer} from '@react-navigation/native';
+import {Logs} from 'expo';
 
-import {NavigationRoot} from 'component/provider';
+import {AuthRoot} from 'component/root';
+import {RootStackParamList, AuthProvider} from 'component/provider';
+
+Logs.enableExpoCliLogging();
+
+const linking: LinkingOptions<RootStackParamList> = {
+  prefixes: ['places2stay://', 'https://places2stay.com'],
+  config: {
+    screens: {
+      HomeTabsRoot: {
+        screens: {
+          Home: 'home',
+          Search: 'search',
+        },
+      },
+      Account: 'account',
+    },
+  },
+};
 
 const AppRoot = () => {
   return (
-    <NavigationContainer>
-      <NavigationRoot />
+    <NavigationContainer linking={linking}>
+      <AuthProvider>
+        <AuthRoot />
+      </AuthProvider>
     </NavigationContainer>
   );
 };

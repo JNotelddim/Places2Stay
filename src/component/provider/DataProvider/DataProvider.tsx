@@ -11,16 +11,11 @@ export const DataProvider: React.FC = ({children}) => {
 };
 
 export const useMockDb = () => {
-  if (!DataContext) {
+  const context = React.useContext(DataContext);
+  if (!context) {
     throw Error(
       '[DataProviderError] useMockDb hook called from outside of DataProvider -- couldnt access DataContext',
     );
   }
-  const val = React.useContext(DataContext);
-  if (!val) {
-    throw Error(
-      '[DataProviderError] useMockDb hook called from outside of DataProvider -- couldnt access DataContext',
-    );
-  }
-  return val;
+  return context;
 };

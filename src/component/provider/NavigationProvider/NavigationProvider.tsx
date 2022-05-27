@@ -12,6 +12,7 @@ import {
   Account,
   City,
   Listing,
+  SignIn,
 } from '/component/screen';
 
 import {colors} from 'const';
@@ -58,6 +59,14 @@ const HomeTabsNavigator = () => {
       />
       {/* <Tabs.Screen name="Stay" component={Stay} /> */}
     </Tabs.Navigator>
+  );
+};
+
+export const UnauthenticatedRoot = () => {
+  return (
+    <Stack.Navigator screenOptions={{header: () => null}}>
+      <Stack.Screen name="SignIn" component={SignIn} />
+    </Stack.Navigator>
   );
 };
 
