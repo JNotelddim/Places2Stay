@@ -152,6 +152,12 @@
 					<string>places2stay</string>
 				</array>
 			</dict>
+			<dict>
+				<key>CFBundleURLSchemes</key>
+				<array>
+					<string>org.reactjs.native.example.Places2Stay</string>
+				</array>
+			</dict>
 		</array>
 	</dict>
 </plist>

@@ -1,6 +1,7 @@
 import React from 'react';
 
-// import {  useAuthRequest  } from 'expo-auth-session/providers/google';
+// import { makeRedirectUri } from 'expo-auth-session';
+import {useIdTokenAuthRequest} from 'expo-auth-session/providers/google';
 
 const AuthContext = React.createContext({
   isAuthenticated: false,
@@ -8,16 +9,42 @@ const AuthContext = React.createContext({
   logout: () => {},
 });
 
+// TODO: store for next session in storage
 export const AuthProvider: React.FC = ({children}) => {
-  const [isAuthenticated, setIsAuthenticated] = React.useState(false);
+  const [token, setToken] = React.useState<string | undefined>(undefined);
+  const [, , promptAsync] = useIdTokenAuthRequest({
+    // ...Constants.manifest?.extra?.google,
+    iosClientId:
+      // TODO: move to manifest
+      '',
+    redirectUri: 'places2stay://',
+    // redirectUri: 'https://places2stay.com',
+    //redirectUri: 'org.reactjs.native.example.Places2Stay',
+  });
+  const isAuthenticated = !!token;
 
-  const login = () => {
-    setIsAuthenticated(true);
+  console.log({isAuthenticated, token});
+
+  const login = async () => {
     console.log('loginAttempt');
+
+    const response = await promptAsync().catch(reason =>
+      console.log('[LoginPromptError] reason:', reason),
+    );
+
+    if (response?.type !== 'success') {
+      throw new Error(
+        '[LoginPromptResponseError] Non-SuccessType: ' + response?.type,
+      );
+    }
+    console.log('setToken', response.params.id_token, {
+      params: response.params,
+    });
+    setToken(response.params.id_token);
   };
 
   const logout = () => {
-    setIsAuthenticated(false);
+    setToken(undefined);
     console.log('logoutAttempt');
   };
 
