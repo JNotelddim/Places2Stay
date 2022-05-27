@@ -1,7 +1,9 @@
 import React from 'react';
-
+import * as WebBrowser from 'expo-web-browser';
 import {makeRedirectUri, ResponseType} from 'expo-auth-session';
 import {useIdTokenAuthRequest} from 'expo-auth-session/providers/google';
+
+WebBrowser.maybeCompleteAuthSession();
 
 const AuthContext = React.createContext({
   isAuthenticated: false,
@@ -9,29 +11,21 @@ const AuthContext = React.createContext({
   logout: () => {},
 });
 
-// TODO: store for next session in storage
 export const AuthProvider: React.FC = ({children}) => {
-  const [token, setToken] = React.useState<string | undefined>(undefined);
+  const [token, setToken] = React.useState<unknown>(undefined);
+  const isAuthenticated = !!token;
+
   const [, , promptAsync] = useIdTokenAuthRequest({
-    // ...Constants.manifest?.extra?.google,
     responseType: ResponseType.Token,
     iosClientId:
       // TODO: move to manifest
       'xx-xx.apps.googleusercontent.com',
-    // redirectUri: 'places2stay://',
-    // redirectUri: 'https://places2stay.com',
-    // redirectUri: 'org.reactjs.native.example.places2stay',
     redirectUri: makeRedirectUri({
       scheme: 'org.reactjs.native.example.places2stay',
     }),
   });
-  const isAuthenticated = !!token;
-
-  console.log({isAuthenticated, token});
 
   const login = async () => {
-    console.log('loginAttempt');
-
     const response = await promptAsync().catch(reason =>
       console.log('[LoginPromptError] reason:', reason),
     );
@@ -41,15 +35,12 @@ export const AuthProvider: React.FC = ({children}) => {
         '[LoginPromptResponseError] Non-SuccessType: ' + response?.type,
       );
     }
-    console.log('setToken', response.params.id_token, {
-      params: response.params,
-    });
-    setToken(response.params.id_token);
+
+    setToken(response.params);
   };
 
   const logout = () => {
     setToken(undefined);
-    console.log('logoutAttempt');
   };
 
   return (
