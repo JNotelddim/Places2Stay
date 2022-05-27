@@ -1,6 +1,6 @@
 import React from 'react';
 
-// import { makeRedirectUri } from 'expo-auth-session';
+import {makeRedirectUri, ResponseType} from 'expo-auth-session';
 import {useIdTokenAuthRequest} from 'expo-auth-session/providers/google';
 
 const AuthContext = React.createContext({
@@ -14,12 +14,16 @@ export const AuthProvider: React.FC = ({children}) => {
   const [token, setToken] = React.useState<string | undefined>(undefined);
   const [, , promptAsync] = useIdTokenAuthRequest({
     // ...Constants.manifest?.extra?.google,
+    responseType: ResponseType.Token,
     iosClientId:
       // TODO: move to manifest
-      '',
-    redirectUri: 'places2stay://',
+      'xx-xx.apps.googleusercontent.com',
+    // redirectUri: 'places2stay://',
     // redirectUri: 'https://places2stay.com',
-    //redirectUri: 'org.reactjs.native.example.Places2Stay',
+    // redirectUri: 'org.reactjs.native.example.places2stay',
+    redirectUri: makeRedirectUri({
+      scheme: 'org.reactjs.native.example.places2stay',
+    }),
   });
   const isAuthenticated = !!token;
 
