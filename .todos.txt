@@ -1,19 +1,15 @@
 
 ## TODO
 - [ ] push notifications
-- [ ] expo auth
-  - https://docs.expo.dev/bare/existing-apps/
-  - https://docs.expo.dev/bare/installing-expo-modules/
-  - https://gist.github.com/relaxedtomato/6bab1d06027033e33f9b8c8fa855f002
-  - https://docs.expo.dev/versions/latest/sdk/auth-session/
-  - https://docs.expo.dev/bare/using-libraries/
-
 - [ ] webview in Account?
-- [ ] show filtered PlaceCTAs on Results
     => replace PlaceCTA with ListingCard
 
 ## Nice-To-Haves
-- [ ] refactor Weekend/Week/Month Option components to be less redundant
+- [ ] Listing screen
+- [ ] Notifications screen
+- [ ] Account screen
+- [ ] City screen
+
 - [ ] MUI Theme, w/ Light + Dark theming
 - [ ] Linear Gradient on fixed search header in Home
 - [ ] handle gestures in OverlaidCard layout
@@ -54,3 +50,6 @@
 - [x] deep links
 - [x] fix navigation from SearchFacade press 
  => how to navigate into SearchStack screens from outer stack?
+- [x] expo auth
+- [x] show filtered PlaceCTAs on Results
+- [x] refactor Weekend/Week/Month Option components to be less redundant
