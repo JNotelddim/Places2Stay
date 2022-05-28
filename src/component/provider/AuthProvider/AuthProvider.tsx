@@ -2,6 +2,7 @@ import React from 'react';
 import * as WebBrowser from 'expo-web-browser';
 import {makeRedirectUri, ResponseType} from 'expo-auth-session';
 import {useIdTokenAuthRequest} from 'expo-auth-session/providers/google';
+import * as SecureStore from 'expo-secure-store';
 
 import {GOOGLE_IOS_CLIENT_ID, GOOGLE_ANDROID_CLIENT_ID} from '@env';
 
@@ -16,6 +17,24 @@ const AuthContext = React.createContext({
 export const AuthProvider: React.FC = ({children}) => {
   const [token, setToken] = React.useState<unknown>(undefined);
   const isAuthenticated = !!token;
+
+  React.useEffect(() => {
+    const checkForPersistedToken = async () => {
+      await SecureStore.getItemAsync('token')
+        .then(result => {
+          if (result) {
+            console.log(
+              '[AuthPersist] Found token value, updating auth context state',
+            );
+            setToken(JSON.parse(result));
+          } else {
+            console.log('[AuthPersist] No persisted token found.');
+          }
+        })
+        .catch(err => console.log(err));
+    };
+    checkForPersistedToken();
+  }, []);
 
   const [, , promptAsync] = useIdTokenAuthRequest({
     responseType: ResponseType.Token,
@@ -37,11 +56,16 @@ export const AuthProvider: React.FC = ({children}) => {
       );
     }
 
+    // I'm very aware this is not an actual token value. For a demo app it'll do.
     setToken(response.params);
+    console.log('[AuthPersist] Persisting token.');
+    await SecureStore.setItemAsync('token', JSON.stringify(response.params));
   };
 
-  const logout = () => {
+  const logout = async () => {
     setToken(undefined);
+    console.log('[AuthPersist] Deleting persisted token.');
+    await SecureStore.deleteItemAsync('token');
   };
 
   return (

@@ -1,6 +1,7 @@
 {
   "name": "Places2Stay",
   "displayName": "Places2Stay",
+  "sheme": "org.reactjs.native.example.Places2Stay",
   "expo": {
     "ios": {
       "bundleIdentifier": "org.reactjs.native.example.Places2Stay"
