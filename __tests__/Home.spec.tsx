@@ -2,11 +2,23 @@ import React from 'react';
 import {render} from '@testing-library/react-native';
 
 import {Home} from 'component/screen';
+import {
+  NavigationContainer,
+  NavigationContainerProps,
+} from '@react-navigation/native';
 
-test('Home Screen should have InputFacadeButton', () => {
-  const view = render(<Home />);
+describe('Home Screen', () => {
+  let wrapper: React.FC<NavigationContainerProps>;
 
-  const inputFacadeButton = view.getByText("Try 'Boston'");
+  beforeEach(() => {
+    wrapper = navProps => <NavigationContainer {...navProps} />;
+  });
 
-  expect(inputFacadeButton).toBeTruthy();
+  test('Home Screen should have InputFacadeButton', () => {
+    const view = render(<Home />, {wrapper});
+
+    const inputFacadeButton = view.getByText("Try 'Boston'");
+
+    expect(inputFacadeButton).toBeTruthy();
+  });
 });
