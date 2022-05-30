@@ -185,7 +185,7 @@ export const initMockDb = () => {
       return doFiltersAlignWithListing;
     });
 
-    console.log({misMatchTotals, totalListings: listings.length});
+    // console.log({misMatchTotals, totalListings: listings.length});
     return filteredListings;
   };
 

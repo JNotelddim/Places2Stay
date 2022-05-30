@@ -8,6 +8,7 @@ import styles from './Who.style';
 
 import {OccupantsSelection} from '../Search.type';
 import {WhoScreenProps} from './Who.type';
+import {Text} from 'component/base';
 
 const Who: React.FC<WhoScreenProps> = ({navigation, route}) => {
   const mockDb = useMockDb();
@@ -38,36 +39,42 @@ const Who: React.FC<WhoScreenProps> = ({navigation, route}) => {
       onNextPress={handleNextPress}
       onSkipPress={handleSkipPress}
       nextDisabled={occupancy.adults < 1}>
-      <CounterRow
-        style={styles.firstCounter}
-        title="Adults"
-        description="Must be at least one adult."
-        value={occupancy.adults}
-        setValue={(newValue: number) =>
-          setOccupancy({...occupancy, adults: newValue})
-        }
-      />
-      <CounterRow
-        title="Children"
-        value={occupancy.children}
-        setValue={(newValue: number) =>
-          setOccupancy({...occupancy, children: newValue})
-        }
-      />
-      <CounterRow
-        title="Infants"
-        value={occupancy.infants}
-        setValue={(newValue: number) =>
-          setOccupancy({...occupancy, infants: newValue})
-        }
-      />
-      <CounterRow
-        title="Pets"
-        value={occupancy.pets}
-        setValue={(newValue: number) =>
-          setOccupancy({...occupancy, pets: newValue})
-        }
-      />
+      {!city ? (
+        <Text>Error, invalid cityId.</Text>
+      ) : (
+        <>
+          <CounterRow
+            style={styles.firstCounter}
+            title="Adults"
+            description="Must be at least one adult."
+            value={occupancy.adults}
+            setValue={(newValue: number) =>
+              setOccupancy({...occupancy, adults: newValue})
+            }
+          />
+          <CounterRow
+            title="Children"
+            value={occupancy.children}
+            setValue={(newValue: number) =>
+              setOccupancy({...occupancy, children: newValue})
+            }
+          />
+          <CounterRow
+            title="Infants"
+            value={occupancy.infants}
+            setValue={(newValue: number) =>
+              setOccupancy({...occupancy, infants: newValue})
+            }
+          />
+          <CounterRow
+            title="Pets"
+            value={occupancy.pets}
+            setValue={(newValue: number) =>
+              setOccupancy({...occupancy, pets: newValue})
+            }
+          />
+        </>
+      )}
     </SearchStep>
   );
 };
