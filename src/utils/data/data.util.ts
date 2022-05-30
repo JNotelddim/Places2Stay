@@ -1,5 +1,7 @@
 import * as faker from 'faker';
-import {ParamsFromWho} from 'component/provider/NavigationProvider/NavigationProvider.type';
+
+import {ParamsFromWho} from 'component/screen/Search/Search.type';
+
 import {
   City,
   Listing,
