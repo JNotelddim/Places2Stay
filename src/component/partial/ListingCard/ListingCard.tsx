@@ -24,7 +24,7 @@ const ListingCard: React.FC<ListingCardProps> = ({
   return (
     <Pressable onPress={() => navigation.push('Listing', {listingId: id})}>
       <View style={[styles.container, style]}>
-        <ImageCard imageSource={imageSource} label={`From ${price}`} />
+        <ImageCard imageSource={imageSource} label={`From $${price}`} />
 
         <Text variant="body1"> {address} </Text>
 

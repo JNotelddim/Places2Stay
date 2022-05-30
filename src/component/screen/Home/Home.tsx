@@ -1,5 +1,6 @@
 import React from 'react';
 import {useNavigation} from '@react-navigation/native';
+import Icon from 'react-native-vector-icons/Feather';
 import {
   ScrollView,
   NativeScrollEvent,
@@ -14,7 +15,7 @@ import {
   RootStackNavigation,
   useMockDb,
 } from 'component/provider';
-import {IconButton, InputFacadeButton} from 'component/base';
+import {IconButton, InputFacadeButton, Pressable, Text} from 'component/base';
 import {
   Carousel,
   CityCard,
@@ -95,9 +96,21 @@ const Home: React.FC = () => {
       <Carousel style={styles.carousel} items={cities} component={CityCard} />
 
       <SectionHeader heading="Places" description="Home individual places" />
-      {listings.map(listing => (
+      {listings.slice(0, 6).map(listing => (
         <ListingCard key={listing.id} style={styles.cta} {...listing} />
       ))}
+
+      <Pressable onPress={() => tabNavigation.navigate('Search')}>
+        <View style={styles.searchMore}>
+          <Icon
+            name="search"
+            size={16}
+            color={colors.slateGrey}
+            style={styles.searchIcon}
+          />
+          <Text color={colors.slateGrey}> Search for More ...</Text>
+        </View>
+      </Pressable>
     </ScrollView>
   );
 };
