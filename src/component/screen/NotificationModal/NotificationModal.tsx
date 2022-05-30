@@ -8,6 +8,7 @@ import {SectionHeader} from 'component/partial';
 
 import {NotificationModalProps} from './NotificationModal.type';
 import styles from './NotificationModal.style';
+import {capitalizeText} from 'utils';
 
 const NotificationModal: React.FC<NotificationModalProps> = ({navigation}) => {
   const {notifications} = useMockDb();
@@ -25,8 +26,10 @@ const NotificationModal: React.FC<NotificationModalProps> = ({navigation}) => {
       <ScrollView>
         {notifications.map(({id, body}) => (
           <View key={id} style={styles.notificationWrapper}>
-            <Icon name="bell" style={styles.icon} />
-            <Text>{body}</Text>
+            <Icon name="bell" style={styles.icon} size={24} />
+            <Text style={styles.notificationText}>
+              {capitalizeText(body.toLowerCase())}.
+            </Text>
           </View>
         ))}
       </ScrollView>

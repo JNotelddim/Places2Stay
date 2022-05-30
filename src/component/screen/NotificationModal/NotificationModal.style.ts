@@ -5,6 +5,7 @@ import {colors, spacing} from 'const';
 const styles = StyleSheet.create({
   container: {
     padding: spacing.whitespace.xlarge,
+    backgroundColor: colors.paleYellow,
   },
   iconButton: {
     marginLeft: -1 * spacing.whitespace.large,
@@ -19,9 +20,13 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     marginVertical: spacing.whitespace.small,
     flexDirection: 'row',
+    backgroundColor: colors.white,
   },
   icon: {
     marginRight: spacing.whitespace.medium,
+  },
+  notificationText: {
+    maxWidth: '85%',
   },
 });
 
