@@ -26,6 +26,9 @@
     "typeRoots": [
       "src/type"
     ],
+    "types": [
+      "@types/jest"
+    ],
     "allowSyntheticDefaultImports": true,
     "esModuleInterop": true,
     "skipLibCheck": true,
