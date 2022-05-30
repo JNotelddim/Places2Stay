@@ -1,18 +1,21 @@
 import React from 'react';
-import {Image, StyleSheet, View} from 'react-native';
+import {Image, View} from 'react-native';
+import {ScrollView} from 'react-native-gesture-handler';
 
-import {colors, spacing} from 'const';
+import {pluralize} from 'utils';
+import {colors} from 'const';
 import {useMockDb} from 'component/provider';
 import {IconButton, Text} from 'component/base';
+import {ListingCard, SectionHeader} from 'component/partial';
 
 import {CityScreenProps} from './City.type';
+import styles from './City.styles';
 
 const City: React.FC<CityScreenProps> = ({route, navigation}) => {
   const {cityId} = route.params;
   const mockDb = useMockDb();
   const city = mockDb.getCityById(cityId);
-
-  // TODO: add listings by city
+  const listings = mockDb.getListingsByCity(cityId);
 
   const handleGoBack = () => {
     navigation.goBack();
@@ -27,31 +30,30 @@ const City: React.FC<CityScreenProps> = ({route, navigation}) => {
         color={colors.black}
         opaque
       />
-      {city ? (
+      {!city ? (
+        <Text>Error, no city found.</Text>
+      ) : (
         <>
           <Image source={city.imageSource} style={styles.image} />
-          <Text>{city.name}</Text>
+          <View style={styles.contentWrapper}>
+            <SectionHeader
+              heading={city.name}
+              style={styles.heading}
+              description={`${listings.length} ${pluralize(
+                'listing',
+                listings.length,
+              )} found in ${city.name}.`}
+            />
+            <ScrollView style={styles.listContainer}>
+              {listings.map(listing => (
+                <ListingCard key={listing.id} {...listing} />
+              ))}
+            </ScrollView>
+          </View>
         </>
-      ) : (
-        <Text>Error, no city found.</Text>
       )}
     </View>
   );
 };
-
-const styles = StyleSheet.create({
-  container: {
-    position: 'relative',
-  },
-  backButton: {
-    position: 'absolute',
-    zIndex: 2,
-    top: spacing.whitespace.xlarge,
-    left: 16,
-  },
-  image: {
-    width: '100%',
-  },
-});
 
 export default City;

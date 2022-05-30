@@ -1,28 +1,54 @@
 import React from 'react';
-import {StyleSheet, View} from 'react-native';
+import {Image, View} from 'react-native';
 
-import {Text} from 'component/base';
+import {IconButton, Text} from 'component/base';
 import {useMockDb} from 'component/provider';
 
 import {ListingScreenProps} from './Listing.type';
+import styles from './Listing.style';
+import {SectionHeader} from 'component/partial';
+import {colors} from 'const';
 
-const Listing: React.FC<ListingScreenProps> = ({route}) => {
+const Listing: React.FC<ListingScreenProps> = ({route, navigation}) => {
   const {listingId} = route.params;
   const mockDb = useMockDb();
   const listing = mockDb.getListingById(listingId);
-  if (!listing) {
-    return <Text> Error, no listing found. </Text>;
-  }
+  const {name, province, country} =
+    mockDb.getCityById(listing?.cityId || '') || {};
+
+  const handleGoBack = () => {
+    navigation.goBack();
+  };
 
   return (
     <View style={styles.container}>
-      <Text>{listing.address} </Text>
+      <IconButton
+        name="chevron-left"
+        onPress={handleGoBack}
+        style={styles.backButton}
+        color={colors.black}
+        opaque
+      />
+      {!listing ? (
+        <Text>Error, no listing found.</Text>
+      ) : (
+        <>
+          <Image source={listing.imageSource} style={styles.image} />
+          <View style={styles.contentWrapper}>
+            <SectionHeader
+              heading={listing.address}
+              style={styles.heading}
+              description={`${name}, ${province}, ${country}`}
+            />
+            <Text>${listing.price} per night.</Text>
+            <Text>
+              {listing.allowsDogs ? 'Allows dogs.' : 'Does not allow dogs.'}
+            </Text>
+            <Text>Maximum people: {listing.capacity}.</Text>
+          </View>
+        </>
+      )}
     </View>
   );
 };
-
-const styles = StyleSheet.create({
-  container: {},
-});
-
 export default Listing;

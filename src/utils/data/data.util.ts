@@ -18,7 +18,23 @@ import vancouver from 'asset/vancouver.jpg';
 import toronto from 'asset/toronto.jpg';
 import newYork from 'asset/new-york.jpg';
 
+import cabin1 from '/asset/andrea-davis-IWfe63thJxk-unsplash.jpg';
+import cabin2 from '/asset/andrea-davis-lIvqoCl6h-A-unsplash.jpg';
+import cityMicro from '/asset/andrea-davis-NngNVT74o6s-unsplash.jpg';
+import forestAFrame from '/asset/karsten-winegeart-sStahKEhT9w-unsplash.jpg';
+import forestPod from '/asset/kyle-glenn-xY4r7y-Cllo-unsplash.jpg';
+import trailer from '/asset/tyler-casey-yu2Ay7LQmnY-unsplash.jpg';
+
 const CITY_IMAGES = [miami, montreal, vancouver, toronto, newYork];
+const LISTING_IMAGES = [
+  cabin1,
+  cabin2,
+  cityMicro,
+  forestAFrame,
+  forestPod,
+  trailer,
+  img,
+];
 
 const getRandomNumber = (max = 100) => {
   return Math.round(Math.random() * max);
@@ -51,16 +67,20 @@ export const initMockDb = () => {
   const cities: City[] = new Array(25).fill(undefined).map((v, index) => ({
     id: faker.datatype.uuid(),
     name: faker.address.city(),
+    province: faker.address.state(),
+    country: faker.address.country(),
     imageSource: CITY_IMAGES[index % 4],
   }));
 
-  const listings: Listing[] = new Array(40).fill(undefined).map(() => ({
+  const listings: Listing[] = new Array(40).fill(undefined).map((v, index) => ({
     id: faker.datatype.uuid(),
     cityId: getRandomExistingItem(cities).id,
     userId: getRandomExistingItem(users).id,
     address: faker.address.streetAddress(),
     capacity: getRandomNumber(24),
     allowsDogs: faker.datatype.boolean(),
+    price: getRandomNumber(1100),
+    imageSource: LISTING_IMAGES[index % 6],
   }));
 
   const listingAvailabilities: ListingAvailability[] = new Array(100)
@@ -154,7 +174,7 @@ export const initMockDb = () => {
 
       const doFiltersAlignWithListing =
         // If the city doesn't match
-        listing.cityId == cityId &&
+        listing.cityId === cityId &&
         // Or the dates don't align
         datesAlign &&
         // Or the occupants outnumber the capacity
@@ -181,17 +201,5 @@ export const initMockDb = () => {
     getFilteredListings,
     getCityById,
     getListingById,
-  };
-};
-
-export const getFakePlace = () => {
-  return {
-    id: faker.datatype.uuid(),
-    imageSource: img, // require(faker.image.city())
-    accessibilityLabel: 'Table in restaurant.',
-    label: `From $${faker.datatype.number(1100)}`,
-    address: `${faker.address.secondaryAddress()} - ${faker.address.streetAddress()}`,
-    location: `${faker.address.city()}, ${faker.address.state()}`,
-    placeName: faker.name.jobArea(),
   };
 };
