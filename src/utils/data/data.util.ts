@@ -45,7 +45,7 @@ export const initMockDb = () => {
     .map(() => ({
       id: faker.datatype.uuid(),
       userId: currentUser.id,
-      body: faker.random.words(getRandomNumber(30)),
+      body: faker.random.words(getRandomNumber(12)),
     }));
 
   const cities: City[] = new Array(25).fill(undefined).map((v, index) => ({

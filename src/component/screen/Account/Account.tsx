@@ -1,12 +1,12 @@
 import React from 'react';
-import {Button, StyleSheet, View} from 'react-native';
+import {Button, View} from 'react-native';
 
-import {spacing} from 'const';
 import {IconButton} from 'component/base';
 import {useAuth} from 'component/provider';
 import {SectionHeader} from 'component/partial';
 
 import {AccountScreenProps} from './Account.type';
+import styles from './Account.style';
 
 const Account: React.FC<AccountScreenProps> = ({navigation}) => {
   const {logout} = useAuth();
@@ -22,16 +22,5 @@ const Account: React.FC<AccountScreenProps> = ({navigation}) => {
     </View>
   );
 };
-
-const styles = StyleSheet.create({
-  container: {
-    paddingTop: spacing.whitespace.unsafeScreenTop,
-    paddingHorizontal: spacing.whitespace.large,
-  },
-  header: {
-    marginVertical: spacing.whitespace.xlarge,
-    alignSelf: 'center',
-  },
-});
 
 export default Account;
