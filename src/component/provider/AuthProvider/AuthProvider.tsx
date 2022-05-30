@@ -1,7 +1,7 @@
 import React from 'react';
 import * as WebBrowser from 'expo-web-browser';
 import {makeRedirectUri, ResponseType} from 'expo-auth-session';
-import {useIdTokenAuthRequest} from 'expo-auth-session/providers/google';
+import * as Google from 'expo-auth-session/providers/google';
 import * as SecureStore from 'expo-secure-store';
 
 import {GOOGLE_IOS_CLIENT_ID, GOOGLE_ANDROID_CLIENT_ID} from '@env';
@@ -16,7 +16,17 @@ const AuthContext = React.createContext({
 
 export const AuthProvider: React.FC = ({children}) => {
   const [token, setToken] = React.useState<unknown>(undefined);
+  const [userData, setUserData] = React.useState<
+    Record<string, unknown> | undefined
+  >();
   const isAuthenticated = !!token;
+
+  const [, , promptAsync] = Google.useAuthRequest({
+    iosClientId: GOOGLE_IOS_CLIENT_ID,
+    expoClientId: GOOGLE_ANDROID_CLIENT_ID,
+  });
+
+  console.log({token, userData});
 
   React.useEffect(() => {
     const checkForPersistedToken = async () => {
@@ -36,35 +46,41 @@ export const AuthProvider: React.FC = ({children}) => {
     checkForPersistedToken();
   }, []);
 
-  const [, , promptAsync] = useIdTokenAuthRequest({
-    responseType: ResponseType.Token,
-    iosClientId: GOOGLE_IOS_CLIENT_ID,
-    androidClientId: GOOGLE_ANDROID_CLIENT_ID,
-    redirectUri: makeRedirectUri({
-      scheme: 'org.reactjs.native.example.places2stay',
-    }),
-  });
-
   const login = async () => {
-    const response = await promptAsync().catch(reason =>
-      console.log('[LoginPromptError] reason:', reason),
-    );
+    const response = await promptAsync();
 
-    if (response?.type !== 'success') {
+    console.log({response});
+
+    if (response?.type !== 'success' || !response.authentication?.accessToken) {
       throw new Error(
-        '[LoginPromptResponseError] Non-SuccessType: ' + response?.type,
+        '[LoginError] Login prompt resonse was not successful. Error type: ' +
+          response?.type,
       );
     }
 
-    // I'm very aware this is not an actual token value. For a demo app it'll do.
-    setToken(response.params);
+    const accessToken = response.authentication.accessToken;
     console.log('[AuthPersist] Persisting token.');
-    await SecureStore.setItemAsync('token', JSON.stringify(response.params));
+    setToken(accessToken);
+    await SecureStore.setItemAsync('token', accessToken);
+
+    let userInfoResponse = await fetch(
+      'https://www.googleapis.com/userinfo/v2/me',
+      {
+        headers: {Authorization: `Bearer ${accessToken}`},
+      },
+    );
+
+    if (!userInfoResponse?.ok) {
+      throw new Error('[LoginError] Google user info fetch failed.');
+    }
+
+    userInfoResponse.json().then(data => setUserData(data));
   };
 
   const logout = async () => {
-    setToken(undefined);
     console.log('[AuthPersist] Deleting persisted token.');
+    // TODO: google.sign out?
+    setToken(undefined);
     await SecureStore.deleteItemAsync('token');
   };
 
