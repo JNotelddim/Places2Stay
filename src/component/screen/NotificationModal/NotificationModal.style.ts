@@ -6,6 +6,7 @@ const styles = StyleSheet.create({
   container: {
     padding: spacing.whitespace.xlarge,
     backgroundColor: colors.paleYellow,
+    height: '100%',
   },
   iconButton: {
     marginLeft: -1 * spacing.whitespace.large,
