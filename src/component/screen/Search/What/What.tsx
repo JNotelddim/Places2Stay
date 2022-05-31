@@ -45,7 +45,7 @@ const What: React.FC<WhatScreenProps> = ({navigation, route}) => {
           />
         </>
       ) : (
-        <Text> Error, invalid city Id </Text>
+        <Text> Error, invalid cityId. </Text>
       )}
     </SearchStep>
   );

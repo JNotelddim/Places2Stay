@@ -2,9 +2,9 @@ import React from 'react';
 import {ScrollView} from 'react-native-gesture-handler';
 
 import {colors} from 'const';
-import {getFakePlace, pluralize} from 'utils';
+import {pluralize} from 'utils';
 import {Text} from 'component/base';
-import {PlaceCTA} from 'component/partial';
+import {ListingCard} from 'component/partial';
 import {SearchStep} from 'component/layout';
 import {useMockDb} from 'component/provider';
 
@@ -26,18 +26,28 @@ const Results: React.FC<ResultsScreenProps> = ({route}) => {
 
   return (
     <SearchStep title="Results" cityName={city?.name || 'Error'}>
-      <Text variant="body1" color={colors.slateGrey} style={styles.resultsText}>
-        {filteredListings.length}{' '}
-        {pluralize('listing', filteredListings.length)} out of{' '}
-        {cityListings.length} in {city?.name} matched what you're looking for.
-      </Text>
+      {!city ? (
+        <Text>Error, invalid cityId.</Text>
+      ) : (
+        <>
+          <Text
+            variant="body1"
+            color={colors.slateGrey}
+            style={styles.resultsText}>
+            {filteredListings.length}{' '}
+            {pluralize('listing', filteredListings.length)} out of{' '}
+            {cityListings.length} in {city?.name} matched what you're looking
+            for.
+          </Text>
 
-      {filteredListings.length && (
-        <ScrollView>
-          {filteredListings.map(listing => (
-            <PlaceCTA key={listing.id} {...getFakePlace()} {...listing} />
-          ))}
-        </ScrollView>
+          {filteredListings.length && (
+            <ScrollView>
+              {filteredListings.map(listing => (
+                <ListingCard key={listing.id} {...listing} />
+              ))}
+            </ScrollView>
+          )}
+        </>
       )}
     </SearchStep>
   );

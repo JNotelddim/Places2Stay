@@ -1,25 +1,26 @@
 import React from 'react';
-import {Button, StyleSheet, View} from 'react-native';
+import {Button, View} from 'react-native';
 
-import {Text} from 'component/base';
+import {IconButton} from 'component/base';
 import {useAuth} from 'component/provider';
-import {spacing} from 'const';
+import {SectionHeader} from 'component/partial';
 
-const Account: React.FC = () => {
+import {AccountScreenProps} from './Account.type';
+import styles from './Account.style';
+
+const Account: React.FC<AccountScreenProps> = ({navigation}) => {
   const {logout} = useAuth();
+
+  // TODO: ideally fetch user info from google w/ access token?
+
   return (
     <View style={styles.container}>
-      <Text>Account</Text>
+      <IconButton name="chevron-left" onPress={() => navigation.goBack()} />
+
+      <SectionHeader heading="Account" style={styles.header} />
       <Button title="log out" onPress={logout} />
     </View>
   );
 };
-
-const styles = StyleSheet.create({
-  container: {
-    paddingTop: spacing.whitespace.unsafeScreenTop,
-    paddingHorizontal: spacing.whitespace.large,
-  },
-});
 
 export default Account;

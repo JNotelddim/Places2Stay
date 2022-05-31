@@ -42,6 +42,14 @@ const styles = StyleSheet.create({
     paddingBottom: spacing.whitespace.large,
     backgroundColor: colors.extraPaleYellow,
   },
+  searchMore: {
+    flexDirection: 'row',
+    marginVertical: spacing.whitespace.large,
+    justifyContent: 'center',
+  },
+  searchIcon: {
+    marginRight: spacing.whitespace.small,
+  },
 });
 
 export default styles;

@@ -17,6 +17,8 @@ export interface City {
   id: string;
   name: string;
   imageSource: ImageSourcePropType;
+  province: string;
+  country: string;
 }
 
 export interface Listing {
@@ -26,6 +28,8 @@ export interface Listing {
   address: string;
   capacity: number;
   allowsDogs: boolean;
+  price: number;
+  imageSource: ImageSourcePropType;
 }
 
 export interface ListingAvailability {

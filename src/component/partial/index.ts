@@ -3,7 +3,7 @@ export {default as CityCard} from './CityCard';
 export {default as CounterRow} from './CounterRow';
 export {default as ImageCard} from './ImageCard';
 export {default as ModalControls} from './ModalControls';
-export {default as PlaceCTA} from './PlaceCTA';
+export {default as ListingCard} from './ListingCard';
 export {default as SectionHeader} from './SectionHeader';
 export {default as StayInfoSection} from './StayInfoSection';
 export {default as WhatCard} from './WhatCard';

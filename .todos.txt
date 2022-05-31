@@ -5,11 +5,6 @@
     => replace PlaceCTA with ListingCard
 
 ## Nice-To-Haves
-- [ ] Listing screen
-- [ ] Notifications screen
-- [ ] Account screen
-- [ ] City screen
-
 - [ ] MUI Theme, w/ Light + Dark theming
 - [ ] Linear Gradient on fixed search header in Home
 - [ ] handle gestures in OverlaidCard layout
@@ -53,3 +48,7 @@
 - [x] expo auth
 - [x] show filtered PlaceCTAs on Results
 - [x] refactor Weekend/Week/Month Option components to be less redundant
+- [x] Listing screen
+- [x] Notifications screen
+- [x] Account screen
+- [x] City screen
