@@ -89,7 +89,7 @@ const Home: React.FC = () => {
       <ImageCard
         style={styles.imageCard}
         {...firstExampleListing}
-        label={`From ${firstExampleListing.price}`}
+        label={`From $${firstExampleListing.price}`}
       />
 
       <SectionHeader heading="25+ Cities To Explore" />
